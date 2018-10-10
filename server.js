@@ -39,7 +39,8 @@ var professorSchema = new mongoose.Schema({
   name: String,
   hashPassword: String,
   hasPaid: Boolean, 
-  bleUUID: String
+  bleUUID: String,
+  email: String
 });
 
 var Student = mongoose.model("Student", studentSchema);
@@ -54,16 +55,17 @@ function handleError(res, reason, message, code) {
 // nid: "professorNidHere"
 // name: "professerName"
 // password: "password"
+// email: "email"
 // 
 app.post("/api/createProfessor", function(req,res) {
 
   var professor = new Professor({
     profNID: req.body.nid,
     name: req.body.name,
-    hashPassword : crypto.createHash('sha256').update(JSON.stringify(req.body.password)).digest('hex')
-
+    hashPassword : crypto.createHash('sha256').update(JSON.stringify(req.body.password)).digest('hex'),
+    email : req.body.email
     })
-  if(!req.body.nid || !req.body.name || !req.body.password) {
+  if(!req.body.nid || !req.body.name || !req.body.password || !req.body.email) {
     handleError(res, "Invalid user input", "Missing Creation Parameter", 400);
   } else {
     professor.save(function(err, professor) {
