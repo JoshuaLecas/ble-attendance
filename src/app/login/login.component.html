@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- Used for incons. DO NOT REMOVE! -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <h1>Welcome to BLU-Attendence</h1>
+
+  <!-- Icons -->
+  <div class="Icons">
+
+    <i class="fa fa-rss" style="font-size:36px"></i>
+
+    <i class="fa fa-plus" style="font-size:30px"></i>
+
+    <i class="fa fa-bluetooth" style="font-size:36px"></i>
+  
+  </div>
+  <!-- End Icons -->
+
   <div class="wrapper fadeInDown">
+
     <div id="formContent">
       <!-- Tabs Titles -->
       <h2 href="#" class="active" id="sign-in"> Sign In </h2>
       <h2 href="$" class="inactive underlineHover" id="sign-up">Sign Up </h2>
 
-      <!-- Icon -->
+      <!-- UCF Logo -->
       <div class="fadeIn first">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fd/UCF_Knights_logo.svg" id="icon" alt="User Icon" />
       </div>
 
       <!-- Login Form -->
-      <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <div class="loginWithIcon">
+        <i class="fa fa-user fa-lg fa-fw" aria-hidden="true" style="font-size:31px"></i>
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
+      </div>
+      <div class="passwordWithIcon">
+        <i class="fa fa-lock" style="font-size:35px"></i>
+        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Password">
+      </div>
+      
+      <div>
         <input type="submit" class="fadeIn fourth" value="Log In">
-      </form>
+      </div>
 
       <!-- Remind Passowrd -->
       <div id="formFooter">

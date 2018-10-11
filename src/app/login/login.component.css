@@ -2,23 +2,33 @@
 
 /* BASIC */
 
-html {
+html 
+{
   background-color: #0082fc;
 }
 
-body {
+body 
+{
   font-family: "Poppins", sans-serif;
   height: 100vh;
 }
 
-a {
+a 
+{
   color: #92badd;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
 }
 
-h2 {
+h1
+{
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+h2 
+{
   text-align: center;
   font-size: 16px;
   font-weight: 600;
@@ -28,11 +38,22 @@ h2 {
   color: #cccccc;
 }
 
+.Icons
+{
+  text-align: center;
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
 
+.Icons i + i
+{
+  padding-left: 0.5em;
+}
 
 /* STRUCTURE */
 
-.wrapper {
+.wrapper 
+{
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -42,7 +63,8 @@ h2 {
   padding: 20px;
 }
 
-#formContent {
+#formContent 
+{
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
@@ -56,7 +78,8 @@ h2 {
   text-align: center;
 }
 
-#formFooter {
+#formFooter 
+{
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
   padding: 25px;
@@ -69,11 +92,13 @@ h2 {
 
 /* TABS */
 
-h2.inactive {
+h2.inactive 
+{
   color: #cccccc;
 }
 
-h2.active {
+h2.active 
+{
   color: #0d0d0d;
   border-bottom: 2px solid #5fbae9;
 }
@@ -82,7 +107,8 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=button], input[type=submit], input[type=reset]  
+{
   background-color: #56baed;
   border: none;
   color: white;
@@ -104,11 +130,13 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  
+{
   background-color: #39ace7;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
+{
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -116,12 +144,13 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text] 
+{
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
   padding: 15px 32px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
@@ -137,21 +166,45 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type=text]:focus 
+{
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type=text]:placeholder 
+{
   color: #cccccc;
 }
 
+.loginWithIcon
+{
+  position: relative;  
+}
 
+.loginWithIcon i
+{
+  position: absolute;
+  left: 0;
+  top: 20px;  
+}
 
+.passwordWithIcon
+{
+  position: relative;  
+}
+
+.passwordWithIcon i
+{
+  position: absolute;
+  left: 7px;
+  top: 16px;  
+}
 /* ANIMATIONS */
 
 /* Simple CSS3 Fade-in-down Animation */
-.fadeInDown {
+.fadeInDown 
+{
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
   -webkit-animation-duration: 1s;
@@ -160,21 +213,26 @@ input[type=text]:placeholder {
   animation-fill-mode: both;
 }
 
-@-webkit-keyframes fadeInDown {
-  0% {
+@-webkit-keyframes fadeInDown 
+{
+  0% 
+  {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
   }
-  100% {
+  100% 
+  {
     opacity: 1;
     -webkit-transform: none;
     transform: none;
   }
 }
 
-@keyframes fadeInDown {
-  0% {
+@keyframes fadeInDown 
+{
+  0% 
+  {
     opacity: 0;
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
@@ -201,33 +259,33 @@ input[type=text]:placeholder {
   -moz-animation-fill-mode:forwards;
   animation-fill-mode:forwards;
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  animation-duration: 0.5s;
 }
 
 .fadeIn.first {
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.3s;
+  -moz-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.fadeIn.third {
   -webkit-animation-delay: 0.4s;
   -moz-animation-delay: 0.4s;
   animation-delay: 0.4s;
 }
 
-.fadeIn.second {
-  -webkit-animation-delay: 0.6s;
-  -moz-animation-delay: 0.6s;
-  animation-delay: 0.6s;
-}
-
-.fadeIn.third {
-  -webkit-animation-delay: 0.8s;
-  -moz-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
 .fadeIn.fourth {
-  -webkit-animation-delay: 1s;
-  -moz-animation-delay: 1s;
-  animation-delay: 1s;
+  -webkit-animation-delay: 0.5s;
+  -moz-animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 /* Simple CSS3 Fade-in Animation */
