@@ -78,3 +78,14 @@ app.post("/api/createProfessor", function(req,res) {
     });
   }
 });
+
+app.get("/api/professors", function(req, res) {
+	Professor.find(function(err, professors) {
+		if(err){
+			handleError(res, err.message, "Couldn't get professors");
+		}
+		else {
+			res.status(201).json(professors);
+		}
+	});
+});
