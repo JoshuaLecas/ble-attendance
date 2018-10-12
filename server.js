@@ -58,10 +58,22 @@ var lectureSchema = new mongoose.Schema({
 	numStudents: Number
 });
 
+var isInSchema = new mongoose.Schema({
+	enrolledCourseID: String, // This should be the object ID of the course they are in
+	studentNID: String
+});
+
+var attendedSchema = new mongoose.Schema({
+	lectureID: String, 
+	studentNID: String
+});
+
 var Student = mongoose.model("Student", studentSchema);
 var Professor = mongoose.model("Professor", professorSchema);
 var Class = mongoose.model("Class", classSchema);
 var Lecture = mongoose.model("Lecture", lectureSchema);
+var isIn = mongoose.model("isIn", isInSchema);
+var Attended = mongoose.model("Attended", attendedSchema);
 
 function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
