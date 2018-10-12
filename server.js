@@ -98,6 +98,24 @@ app.post("/api/professors/createProfessor", function(req,res) {
   }
 });
 
+
+// Update the UUID for professors side, find by nid
+// json
+// "uuid": "ble uuid"
+app.post("/api/professors/updateUUID/:id", function(req, res) {
+	console.log(req.body);
+	Professor.findOneAndUpdate({"profNID": req.params.id}, {"bleUUID": req.body.uuid}, {new: true}, function(err, model){
+		if(err) {
+			handleError(res, "Error updating", "Error updating professor");
+		}
+		else {
+			console.log(req.params.id);
+			console.log(model);
+			res.status(201).json(model);
+		}
+	});
+});
+
 app.get("/api/professors", function(req, res) {
 	Professor.find(function(err, professors) {
 		if(err){
@@ -169,6 +187,22 @@ app.post("/api/classes/delete/:id", function(req, res) {
 	});
 });
 
+// Get class by obj id, have to rewrite prev values you want to keep
+// follow json in create class endpoint
+app.post("/api/classes/update/:id", function(req, res) {
+	console.log(req.body);
+	Class.findOneAndUpdate({"_id": req.params.id}, req.body, {new: true}, function(err, model){
+		if(err) {
+			handleError(res, "Error updating", "Error updating class");
+		}
+		else {
+			console.log(req.params.id);
+			console.log(model);
+			res.status(201).json(model);
+		}
+	});
+});
+
 // *** Student API Routes ***
 
 // JSON
@@ -180,7 +214,8 @@ app.post("/api/students/createStudent", function(req, res){
 	var student = new Student({
 		studentNID: req.body.nid,
   		name: req.body.name,
-  		email: req.body.email
+  		email: req.body.email,
+  		studentUUID: req.body.uuid
 	});
 
 	if(!req.body.nid || !req.body.name || !req.body.email) {
@@ -206,6 +241,40 @@ app.get("/api/students", function(req, res){
 		}
 		else {
 			res.status(201).json(students);
+		}
+	});
+});
+
+// *** Lecture API Routes ***
+
+// Given object id of class, create lecture
+app.post("/api/lectures/create/:id", function(req, res){
+	var lecture = new Lecture({
+		classID: req.params.id,
+		date: new Date()
+	});
+	if(!req.params.id) {
+		handleError(res, "Invalid user input", "Missing Creation Parameter");
+	}
+	else {
+		lecture.save(function(err, lecture){
+			if(err) return console.log("Didn't save lecture");
+			else {
+				console.log("Lecture successfully created");
+				res.status(201).json(lecture);
+			}
+		});
+	}
+});
+
+// View all lectures for a class
+app.get("/api/lectures/:id", function(req, res) {
+	Lecture.find({classID: req.params.id}, function(err, classLectures) {
+		if(err) {
+			handleError(res, err.message, "Couldn't get lectures for class");
+		}
+		else {
+			res.status(201).json(classLectures);
 		}
 	});
 });
