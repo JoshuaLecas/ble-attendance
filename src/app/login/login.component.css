@@ -13,9 +13,9 @@ body
   height: 100vh;
 }
 
-a 
+a
 {
-  color: #92badd;
+  color: #A9A9A9;
   display:inline-block;
   text-decoration: none;
   font-weight: 400;
@@ -38,6 +38,16 @@ h2
   color: #cccccc;
 }
 
+#header
+{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 40px 8px 10px 8px;
+}
+
 .Icons
 {
   text-align: center;
@@ -48,6 +58,15 @@ h2
 .Icons i + i
 {
   padding-left: 0.5em;
+}
+
+#passwordShow
+{
+  margin-right: 240px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #696969;
+  font-family: "Poppins", sans-serif;
 }
 
 /* STRUCTURE */
@@ -144,7 +163,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active
   transform: scale(0.95);
 }
 
-input[type=text] 
+input[type=text], [type=password] 
 {
   background-color: #f6f6f6;
   border: none;
@@ -166,13 +185,13 @@ input[type=text]
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus 
+input[type=text]:focus, [type=password]:focus 
 {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder 
+input[type=text]:placeholder , [type=password]:placeholder 
 {
   color: #cccccc;
 }
@@ -308,18 +327,24 @@ input[type=text]:placeholder
   width: 100%;
 }
 
-
-
 /* OTHERS */
 
-*:focus {
-    outline: none;
+*:focus 
+{
+  outline: none;
 }
 
-#icon {
+#icon 
+{
   width:60%;
 }
 
-* {
+* 
+{
   box-sizing: border-box;
+}
+
+input:invalid
+{
+  box-shadow: none;
 }
