@@ -1,3 +1,40 @@
-<p>
-  register works!
-</p>
+<!DOCTYPE html>
+
+<html>
+
+  <h1>Please Fill in All the Fields</h1> 
+
+  <div class="wrapper fadeInDown">    
+
+     <div id="formContent">
+        <a [routerLink] = "['/login']" id="header" class="underlineHover" hrep="#"> Sign In </a>
+        <h2 href="#" class="active" id="sign-up">Sign Up </h2>
+
+        <!-- Logo -->
+        <div class="fadeIn zero">
+           <img src="http://superstation95.com/wp-content/uploads/2018/07/daftar10.png" id="icon" alt="Computer Hope"/>
+        </div> 
+
+        <input type="text" id="fname" class="fadeIn first" name="fname" placeholder="Full Name">
+
+        <input type="text" id="uname" class="fadeIn second" name="uname" placeholder="Username">
+
+        <input type="text" id="email" class="fadeIn third" name="email" placeholder="Email">
+
+        <input type="text" id="univId" class="fadeIn fourth" name="univId" placeholder="University ID">
+
+        <input type="password" id="password" class="fadeIn fifth" name="password" placeholder="Password">
+
+        <div id="passwordShow">
+           <input type="checkbox" (click)="showPassword()"> Show Password
+        </div>
+
+        <!-- Submit -->
+        <div>
+           <input type="submit" class="fadeIn fourth" value="Submit">
+        </div>
+
+     </div>
+  </div>
+
+</html>

@@ -25,12 +25,13 @@
       <h2 href="#" class="active" id="sign-in"> Sign In </h2>
       <a [routerLink] = "['/register']" id="header" class="underlineHover" hrep="#">Sign Up </a>
 
-      <!-- UCF Logo -->
+      <!-- Logo -->
       <div class="fadeIn first">
-        <img src="http://www.beaconwatcher.com/wp-content/uploads/2014/04/bluetooth.png" id="icon" alt="Computer Hope" width="800" height="230"/>
+        <img src="http://www.beaconwatcher.com/wp-content/uploads/2014/04/bluetooth.png" id="icon" alt="Computer Hope"/>
       </div>
 
-      <!-- Login Form -->
+      <!------ Login Form ------>
+      <!-- Username -->
       <div class="loginWithIcon">
         <i class="fa fa-user fa-lg fa-fw" aria-hidden="true" style="font-size:31px"></i>
         <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username" required [(ngModel)]="login" #modelLogin="ngModel">
@@ -43,6 +44,7 @@
         </div>
       </div>
 
+      <!-- Password -->
       <div class="passwordWithIcon">
         <i class="fa fa-lock" style="font-size:35px"></i>
         <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" required [(ngModel)]="password" #modelPassword="ngModel">
@@ -59,7 +61,8 @@
         </div>
 
       </div>
-      
+
+      <!-- Submit -->
       <div>
         <input type="submit" class="fadeIn fourth" value="Log In">
       </div>
