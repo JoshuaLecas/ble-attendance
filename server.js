@@ -106,7 +106,8 @@ app.post("/api/professors/createProfessor", function(req,res) {
     profNID: req.body.nid,
     name: req.body.name,
     hashPassword : crypto.createHash('sha256').update(JSON.stringify(req.body.password)).digest('hex'),
-    email : req.body.email
+    email : req.body.email,
+    hasPaid: false
     })
   if(!req.body.nid || !req.body.name || !req.body.password || !req.body.email) {
     handleError(res, "Invalid user input", "Missing Creation Parameter", 400);
@@ -129,6 +130,24 @@ app.post("/api/professors/createProfessor", function(req,res) {
 app.post("/api/professors/updateUUID/:id", function(req, res) {
 	console.log(req.body);
 	Professor.findOneAndUpdate({"profNID": req.params.id}, {"bleUUID": req.body.uuid}, {new: true}, function(err, model){
+		if(err) {
+			handleError(res, "Error updating", "Error updating professor uuid");
+		}
+		else {
+			console.log(req.params.id);
+			console.log(model);
+			res.status(201).json(model);
+		}
+	});
+});
+
+// Update what you need to for prof, :id is nid
+// Look to prof schema for formatting, please DO NOT update hasPaid here because that's handled 
+// in a diff endpoint 
+
+app.post("/api/professors/update/:id", function(req, res) {
+	console.log(req.body);
+	Professor.findOneAndUpdate({"profNID": req.params.id}, req.body, {new: true}, function(err, model){
 		if(err) {
 			handleError(res, "Error updating", "Error updating professor");
 		}
@@ -249,7 +268,7 @@ app.post("/api/classes/delete/:id", function(req, res) {
 // follow json in create class endpoint
 app.post("/api/classes/update/:id", function(req, res) {
 	console.log(req.body);
-	Class.findOneAndUpdate({"_id": req.params.id}, req.body, {new: true}, function(err, model){
+	Class.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, model){
 		if(err) {
 			handleError(res, "Error updating", "Error updating class");
 		}
@@ -267,6 +286,7 @@ app.post("/api/classes/update/:id", function(req, res) {
 // nid: "studentNID"
 // name: "Joe Smoe"
 // email: "email"
+// uuid: "12345ab"
 
 app.post("/api/students/createStudent", function(req, res){
 	var student = new Student({
@@ -290,6 +310,25 @@ app.post("/api/students/createStudent", function(req, res){
 			}
 		});
 	}
+});
+
+// JSON
+// :id is nid
+// name: joe noe
+// email: joesemail
+// uuid: 12345ab
+app.post("/api/students/updateStudent/:id", function(req, res) {
+	console.log(req.body);
+	Student.findOneAndUpdate({studentNID: req.params.id}, req.body, {new: true}, function(err, stud) {
+		if(err) {
+			handleError(res, "Database error while updating", "Failed to update student");
+		} 
+		else {
+			console.log(req.params.id);
+			console.log(stud);
+			res.status(201).json(stud);
+		}
+	});
 });
 
 
@@ -355,7 +394,7 @@ app.post("/api/classes/addToClass/:id", function(req, res){
 		handleError(res, "Invalid user input", "Missing Creation Parameter", 400);
 	}
 	else {
-		isIn.save(function(err, isin){
+		isin.save(function(err, isin){
 			if(err) return console.log("Didn't save isIn");
 			else {
 				console.log("isIn successfully created");
@@ -416,6 +455,64 @@ app.get("/api/classes/viewStudents/:id", function(req, res){
 	});
 });
 
+// Show what lectures a student has attended for a class
+// :id is stud nid
+// JSON
+// class_id: "54sdfsf" obj id of class
+app.get("/api/students/attendedLecture/:id/:class_id", function(req, res) {
+	Class.findOne({_id: req.params.class_id}, function(err, classy) {
+		if(err) {
+			handleError(res, "Database error while searching", "Failed to find class");
+		}
+		else {
+			if(!classy) {
+				res.json("Class doesn't exist");
+			}
+			else {
+				console.log("Found class");
+				Attended.find({studentNID: req.params.id}, function(err, attendeds) {
+					if(err) {
+						handleError(res, "Database error while searching", "Failed to find attendeds");
+					}
+					else {
+						if(!attendeds) {
+							res.json("Failed to find attendeds");
+						}
+						else {
+							var lectured = new Array();
+							Lecture.find({classID: classy._id}, function(err, lec) {
+								if(err) {
+									handleError(res, "Database error while searching", "Failed to find lectures");
+								}
+								else {
+									if(!lec) {
+										console.log("not one of them");
+									}
+									else {
+										for(var j = 0; j < attendeds.length; j++)
+											for(var k = 0; k < lec.length; k++)
+												if((lec[k]._id).equals(attendeds[j].lectureID))
+													lectured.push(lec[k].date);
+										if(!lectured) {
+											res.json("empty");
+										}
+										else {
+											// this doesn't return anything if outside the query
+											res.status(201).json(lectured).end();
+										}
+									}
+								}
+							});
+							
+							
+						}
+					}
+				});
+			}
+		}
+	});
+});
+
 // Mark a student here
 
 // :id is the student's uuid
@@ -426,7 +523,7 @@ app.get("/api/classes/viewStudents/:id", function(req, res){
 
 app.post("/api/students/markHere/:id", function(req, res) {
 	// Find prof by uuid
-	Professor.findOne({bleUUID: req.params.id}, function(err, prof) {
+	Professor.findOne({bleUUID: req.body.profUUID}, function(err, prof) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find prof");
 		}
@@ -474,7 +571,8 @@ app.post("/api/students/markHere/:id", function(req, res) {
 									else {
 										console.log("Found stud");
 										// Find isIn by studNID and class_id
-										isIn.findOne({enrolledCourseID: profClasses[i]._id, studentNID: stud.studentNID}, function(err, isin) {
+										console.log(profClasses[indexClass]._id);
+										isIn.findOne({enrolledCourseID: profClasses[indexClass]._id, studentNID: stud.studentNID}, function(err, isin) {
 											if(err) {
 												handleError(res, "Database error while searching", "Failed to find isIn");
 											}
@@ -544,22 +642,34 @@ app.post("/api/students/markHere/:id", function(req, res) {
 
 // Given object id of class, create lecture
 app.post("/api/lectures/create/:id", function(req, res){
-	var lecture = new Lecture({
-		classID: req.params.id,
-		date: (new Date().toLocaleString().split(",")[0])
-	});
-	if(!req.params.id) {
-		handleError(res, "Invalid user input", "Missing Creation Parameter");
-	}
-	else {
-		lecture.save(function(err, lecture){
-			if(err) return console.log("Didn't save lecture");
-			else {
-				console.log("Lecture successfully created");
-				res.status(201).json(lecture);
+	Lecture.findOne({date: new Date().toLocaleString().split(",")[0], classID: req.params.id}, function(err, foundLect) {
+		if(err) {
+			handleError(res, "Database error while searching", "Failed to find lecture");
+		}
+		else {
+			if(!foundLect) {
+				var lecture = new Lecture({
+					classID: req.params.id,
+					date: (new Date().toLocaleString().split(",")[0])
+				});
+				if(!req.params.id) {
+					handleError(res, "Invalid user input", "Missing Creation Parameter");
+				}
+				else {
+					lecture.save(function(err, lecture){
+						if(err) return console.log("Didn't save lecture");
+						else {
+							console.log("Lecture successfully created");
+							res.status(201).json(lecture);
+						}
+					});
+				}
 			}
-		});
-	}
+			else {
+				res.status(201).json("Lecture already exists for today, please delete the lecture for today if you wish to overwrite the current attendance record");
+			}
+		}
+	});
 });
 
 // Delete according to lecture obj id
@@ -614,6 +724,91 @@ app.get("/api/lectures/viewAttendance/:id", function(req, res) {
 					res.status(201).json(listAttendeds);
 				}
 			});
+		}
+	});
+});
+
+// *** Access Key API Routes ***
+
+let genKey = function() {
+	var retStr = "";
+	for(var i = 0; i < 16; i++) {
+		var c = Math.floor(Math.random() * 10);
+		retStr += c;
+	}
+	return retStr;
+};
+
+app.post("/api/accessKeys/generate", function(req, res) {
+	var accesskey = new AccessKey({
+		keyValue: genKey(),
+		isUsed: false
+	});
+	accesskey.save(function(err, accesskey) {
+		if(err) return console.log("Didn't save accesskey");
+		else {
+			console.log("Successfully generated accesskey");
+			res.status(201).json(accesskey);
+		}
+	});
+});
+
+// For testing purposes
+app.post("/api/accessKeys/delete/:id", function(req, res) {
+	AccessKey.findOneAndDelete({_id: req.params.id}, function(err, deleteAccessKey) {
+		if(err) {
+			handleError(res, "Database error while deleting", "Failed to delete access key");
+		}
+		else {
+			if(!deleteAccessKey) {
+				res.json({"error": "Failed to delete access key"});
+			}
+			else {
+				res.json("Successfully deleted access key");
+			}
+		}
+	});
+});
+
+// :id is profNID
+// JSON
+// keyValue: "123456789"
+app.post("/api/professors/useAccessKey/:id", function(req, res) {
+	AccessKey.findOneAndUpdate({keyValue: req.body.keyValue}, {isUsed: true}, {new: true}, function(err, accessKey) {
+		if(err) {
+			handleError(res, "Database error while searching", "Failed to find access key");
+		}
+		else {
+			//if(!accessKey) {
+				//res.json("No such key exists");
+			//}
+			//else {
+				console.log(req.params.id);
+				console.log(accessKey);
+				Professor.findOneAndUpdate({profNID: req.params.id}, {hasPaid: true}, {new: true}, function(err, prof) {
+					if(err) {
+						handleError(res, "Database error while updating", "Failed to update prof");
+					}
+					else {
+						if(!prof) {
+							res.json("Failed to update prof");
+						}
+						else {
+							var uses = new Uses({
+								keyID: accessKey._id,
+								usedByProfNID: req.params.id
+							});
+							uses.save(function(err, used) {
+								if(err) return console.log("Didn't save uses");
+								else {
+									console.log("Successfully created uses");
+									res.status(201).json("Successfully paid");
+								}
+							});
+						}
+					}
+				});
+			//}
 		}
 	});
 });
