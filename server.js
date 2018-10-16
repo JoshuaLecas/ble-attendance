@@ -583,7 +583,7 @@ app.post("/api/students/markHere/:id", function(req, res) {
 												else {
 													console.log("Found isIn");
 													// Find lecture by curr date
-													Lecture.findOne({date: req.body.currDate}, function(err, lecture) {
+													Lecture.findOne({date: req.body.currDate, classID: profClasses[indexClass]._id}, function(err, lecture) {
 														if(err) {
 															handleError(res, "Database error while searching", "Failed to find lecture");
 														}
