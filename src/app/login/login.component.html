@@ -3,6 +3,7 @@
 
   <head>
     <!-- Used for incons. DO NOT REMOVE! -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
@@ -11,11 +12,11 @@
   <!-- Icons -->
   <div class="Icons">
 
-    <i class="fa fa-rss" style="font-size:36px"></i>
+    <i class="material-icons" style="font-size:55px">speaker_phone</i>
 
-    <i class="fa fa-plus" style="font-size:30px"></i>
+    <i class="fa fa-plus" style="font-size:25px"></i>
 
-    <i class="fa fa-bluetooth" style="font-size:36px"></i>
+    <i class="fa fa-bluetooth" style="font-size:40px"></i>
   
   </div>
 
@@ -34,11 +35,11 @@
       <!-- Username -->
       <div class="loginWithIcon">
         <i class="fa fa-user fa-lg fa-fw" aria-hidden="true" style="font-size:31px"></i>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username" required [(ngModel)]="login" #modelLogin="ngModel">
+        <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email" required [(ngModel)]="login" #modelLogin="ngModel">
         <div *ngIf="modelLogin.errors && (modelLogin.dirty || modelLogin.touched)" class="alert alert-danger">
 
            <div [hidden]="!modelLogin.errors.required">
-              Username is Required!
+              Email is Required!
            </div> 
 
         </div>
@@ -69,7 +70,7 @@
 
       <!-- Remind Passowrd -->
       <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
+        <a class="underlineHover" href="#">Need Access Key?</a>
       </div>
 
     </div>

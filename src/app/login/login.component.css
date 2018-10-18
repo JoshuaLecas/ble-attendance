@@ -163,7 +163,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active
   transform: scale(0.95);
 }
 
-input[type=text], [type=password] 
+input[type=text], [type=password], [type=email] 
 {
   background-color: #f6f6f6;
   border: none;
@@ -191,7 +191,7 @@ input[type=text]:focus, [type=password]:focus
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder , [type=password]:placeholder 
+input[type=text]:placeholder , [type=password]:placeholder, [type=email]:placeholder 
 {
   color: #cccccc;
 }
@@ -336,6 +336,7 @@ input[type=text]:placeholder , [type=password]:placeholder
 
 #icon 
 {
+  margin: 20px;
   width:60%;
 }
 
