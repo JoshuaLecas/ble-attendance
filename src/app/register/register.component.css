@@ -247,7 +247,7 @@ input[type=text], [type=password], [type=email]
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus, [type=password]:focus 
+input[type=text]:focus, [type=password]:focus, [type=email]:focus  
 {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
