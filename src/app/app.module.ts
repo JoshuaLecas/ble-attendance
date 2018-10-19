@@ -11,6 +11,9 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfdashComponent } from './profdash/profdash.component';
 
+import {AuthService} from './services/auth.service';
+import { ValidateService } from './services/validate.service';
+import { FilterPipe } from './services/filter.pipe';
 
 
 const appRoutes: Routes =[
@@ -26,7 +29,8 @@ const appRoutes: Routes =[
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    ProfdashComponent
+    ProfdashComponent,
+    FilterPipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -34,7 +38,7 @@ const appRoutes: Routes =[
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

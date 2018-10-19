@@ -17,7 +17,7 @@
     <i class="fa fa-plus" style="font-size:25px"></i>
 
     <i class="fa fa-bluetooth" style="font-size:40px"></i>
-  
+
   </div>
 
   <div class="wrapper fadeInDown">
@@ -35,12 +35,12 @@
       <!-- Username -->
       <div class="loginWithIcon">
         <i class="fa fa-user fa-lg fa-fw" aria-hidden="true" style="font-size:31px"></i>
-        <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email" required [(ngModel)]="login" #modelLogin="ngModel">
+        <input type="email" id="login" class="fadeIn second" name="login" placeholder="Email" required [(ngModel)]="email" #modelLogin="ngModel">
         <div *ngIf="modelLogin.errors && (modelLogin.dirty || modelLogin.touched)" class="alert alert-danger">
 
            <div [hidden]="!modelLogin.errors.required">
               Email is Required!
-           </div> 
+           </div>
 
         </div>
       </div>
@@ -50,10 +50,10 @@
         <i class="fa fa-lock" style="font-size:35px"></i>
         <input type="password" id="password" class="fadeIn third" name="login" placeholder="Password" required [(ngModel)]="password" #modelPassword="ngModel">
         <div *ngIf="modelPassword.errors && (modelPassword.dirty || modelPassword.touched)" class="alert alert-danger">
-        
+
            <div [hidden]="!modelPassword.errors.required">
               Password is Required!
-           </div> 
+           </div>
 
         </div>
 
@@ -65,7 +65,7 @@
 
       <!-- Submit -->
       <div>
-        <input type="submit" class="fadeIn fourth" value="Log In">
+        <input type="submit" class="fadeIn fourth" value="Log In" (click)="onSubmit()">
       </div>
 
       <!-- Remind Passowrd -->
