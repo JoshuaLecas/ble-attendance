@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   email: String;
   password: String;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(){
   }
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.authService.loginUser(user).subscribe( data => {
       if (data == 'Failed') {
         alert('User not found, please try again');
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
       }
       else {
         const user = data['user'];
