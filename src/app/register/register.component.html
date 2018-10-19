@@ -60,12 +60,16 @@
         </div>
          
         <div class="fadeIn fifth">
-           <input type="password" id="password" name="password" placeholder="Password" required [(ngModel)]="pass" #ngPassword="ngModel">
+           <input type="password" id="password" name="password" placeholder="Password" required minlength="7" [(ngModel)]="pass" #ngPassword="ngModel">
               <div *ngIf="ngPassword.errors && (ngPassword.dirty || ngPassword.touched)" class="alert alert-danger">
 
                  <div [hidden]="!ngPassword.errors.required">
                     Password is Required!
-                 </div> 
+                 </div>
+                 
+                 <div [hidden]="!ngPassword.errors.minlength">
+                    At least 7 characters are Required!
+                 </div>  
 
               </div>
         </div>
