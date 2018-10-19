@@ -292,6 +292,7 @@ h2.active
 
 #icon 
 {
+  margin: 20px;
   width:50%;
 }
 
@@ -303,5 +304,10 @@ h2.active
 * 
 {
   box-sizing: border-box;
+}
+
+input:invalid
+{
+  box-shadow: none;
 }
 
