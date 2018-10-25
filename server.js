@@ -636,7 +636,8 @@ app.post("/api/students/createStudent", function(req, res){
 
 // Update Student
 
-// Please DO NOT update studentNID or studentUUID
+// Please DO NOT update studentNID 
+// Student UUID Should only update if professor has allowed override, meaning UUID is set to -1
 
 // If you want to update a field, just add what you want to change in the json
 
@@ -645,9 +646,33 @@ app.post("/api/students/createStudent", function(req, res){
 // JSON
 // name: "joe noe"
 // email: "joesemail"
+// studentUUID: "15"
 
 app.post("/api/students/updateStudent/:id", function(req, res) {
 	console.log(req.body);
+
+	// Check that the UUID is -1 first before updating student UUID. This means they were overridden by prof
+	if(req.body.studentUUID)
+	{
+		Student.findOne({studentNID: req.params.id}, function(err, student){
+		
+		if (err) {
+			handleError(res, "Database Error while searching", "Failed to find student");
+		}
+
+		else{
+			console.log(student);
+			console.log("UUID in body")
+			if(student.studentUUID != '-1') {
+				res.status(201).json("Cannot update");
+			}
+			
+
+		}
+
+
+		})
+	}
 	Student.findOneAndUpdate({studentNID: req.params.id}, req.body, {new: true}, function(err, stud) {
 		if(err) {
 			handleError(res, "Database error while updating", "Failed to update student");
@@ -655,7 +680,12 @@ app.post("/api/students/updateStudent/:id", function(req, res) {
 		else {
 			console.log(req.params.id);
 			console.log(stud);
+			if(!stud) {
+				res.status(201).json("Could not find student with that id!")
+			}
+			else{ 
 			res.status(201).json(stud);
+			}
 		}
 	});
 });
@@ -695,6 +725,33 @@ app.post("/api/students/deleteStudent/:id", function(req, res) {
 			}
 		}
 	});
+});
+
+// Override Student
+
+// Allows professors to let students link account to a different device
+
+//:id - "studentNID"
+
+app.post("/api/students/override/:id", function(req,res){
+
+	Student.findOneAndUpdate({studentNID: req.params.id}, {studentUUID: "-1"}, {new:true} ,function(err,student){
+		if(err){
+			handleError(res, "Error finding student to update", "Could not update student");
+		}
+		else{
+			if(student){
+				res.status(201).json("Success")
+			}
+			else {
+				res.status(201).json("Could not find student");
+			}
+		}
+		
+	})
+
+
+
 });
 
 // View All Students
