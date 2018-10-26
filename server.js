@@ -627,7 +627,31 @@ app.post("/api/students/createStudent", function(req, res){
 			}
 			else {
 				console.log("Student already exists");
-				res.status(201).json("Student already exists");
+				Student.findOne({studentNID: req.body.nid}, function(err,student){
+					if(err){
+						handleError(res, "Error retrieving student", "Student exists")
+					}
+					else {
+						if(student.studentUUID && student.studentUUID == "-1"){
+							console.log("Overriding student")
+							
+							Student.findOneAndUpdate({studentNid: req.body.nid}, {studentUUID:req.body.uuid}, {new:true},function (err, student){
+								if(err){
+									handleError(res, "Could not update", "Failed to update");
+								}
+								else{
+									console.log(student);
+									res.status(201).json("Success");
+								}
+							})
+						}
+						else {
+							res.status(201).json("Student already exists");
+						}
+					}
+
+				});
+				
 			}
 		}
 	});
