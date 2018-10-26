@@ -635,7 +635,7 @@ app.post("/api/students/createStudent", function(req, res){
 						if(student.studentUUID && student.studentUUID == "-1"){
 							console.log("Overriding student")
 							
-							Student.findOneAndUpdate({studentNid: req.body.nid}, {studentUUID:req.body.uuid}, {new:true},function (err, student){
+							Student.findOneAndUpdate({studentNID: req.body.nid}, {studentUUID:req.body.uuid}, {new:true},function (err, student){
 								if(err){
 									handleError(res, "Could not update", "Failed to update");
 								}
