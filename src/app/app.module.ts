@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,9 +18,10 @@ import { FilterPipe } from './services/filter.pipe';
 
 
 const appRoutes: Routes =[
-  { path:'', component: LoginComponent },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path:'profdash', component: ProfdashComponent},
+  { path: 'profdash', component: ProfdashComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
@@ -30,7 +32,8 @@ const appRoutes: Routes =[
     RegisterComponent,
     NavbarComponent,
     ProfdashComponent,
-    FilterPipe
+    FilterPipe,
+    HomeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

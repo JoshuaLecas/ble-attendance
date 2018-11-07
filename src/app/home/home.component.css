@@ -1,0 +1,32 @@
+h1
+{
+ color: #2F4F4F;
+ font-weight: bold;
+ margin: 25px;
+ margin-bottom: 50px;
+}
+
+h2
+{
+ color: #708090;
+ font-size: 17px;
+ margin: 25px;
+}
+
+p
+{
+ color: #708090;
+ font-size: 13px;
+ margin: 25px;
+ margin-top: 50px;
+}
+
+.intro
+{
+ background-color: #fff;
+ position: absolute;
+ left: 50px;
+ bottom: 150px;
+ font-family: Helvetica, sans-serif; 
+ border-radius: 10px 10px 10px 10px; 
+}
