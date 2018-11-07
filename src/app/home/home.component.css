@@ -1,32 +1,38 @@
 h1
 {
- color: #2F4F4F;
+ color: #003366;
  font-weight: bold;
- margin: 25px;
- margin-bottom: 50px;
+ margin: 50px;
+ margin-bottom: 45px;
 }
 
 h2
 {
- color: #708090;
+ color: #000000;
  font-size: 17px;
- margin: 25px;
+ margin: 50px;
 }
 
 p
 {
- color: #708090;
- font-size: 13px;
- margin: 25px;
- margin-top: 50px;
+ color: #000000;
+ font-size: 15px;
+ margin: 50px;
+ margin-top: 45px;
+}
+
+.container
+{
+  position: relative;
 }
 
 .intro
 {
- background-color: #fff;
+ background-color: #ffffff;
  position: absolute;
- left: 50px;
- bottom: 150px;
- font-family: Helvetica, sans-serif; 
- border-radius: 10px 10px 10px 10px; 
+ top: 25vh;
+ width: 90%;
+ font-family: Verdana, sans-serif;
+ border: 5px solid #000000;
+ border-radius: 10px 10px 10px 10px;
 }
