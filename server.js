@@ -2,8 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require("path");
-const config = require('./dbcreds');
-const apiConfig = require('./apicreds');
 const crypto = require("crypto");
 
 // *** Connection and Starting the app ***
