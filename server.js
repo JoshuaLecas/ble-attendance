@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to the database before starting the application server.
-mongoose.connect(process.env.DBURL);
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function(){
