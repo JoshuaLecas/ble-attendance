@@ -109,7 +109,7 @@ function handleError(res, reason, message, code) {
 // email: "email"
 
 app.post("/api/professors/createProfessor/:key", function(req,res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -142,7 +142,7 @@ app.post("/api/professors/createProfessor/:key", function(req,res) {
 // password: "password"
 
 app.post("/api/professors/login/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -173,7 +173,7 @@ app.post("/api/professors/login/:key", function(req, res) {
 // :id - "profNID"
 
 app.post("/api/professors/deleteProfessor/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -287,7 +287,7 @@ app.post("/api/professors/deleteProfessor/:id/:key", function(req, res) {
 // uuid: "ble uuid"
 
 app.post("/api/professors/updateUUID/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -318,7 +318,7 @@ app.post("/api/professors/updateUUID/:id/:key", function(req, res) {
 // password: "password"
 
 app.post("/api/professors/updateProfessor/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -343,7 +343,7 @@ app.post("/api/professors/updateProfessor/:id/:key", function(req, res) {
 // keyValue: "123456789"
 
 app.post("/api/professors/useAccessKey/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -386,7 +386,7 @@ app.post("/api/professors/useAccessKey/:id/:key", function(req, res) {
 // For testing purposes
 
 app.get("/api/professors/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -412,7 +412,7 @@ app.get("/api/professors/:key", function(req, res) {
 // end_time: "14:50"
 
 app.post("/api/classes/create/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -445,7 +445,7 @@ app.post("/api/classes/create/:id/:key", function(req, res) {
 // :id - "profNID"
 
 app.get("/api/classes/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -465,7 +465,7 @@ app.get("/api/classes/:id/:key", function(req, res) {
 // :id - "_id of class"
 
 app.post("/api/classes/delete/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -533,7 +533,7 @@ app.post("/api/classes/delete/:id/:key", function(req, res) {
 // endTime: "13:50"
 
 app.post("/api/classes/update/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -557,7 +557,7 @@ app.post("/api/classes/update/:id/:key", function(req, res) {
 // nid: "ab123456"
 
 app.post("/api/classes/addToClass/:id/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -603,7 +603,7 @@ app.post("/api/classes/addToClass/:id/:key", function(req, res){
 // nid: "ab123456"
 
 app.post("/api/classes/removeStudent/:id/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -628,7 +628,7 @@ app.post("/api/classes/removeStudent/:id/:key", function(req, res){
 // :id - "_id of class"
 
 app.get("/api/classes/viewStudents/:id/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -654,7 +654,7 @@ app.get("/api/classes/viewStudents/:id/:key", function(req, res){
 // uuid: "12345ab"
 
 app.post("/api/students/createStudent/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -734,7 +734,7 @@ app.post("/api/students/createStudent/:key", function(req, res){
 // studentUUID: "15"
 
 app.post("/api/students/updateStudent/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -784,7 +784,7 @@ app.post("/api/students/updateStudent/:id/:key", function(req, res) {
 // :id - "studNID"
 
 app.post("/api/students/deleteStudent/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -827,7 +827,7 @@ app.post("/api/students/deleteStudent/:id/:key", function(req, res) {
 //:id - "studentNID"
 
 app.post("/api/students/override/:id/:key", function(req,res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -856,7 +856,7 @@ app.post("/api/students/override/:id/:key", function(req,res){
 // For testing purposes 
 
 app.get("/api/students/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -876,7 +876,7 @@ app.get("/api/students/:key", function(req, res){
 // :id - "studNID"
 
 app.get("/api/students/viewClasses/:id/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -897,7 +897,7 @@ app.get("/api/students/viewClasses/:id/:key", function(req, res){
 // :class_id - "_id of class"
 
 app.get("/api/students/attendedLecture/:id/:class_id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -963,7 +963,7 @@ app.get("/api/students/attendedLecture/:id/:class_id/:key", function(req, res) {
 // profUUID: "ab123456"
 
 app.post("/api/students/markHere/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -1043,7 +1043,7 @@ app.post("/api/students/markHere/:id/:key", function(req, res) {
 // :uuid - "profUUID"
 
 app.post("/api/lectures/create/:id/:uuid/:key", function(req, res){
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -1100,7 +1100,7 @@ app.post("/api/lectures/create/:id/:uuid/:key", function(req, res){
 // :id - "_id of lecture"
 
 app.post("/api/lectures/delete/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -1132,7 +1132,7 @@ app.post("/api/lectures/delete/:id/:key", function(req, res) {
 // :id - "_id of class"
 
 app.get("/api/lectures/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -1151,7 +1151,7 @@ app.get("/api/lectures/:id/:key", function(req, res) {
 // :id - "_id of lecture"
 
 app.get("/api/lectures/viewAttendance/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -1188,7 +1188,7 @@ let genKey = function() {
 // Generate Access Key
 
 app.post("/api/accessKeys/generate/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
@@ -1212,7 +1212,7 @@ app.post("/api/accessKeys/generate/:key", function(req, res) {
 // :id - "_id of access key"
 
 app.post("/api/accessKeys/delete/:id/:key", function(req, res) {
-	if(req.params.key != apiConfig.apiKey) {
+	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
