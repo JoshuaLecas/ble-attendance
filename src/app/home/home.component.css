@@ -1,6 +1,6 @@
 h1
 {
- color: #003366;
+ color: #0082FC;
  font-weight: bold;
  margin: 50px;
  margin-bottom: 45px;
@@ -34,7 +34,7 @@ p
  left: -10vh;
  width: 50%;
  font-family: Verdana, sans-serif;
- border: 5px solid #000000;
+ border: 5px;
  border-radius: 10px 10px 10px 10px;
 }
 
@@ -44,7 +44,7 @@ p
  width: 50%;
  left: 100vh;
  bottom: -70vh;
- border: 5px solid #000000;
+ border: 5px;
  border-radius: 10px 10px 10px 10px;
 }
 
@@ -54,7 +54,7 @@ input[type=submit]
  font-weight: bold;
  position: absolute;
  border: none;
- color: #003366;
+ color: #0082FC;
  top: 81vh;
  left: -12vh;
  padding: 15px 80px;
