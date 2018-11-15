@@ -30,7 +30,7 @@ p
 {
  background-color: #ffffff;
  position: absolute;
- top: 25vh;
+ top: 19vh;
  left: -10vh;
  width: 50%;
  font-family: Verdana, sans-serif;
@@ -43,7 +43,7 @@ p
  position: absolute;
  width: 50%;
  left: 100vh;
- bottom: -80vh;
+ bottom: -70vh;
  border: 5px solid #000000;
  border-radius: 10px 10px 10px 10px;
 }
@@ -55,7 +55,7 @@ input[type=submit]
  position: absolute;
  border: none;
  color: #003366;
- top: 90vh;
+ top: 81vh;
  left: -12vh;
  padding: 15px 80px;
  text-align: center;
