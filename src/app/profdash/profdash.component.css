@@ -1,6 +1,4 @@
 body {
-  margin: 0;
-  padding: 0;
   background-color: #0082FC;
 
 }
@@ -13,7 +11,7 @@ table, tr{
 
   height: 500px;
   box-shadow: 0px 0px 20px grey;
-  
+
 }
 #dash .container #login-row #login-column #login-box #login-form {
   padding: 20px;
@@ -35,7 +33,7 @@ table, tr{
 #cont {
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color:  #EAEAEA;
+  background-color:  #F9F8FA;
   box-shadow: 0px 0px 20px grey;
 }
 .alignRight{
