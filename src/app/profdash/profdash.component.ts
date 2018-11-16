@@ -28,4 +28,9 @@ export class ProfdashComponent implements OnInit {
     this.user_id = this.user['id'];
   }
 
+  onLogOutButton(){
+    sessionStorage.clear();
+    this.router.navigate(['/home']);
+  }
+
 }
