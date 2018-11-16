@@ -31,10 +31,15 @@ table, tr{
   color: #0082FC!important;
 }
 #cont {
+  margin-top:10vh;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color:  #F9F8FA;
   box-shadow: 0px 0px 20px grey;
+}
+
+#dashbody{
+  margin-top:5vh;
 }
 .alignRight{
   text-align: right;
