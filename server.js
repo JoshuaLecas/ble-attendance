@@ -49,7 +49,8 @@ var classSchema = new mongoose.Schema({
 	className: String,
 	createdByProfNID: String,
 	startTime: String,
-	endTime: String
+	endTime: String,
+	regCode: String
 });
 
 var lectureSchema = new mongoose.Schema({
@@ -408,6 +409,7 @@ app.get("/api/professors/:key", function(req, res) {
 // name: "poop"
 // start_time: "13:00" 
 // end_time: "14:50"
+// reg_code: "abC13Fa"
 
 app.post("/api/classes/create/:id/:key", function(req, res) {
 	if(req.params.key != process.env.APIKEY) {
@@ -420,7 +422,8 @@ app.post("/api/classes/create/:id/:key", function(req, res) {
 		className: req.body.name,
 		createdByProfNID: req.params.id,
 		startTime: req.body.start_time,
-		endTime: req.body.end_time
+		endTime: req.body.end_time,
+		regCode: req.body.reg_code
 	});
 
 	if(!req.body.course_id) {
@@ -529,6 +532,7 @@ app.post("/api/classes/delete/:id/:key", function(req, res) {
 // className: "poop"
 // startTime: "12:00"
 // endTime: "13:50"
+// reg_code: "acbk3j@!"
 
 app.post("/api/classes/update/:id/:key", function(req, res) {
 	if(req.params.key != process.env.APIKEY) {
@@ -553,6 +557,7 @@ app.post("/api/classes/update/:id/:key", function(req, res) {
 // :id - "_id of class"
 // JSON
 // nid: "ab123456"
+// reg_code: "jbsdfjkbasfdadfs"
 
 app.post("/api/classes/addToClass/:id/:key", function(req, res){
 	if(req.params.key != process.env.APIKEY) {
@@ -580,18 +585,34 @@ app.post("/api/classes/addToClass/:id/:key", function(req, res){
 					handleError(res, "Invalid user input", "Missing nid parameter", 400);
 				}
 				else {
-					isin.save(function(err, isin){
-						if(err) return handleError(res, "Failed to create isIn", "Failed to add student to class");
-						else {
-							console.log("isIn successfully created");
-							res.status(201).json(isin);
-						}
-					});
+					if(!req.body.reg_code) {
+						handleError(res, "Invalid user input", "Missing reg_code parameter", 400)
+					}
+					else {
+						Class.findOne({regCode: req.body.reg_code}, function(err, classy) {
+							if(err){
+								handleError(res, "Database error", "Error with database")
+							}
+							else {
+								if(!classy){
+									handleError(res, "Class not found", "Invalid registration code")
+								}
+								else {
+									isin.save(function(err, isin){
+										if(err) return handleError(res, "Failed to create isIn", "Failed to add student to class");
+										else {
+											console.log("isIn successfully created");
+											res.status(201).json(isin);
+										}
+									});
+								}
+							}
+						});
+					}
 				}
 			}
 		}
 	});
-
 });
 
 // Remove Student (from Class)
