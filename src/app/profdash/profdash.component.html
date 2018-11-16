@@ -1,2 +1,62 @@
 <!DOCTYPE html>
 <app-navbar></app-navbar>
+
+<body style="margin-top: 30px; background-color:#0082FC">
+
+        <div class="container" id="cont">
+          <div class="row" style=" padding-top: 10px; padding-bottom: 15px;margin: 5px;">
+            <div class="col-md-10"><h2 style="color:#779ECB;">Welcome {{user.fname}}, add or search for a contact below.</h2></div>
+            <div class="col-md-2"><button class="btn btn-success" (click)="onLogOutButton()" style="background-color:#779ECB; border-color:#779ECB;margin-left: 25%;">Log Out</button></div>
+          </div>
+        <div class="row">
+          <div class="col-md-3">
+            <table class="table">
+              <tbody>
+                <tr><h3 class="text-center" id="addtitle" style="color:#779ECB;">{{addTitle}}</h3></tr>
+                <tr><input placeholder="Enter Name" type="text" name="name" [(ngModel)] = "name" class="form-control" style="margin: 5px;"></tr>
+                <tr><input placeholder="Enter Phone #" type="text" name="phone" [(ngModel)] = "phone" class="form-control" style="margin: 5px;"></tr>
+                <tr><input placeholder="Enter Email" type="text" name="email" [(ngModel)] = "email" class="form-control" style="margin: 5px;"></tr>
+                <tr><input placeholder="Enter Address" type="text" name="address" [(ngModel)] = "address" class="form-control" style="margin: 5px;"></tr>
+                <tr><button class="btn btn-success" (click)="onAddButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top:10px; margin-left: 5px;  ">Submit</button><button class="btn btn-success" (click)="clearFields()" style="background-color:#c23b22; border-color:#c23b22; margin-top:10px; margin-left: 5px;  ">Clear</button></tr>
+              </tbody>
+            </table>
+          </div>
+        <div class="col-md-9">
+          <h3 class="text-left" style="margin-left: 13px; color:#779ECB;">Contacts</h3>
+          <div class="form-group">
+              <input placeholder="Enter Name to Search" name="inputString" [(ngModel)] = "inputString" class="form-control" style="max-width:250px; padding-bottom:10px;">
+          </div>
+          <table class="table table-striped" style="padding-top:0px;">
+            <thead style="background-color: #bfbfbf; color: white;">
+              <tr style="  box-shadow: 0px 0px 10px grey;">
+                <th><h6><strong>Name</strong></h6></th>
+                <th><h6><strong>Phone</strong></h6></th>
+                <th><h6><strong>Email</strong></h6></th>
+                <th><h6><strong>Address</strong></h6></th>
+                <th><h6><strong>Options</strong></h6></th>
+				        <th><h6><strong></strong></h6></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="contacts">
+                 <tr *ngFor="let contact of contactlist | filter : inputString;">
+                  <td><a (click)="onVcfButton(contact)" style="color: #779ECB;">{{contact.name}}</a></td>
+                  <td>{{contact.phone}}</td>
+                  <td>{{contact.email}}</td>
+                  <td><a (click)="onMapsButton(contact.address)" style="color: #779ECB;;">{{contact.address}}</a></td>
+                  <td><button class="btn btn-info" (click)="onEditButton(contact)" style="background-color:#779ECB; border-color:#779ECB;  ">Edit</button></td>
+                  <td><button class="btn btn-info" (click)="onDeleteButton(contact)" style="background-color:#779ECB; border-color:#779ECB;  ">Delete</button></td>
+
+					            <!-- <button class="btn btn-info" (click)="onMapsButton(contact.address)" style="background-color:#779ECB; border-color:#779ECB;">Open in Google Maps</button> -->
+                      <!-- <button class="btn btn-info" (click)="onVcfButton(contact)" style="background-color:#779ECB; border-color:#779ECB;">Download Contact</button></td> -->
+					           <!-- <button class="btn btn-info" (click)="onMapsButton(contact.address)" style="background-color:#779ECB; border-color:#779ECB;">Open in Google Maps</button> -->
+                  <!-- <td><button class="close" aria-label="Close"(click)="onDeleteButton(contact)"><span aria-hidden="true">&times;</span></button></td> -->
+
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+      <p style="padding-top:15px; color: #779ECB">If you notice this then good for you.</p>
+</body>

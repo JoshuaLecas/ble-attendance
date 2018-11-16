@@ -8,27 +8,31 @@ import { Router, Route } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 
-export class RegisterComponent implements OnInit 
+export class RegisterComponent implements OnInit
 {
 
   constructor(private router: Router) { }
 
-  ngOnInit() 
+  ngOnInit()
   {
   }
 
-  showPassword() 
+  showPassword()
   {
     var x = (<HTMLInputElement>document.getElementById("password"));
-    
-    if (x.type === "password") 
+
+    if (x.type === "password")
     {
        x.type = "text";
-    } 
-    else 
+    }
+    else
     {
        x.type = "password";
     }
+  }
+
+  onSubmit(){
+
   }
 
 }
