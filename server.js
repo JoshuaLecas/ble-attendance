@@ -411,7 +411,7 @@ app.get("/api/professors/:key", function(req, res) {
 // end_time: "14:50"
 // reg_code: "abC13Fa"
 
-app.post("/api/classes/create/:id/:key", function(req, res) {
+app.post("/api/classes/create/:key", function(req, res) {
 	if(req.params.key != process.env.APIKEY) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
