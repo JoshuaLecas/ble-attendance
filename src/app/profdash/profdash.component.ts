@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profdash',
@@ -8,7 +9,7 @@ import { Router, Route } from '@angular/router';
 })
 export class ProfdashComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, public authService:AuthService) { }
 
 
   user : Object;

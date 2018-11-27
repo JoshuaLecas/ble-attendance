@@ -9,7 +9,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { Navbar2Component } from './navbar2/navbar2.component';
 import { ProfdashComponent } from './profdash/profdash.component';
 
@@ -32,7 +31,6 @@ const appRoutes: Routes =[
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent,
     ProfdashComponent,
     FilterPipe,
     HomeComponent,
