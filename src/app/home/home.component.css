@@ -2,8 +2,8 @@ h1
 {
  color: #0082FC;
  font-weight: bold;
- margin: 50px;
- margin-bottom: 45px;
+ margin: 10vh;
+ right: 100vw;
 }
 
 h2
@@ -30,8 +30,8 @@ p
 {
  background-color: #ffffff;
  position: absolute;
- top: 120px;
- left: -55px;
+ top: 10vh;
+ left: -5%;
  width: 50%;
  font-family: Verdana, sans-serif;
  border: 5px;
@@ -41,9 +41,9 @@ p
 #icon
 {
  position: absolute;
- width: 50%;
- right: -55px;
- bottom: -70vh;
+ width: 60%;
+ right: -7%;
+ top: 10vh;
  border: 5px;
  border-radius: 10px 10px 10px 10px;
 }
@@ -55,8 +55,8 @@ input[type=submit]
  position: absolute;
  border: none;
  color: #0082FC;
- top: 500px;
- left: -75px;
+ top: 80vh;
+ left: -7%;
  padding: 15px 80px;
  text-align: center;
  text-decoration: none;
