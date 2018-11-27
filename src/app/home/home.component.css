@@ -2,8 +2,8 @@ h1
 {
  color: #0082FC;
  font-weight: bold;
- margin: 50px;
- margin-bottom: 45px;
+ margin: 10%;
+ right: 100%;
 }
 
 h2
@@ -30,8 +30,8 @@ p
 {
  background-color: #ffffff;
  position: absolute;
- top: 120px;
- left: -55px;
+ top: 10vh;
+ left: -5%;
  width: 50%;
  font-family: Verdana, sans-serif;
  border: 5px;
@@ -41,9 +41,10 @@ p
 #icon
 {
  position: absolute;
- width: 50%;
- right: -55px;
- bottom: -70vh;
+ width: 60%;
+ right: -6%;
+ margin-top: 5%;
+ top: 30%;
  border: 5px;
  border-radius: 10px 10px 10px 10px;
 }
@@ -55,8 +56,9 @@ input[type=submit]
  position: absolute;
  border: none;
  color: #0082FC;
- top: 500px;
- left: -75px;
+ margin-top: 45%;
+ top: 100%;
+ left: -5%;
  padding: 15px 80px;
  text-align: center;
  text-decoration: none;
@@ -67,7 +69,6 @@ input[type=submit]
  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
  -webkit-border-radius: 5px 5px 5px 5px;
  border-radius: 5px 5px 5px 5px;
- margin: 5px 20px 40px 20px;
  -webkit-transition: all 0.3s ease-in-out;
  -moz-transition: all 0.3s ease-in-out;
  -ms-transition: all 0.3s ease-in-out;
@@ -87,4 +88,30 @@ input[type=submit]:active
  -o-transform: scale(0.95);
  -ms-transform: scale(0.95);
  transform: scale(0.95);
+}
+
+@media only screen (min-width: 800px)
+{
+.intro
+{
+ background-color: #ffffff;
+ position: absolute;
+ top: 10vh;
+ left: -5%;
+ width: 100%;
+ font-family: Verdana, sans-serif;
+ border: 5px;
+ border-radius: 10px 10px 10px 10px;
+}
+
+#icon
+{
+ position: absolute;
+ width: 100%;
+ right: -6%;
+ margin-top: 5%;
+ top: 30%;
+ border: 5px;
+ border-radius: 10px 10px 10px 10px;
+}
 }
