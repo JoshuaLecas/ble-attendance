@@ -89,3 +89,29 @@ input[type=submit]:active
  -ms-transform: scale(0.95);
  transform: scale(0.95);
 }
+
+@media only screen (min-width: 800px)
+{
+.intro
+{
+ background-color: #ffffff;
+ position: absolute;
+ top: 10vh;
+ left: -5%;
+ width: 100%;
+ font-family: Verdana, sans-serif;
+ border: 5px;
+ border-radius: 10px 10px 10px 10px;
+}
+
+#icon
+{
+ position: absolute;
+ width: 100%;
+ right: -6%;
+ margin-top: 5%;
+ top: 30%;
+ border: 5px;
+ border-radius: 10px 10px 10px 10px;
+}
+}
