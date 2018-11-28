@@ -1,24 +1,18 @@
 h1
 {
   color: #0082FC;
-  font-weight: bold;
-  margin: 10%;
-  right: 100%;
+  margin-left: 3%;
+  margin-top: 11%;
 }
 
 h2
 {
   color: #000000;
   font-size: 15px;
-  margin: 50px;
-}
-
-p
-{
-  color: #000000;
-  font-size: 12px;
-  margin: 50px;
-  margin-top: 45px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 8%;
+  margin-bottom: 11%;
 }
 
 .container
@@ -42,12 +36,11 @@ p
 #icon
 {
   position: absolute;
-  top: 30%;
   right: -1%;
   width: 50%;
   margin-top: 5%;
-  border: 5px;
-  border-radius: 10px 10px 10px 10px;
+  border: 10px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 input[type=submit]
@@ -57,7 +50,7 @@ input[type=submit]
   position: absolute;
   border: none;
   color: #0082FC;
-  margin-top: 50%;
+  margin-top: 40%;
   top: 100%;
   left: -1%;
   padding: 15px 80px;

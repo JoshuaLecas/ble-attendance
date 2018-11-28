@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-
 <body>
   <div id="dashboard">
         <div class="container" id="cont">
-            <div class="row" style=" padding-top: 10px; padding-bottom: 15px;margin: 5px;background-color: grey;">
-              <div class="col-md-6"><h2 style="color:#779ECB;">Welcome {{user.name}}</h2></div>
-              <div class="col-md-2"><button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB;margin-left: 25%;">Class List</button></div>
-              <div class="col-md-2"><button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB;margin-left: 25%;">All Students</button></div>
-              <div class="col-md-2"><button class="btn btn-success" (click)="onLogOutButton()" style="background-color:#779ECB; border-color:#779ECB;margin-left: 25%;">Log Out</button></div>
+            <div class="row" style=" padding-top: 1%; padding-bottom: 1%;margin: .5%;background-color: navy;">
+              <div class="col-md-6"><h2 style="color:lightblue;">Welcome {{user.name}}</h2></div>
+              <div class="col-md-2"><button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB; "> Class List </button></div>
+              <div class="col-md-2"><button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB; "> All Students </button></div>
+              <div class="col-md-2"><button class="btn btn-success" (click)="onLogOutButton()" style="background-color:#779ECB; border-color:#779ECB; "> Log Out </button></div>
             </div>
           <div id="dashbody">
             <div class="row">
@@ -18,15 +17,15 @@
 
             <div class="row">
               <div class="col-md-3">
-                <button style="background-color:#779ECB;">Add a Class</button>
+                <button style="background-color:lightblue;">Add a Class</button>
               </div>
               <div class="col-md-9">
-              <div class="form-group">
-                  <input placeholder="Enter Name to Search" name="inputString" [(ngModel)] = "inputString" class="form-control" style="max-width:250px; padding-bottom:10px;">
-              </div>
+                <div class="form-group">
+                  <input placeholder="Enter Name to Search" name="inputString" [(ngModel)] = "inputString" class="form-control" style="max-width:35%; padding-bottom:1%;">
+                </div>
               </div>
               <table class="table table-striped" style="padding-top:0px;">
-                <thead style="background-color: #bfbfbf; color: white;">
+                <thead style="background-color: navy; color: lightBlue;">
                   <tr style="  box-shadow: 0px 0px 10px grey;">
                     <th><h6><strong>Name</strong></h6></th>
                     <th><h6><strong>Phone</strong></h6></th>
@@ -59,5 +58,5 @@
         </div>
       </div>
     </div>
-      <p style="padding-top:15px; color: #0082FC">If you notice this then good for you.</p>
+    <p style="padding-top:15px; color: #0082FC">If you notice this then good for you.</p>
 </body>
