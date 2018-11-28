@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['']);
       }
       else {
-        const user = data['user'];
+        console.log(data);
+        const user = data;
         this.authService.storeUser(user)
         this.router.navigate(['/profdash'])
       }

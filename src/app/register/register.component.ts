@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit
   }
 
   onSubmit(){
-    alert("TEST");
+    
     const user = {
       profNID: this.profNID,
       name: this.name,

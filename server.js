@@ -386,7 +386,7 @@ app.post("/api/classes/create/:id", function(req, res) {
 	// "class" is a reserved word in js
 	var classy = new Class({
 		courseID: req.body.course_id,
-		className: req.body.name,
+		className: req.body.class_name,
 		createdByProfNID: req.params.id,
 		startTime: req.body.start_time,
 		endTime: req.body.end_time

@@ -56,12 +56,15 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _content_modal_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content/modal.less */ "./src/app/content/modal.less");
+/* harmony import */ var _content_modal_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_content_modal_less__WEBPACK_IMPORTED_MODULE_1__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
@@ -168,6 +171,17 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/content/modal.less":
+/*!************************************!*\
+  !*** ./src/app/content/modal.less ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* MODAL STYLES\n-------------------------------*/\njw-modal {\n  /* modals are hidden by default */\n  display: none;\n}\njw-modal .jw-modal {\n  /* modal container fixed across whole screen */\n  position: center;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  /* z-index must be higher than .jw-modal-background */\n  z-index: 1000;\n  /* enables scrolling for tall modals */\n  overflow: auto;\n}\njw-modal .jw-modal .jw-modal-body {\n  padding: 20px;\n  background: #fff;\n  /* margin exposes part of the modal background */\n  margin: 40px;\n}\njw-modal .jw-modal-background {\n  /* modal background fixed across whole screen */\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  /* semi-transparent black  */\n  background-color: #000;\n  opacity: 0.75;\n  /* z-index must be below .jw-modal and above everything else  */\n  z-index: 900;\n}\nbody.jw-modal-open {\n  /* body overflow is hidden to hide main scrollbar when modal window is open */\n  overflow: hidden;\n}\n"
+
+/***/ }),
+
 /***/ "./src/app/directives/modal.component.ts":
 /*!***********************************************!*\
   !*** ./src/app/directives/modal.component.ts ***!
@@ -255,7 +269,7 @@ var ModalComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1\n{\n color: #0082FC;\n font-weight: bold;\n margin: 10%;\n right: 100%;\n}\n\nh2\n{\n color: #000000;\n font-size: 17px;\n margin: 50px;\n}\n\np\n{\n color: #000000;\n font-size: 15px;\n margin: 50px;\n margin-top: 45px;\n}\n\n.container\n{\n  position: relative;\n}\n\n.intro\n{\n background-color: #ffffff;\n position: absolute;\n top: 10vh;\n left: -5%;\n width: 50%;\n font-family: Verdana, sans-serif;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n position: absolute;\n width: 60%;\n right: -6%;\n margin-top: 5%;\n top: 30%;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\ninput[type=submit]  \n{\n background-color: #fff;\n font-weight: bold;\n position: absolute;\n border: none;\n color: #0082FC;\n margin-top: 45%;\n top: 100%;\n left: -5%;\n padding: 15px 80px;\n text-align: center;\n text-decoration: none;\n display: inline-block;\n text-transform: uppercase;\n font-size: 13px;\n box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n border-radius: 5px 5px 5px 5px;\n transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n\n@media only screen (min-width: 800px)\n{\n.intro\n{\n background-color: #ffffff;\n position: absolute;\n top: 10vh;\n left: -5%;\n width: 100%;\n font-family: Verdana, sans-serif;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n position: absolute;\n width: 100%;\n right: -6%;\n margin-top: 5%;\n top: 30%;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n}\n"
+module.exports = "h1\n{\n  color: #0082FC;\n  margin-left: 3%;\n  margin-top: 11%;\n}\n\nh2\n{\n  color: #000000;\n  font-size: 15px;\n  margin-left: 3%;\n  margin-right: 3%;\n  margin-top: 8%;\n  margin-bottom: 11%;\n}\n\n.container\n{\n  position: relative;\n}\n\n.intro\n{\n  background-color: #ffffff;\n  position: absolute;\n  top: 30%;\n  left: -1%;\n  width: 50%;\n  margin-top: 5%;\n  font-family: Verdana, sans-serif;\n  border: 5px;\n  border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n  position: absolute;\n  right: -1%;\n  width: 50%;\n  margin-top: 5%;\n  border: 10px;\n  border-radius: 5px 5px 5px 5px;\n}\n\ninput[type=submit]\n{\n  background-color: #fff;\n  font-weight: bold;\n  position: absolute;\n  border: none;\n  color: #0082FC;\n  margin-top: 40%;\n  top: 100%;\n  left: -1%;\n  padding: 15px 80px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  font-size: 13px;\n  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n  transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n  background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n  -webkit-transform: scale(0.95);\n  transform: scale(0.95);\n}\n\n/*\n@media only screen and (min-width: 800px)\n{\n  h1\n  {\n    color: #0082FC;\n    font-size: 65px;\n    font-weight: bold;\n    margin-left: 45px;\n  }\n\n  h2\n  {\n    color: #000000;\n    font-size: 25px;\n    margin: 5%;\n    margin-top: 10%;;\n  }\n\n  p\n  {\n    color: #000000;\n    font-size: 20px;\n    margin: 5%;\n    margin-top: 15%;\n  }\n\n  .container\n  {\n    position: relative;\n  }\n\n  .intro\n  {\n    background-color: #ffffff;\n    position: absolute;\n    margin-top: 10%;\n    left: -30%;\n    width: 70%;\n    font-family: Verdana, sans-serif;\n    border: 5px;\n    border-radius: 10px 10px 10px 10px;\n  }\n\n  #icon\n  {\n    position: absolute;\n    width: 80%;\n    right: -30%;\n    margin-top: 20%;\n    top: 30%;\n    border: 5px;\n    border-radius: 10px 10px 10px 10px;\n  }\n\n  input[type=submit]\n  {\n    margin-top: 75%;\n    top: 100%;\n    left: -30%;\n    padding: 20px 90px;\n    font-size: 25px;\n  }\n} */\n"
 
 /***/ }),
 
@@ -266,7 +280,7 @@ module.exports = "h1\n{\n color: #0082FC;\n font-weight: bold;\n margin: 10%;\n 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> \n\t<body>\n\t\t<div class = \"container\">\n\t\t\t<div class=\"intro\">\n\n\t\t\t\t<h1>\n\t\t\t\t\tBLU-Attendance\n\t\t\t\t</h1>\n\n\t    \t\t\t<h2>\n\t\t\t\t\tImprove your class attendance grading with a BLU-Attendance\n\t\t\t\t</h2>\n\n\t\t\t\t<p>\n\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\n\t\t\t\t\t<br>\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t</div>\n\n\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\t\t\t\n\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\n\t\t</div>\n\t</body>\n</html>\n"
+module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<body>\n\t\t<div class = \"container\">\n\t\t\t<div class=\"intro\">\n\n\t\t\t\t<h1>\n\t\t\t\t\tBLU-Attendance\n\t\t\t\t</h1>\n\n\t    \t<h2>\n\t\t\t\t\tImprove your class attendance grading with BLU-Attendance. <br> <br>\n\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\t\t\t\t</h2>\n\n\t\t\t</div>\n\n\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\n\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\n\t\t</div>\n\t</body>\n</html>\n"
 
 /***/ }),
 
@@ -386,7 +400,8 @@ var LoginComponent = /** @class */ (function () {
                 _this.router.navigate(['']);
             }
             else {
-                var user_1 = data['user'];
+                console.log(data);
+                var user_1 = data;
                 _this.authService.storeUser(user_1);
                 _this.router.navigate(['/profdash']);
             }
@@ -417,7 +432,7 @@ var LoginComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\n    font-family: 'helvetica',sans-serif;\n}\n\n.navbar-toggler:focus,\n.navbar-toggler:active {\n    outline: 0;\n}\n\n.navbar-brand{\n  font-size: 25px;\n}\n\n.navbar-toggler span {\n   display: block;\n   background-color: #ffffff;\n   height: 3px;\n   width: 25px;\n   margin-top: 4px;\n   margin-bottom: 4px;\n   -webkit-transform: rotate(0deg);\n   transform: rotate(0deg);\n   position: relative;\n   right: 0;\n   opacity: 1;\n}\n\n.navbar-toggler span:nth-child(1),\n.navbar-toggler span:nth-child(3) {\n   transition: -webkit-transform .35s ease-in-out;\n   transition: transform .35s ease-in-out;\n   transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(1) {\n    position: absolute;\n    right: 29px;\n    top: 23px;\n    -webkit-transform: rotate(135deg);\n    transform: rotate(135deg);\n    opacity: 0.9;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(2) {\n    height: 12px;\n    visibility: hidden;\n    background-color: transparent;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(3) {\n    position: absolute;\n    right: 29px;\n    top: 23px;\n    -webkit-transform: rotate(-135deg);\n    transform: rotate(-135deg);\n    opacity: 0.9;\n}\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n\n.logIn\n{\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  background-color: #56baed;\n  padding: 10px 20px;\n  border: none;\n  color: white;\n  box-shadow: 0 5px 10px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n}\n\n.logIn:hover  \n{\n  background-color: #39ace7;\n}\n\n.logIn:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n"
+module.exports = "body\n{\n  font-family: 'helvetica',sans-serif;\n}\n\n.navbar-toggler:focus,\n.navbar-toggler:active\n{\n  outline: 0;\n}\n\n.navbar-brand{\n  font-size: 25px;\n}\n\n.navbar-toggler span {\n  display: block;\n  background-color: #ffffff;\n  height: 3px;\n  width: 25px;\n  margin-top: 4px;\n  margin-bottom: 4px;\n  -webkit-transform: rotate(0deg);\n  transform: rotate(0deg);\n  position: relative;\n  right: 0;\n  opacity: 1;\n}\n\n.navbar-toggler span:nth-child(1),\n.navbar-toggler span:nth-child(3) {\n  transition: -webkit-transform .35s ease-in-out;\n  transition: transform .35s ease-in-out;\n  transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(1) {\n  position: absolute;\n  right: 29px;\n  top: 23px;\n  -webkit-transform: rotate(135deg);\n  transform: rotate(135deg);\n  opacity: 0.9;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(2) {\n  height: 12px;\n  visibility: hidden;\n  background-color: transparent;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(3) {\n  position: absolute;\n  right: 29px;\n  top: 23px;\n  -webkit-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n  opacity: 0.9;\n}\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n\n.logIn\n{\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  background-color: #56baed;\n  padding: 10px 20px;\n  border: none;\n  color: white;\n  box-shadow: 0 5px 10px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n}\n\n.logIn:hover\n{\n  background-color: #39ace7;\n}\n\n.logIn:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n\n@media only screen and (min-width: 800px)\n{\n  .navbar-brand\n  {\n    font-size: 50px;\n  }\n\n  .nav-link\n  {\n    font-size: 30px;\n  }\n\n  .logIn\n  {\n    font-size: 25px;\n  }\n}\n"
 
 /***/ }),
 
@@ -491,7 +506,7 @@ module.exports = "body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n\n<body>\n  <jw-modal id=\"custom-modal-1\">\n    <h1>A Custom Modal!</h1>\n    <p>Home page text: <input type=\"text\" [(ngModel)]=\"bodyText\" /></p>\n    <button (click)=\"closeModal('custom-modal-1');\">Close</button>\n</jw-modal>\n  <div id=\"dashboard\">\n        <div class=\"container\" id=\"cont\">\n            <div class=\"row\" style=\" padding-top: 10px; padding-bottom: 15px;margin: 5px;background-color: grey;\">\n              <div class=\"col-md-6\"><h2 style=\"color:#779ECB;\">Welcome {{user.name}}</h2></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Class List</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">All Students</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" (click)=\"onLogOutButton()\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Log Out</button></div>\n            </div>\n          <div id=\"dashbody\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <h1>Classes</h1>\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <button style=\"background-color:#779ECB;\">Add a Class</button>\n              </div>\n              <div class=\"col-md-9\">\n              <div class=\"form-group\">\n                  <input placeholder=\"Enter Name to Search\" name=\"inputString\" [(ngModel)] = \"inputString\" class=\"form-control\" style=\"max-width:250px; padding-bottom:10px;\">\n              </div>\n              </div>\n              <table class=\"table table-striped\" style=\"padding-top:0px;\">\n                <thead style=\"background-color: #bfbfbf; color: white;\">\n                  <tr style=\"  box-shadow: 0px 0px 10px grey;\">\n                    <th><h6><strong>Name</strong></h6></th>\n                    <th><h6><strong>Phone</strong></h6></th>\n                    <th><h6><strong>Email</strong></h6></th>\n                    <th><h6><strong>Address</strong></h6></th>\n                    <th><h6><strong>Options</strong></h6></th>\n    \t\t\t\t        <th><h6><strong></strong></h6></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr id=\"contacts\">\n                     <tr *ngFor=\"let contact of contactlist | filter : inputString;\">\n                      <td><a (click)=\"onVcfButton(contact)\" style=\"color: #779ECB;\">{{contact.name}}</a></td>\n                      <td>{{contact.phone}}</td>\n                      <td>{{contact.email}}</td>\n                      <td><a (click)=\"onMapsButton(contact.address)\" style=\"color: #779ECB;;\">{{contact.address}}</a></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onEditButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Edit</button></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onDeleteButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Delete</button></td>\n\n    \t\t\t\t\t            <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                          <!-- <button class=\"btn btn-info\" (click)=\"onVcfButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Download Contact</button></td> -->\n    \t\t\t\t\t           <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                      <!-- <td><button class=\"close\" aria-label=\"Close\"(click)=\"onDeleteButton(contact)\"><span aria-hidden=\"true\">&times;</span></button></td> -->\n\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n        </div>\n      </div>\n    </div>\n      <p style=\"padding-top:15px; color: #0082FC\">If you notice this then good for you.</p>\n</body>\n"
+module.exports = "<!DOCTYPE html>\n<body>\n\n  <jw-modal id=\"custom-modal-1\">\n    <div class=\"col-md-3\">\n      <table class=\"table\">\n        <tbody>\n          <tr><h3 class=\"text-center\" id=\"addtitle\" style=\"color:#779ECB;\">Add a class</h3></tr>\n          <tr><input placeholder=\"Enter Class Title\" type=\"text\" name=\"name\" [(ngModel)] = \"className\" class=\"form-control\" style=\"margin: 5px;\"></tr>\n          <tr><input placeholder=\"Enter Course ID\" type=\"text\" name=\"phone\" [(ngModel)] = \"courseID\" class=\"form-control\" style=\"margin: 5px;\"></tr>\n          <tr><input placeholder=\"Enter Start Time\" type=\"text\" name=\"email\" [(ngModel)] = \"startTime\" class=\"form-control\" style=\"margin: 5px;\"></tr>\n          <tr><input placeholder=\"Enter End Time\" type=\"text\" name=\"address\" [(ngModel)] = \"endTime\" class=\"form-control\" style=\"margin: 5px;\"></tr>\n          <tr><button class=\"btn btn-success\" (click)=\"onAddClassButton()\" style=\"background-color:#779ECB; border-color:#779ECB; margin-top:10px; margin-left: 5px;  \">Submit</button><button class=\"btn btn-success\" (click)=\"clearFields()\" style=\"background-color:#c23b22; border-color:#c23b22; margin-top:10px; margin-left: 5px;  \">Clear</button></tr>\n        </tbody>\n      </table>\n    </div>\n    <button style=\"background-color:#c23b22;\" class=\"btn btn-danger\"(click)=\"closeModal('custom-modal-1');\">Close</button>\n  </jw-modal>\n\n  <div id=\"dashboard\">\n        <div class=\"container\" id=\"cont\">\n            <div class=\"row\" style=\" padding-top: 1%; padding-bottom: 1%;margin: .5%;background-color: navy;\">\n              <div class=\"col-md-6\"><h2 style=\"color:lightblue;\">Welcome {{user.name}}</h2></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB; \"> Class List </button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB; \"> All Students </button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" (click)=\"onLogOutButton()\" style=\"background-color:#779ECB; border-color:#779ECB; \"> Log Out </button></div>\n            </div>\n          <div id=\"dashbody\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <h1>Classes</h1>\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <button style=\"background-color:lightblue;\" (click)=\"openModal('custom-modal-1')\">Add a Class</button>\n              </div>\n              <div class=\"col-md-9\">\n                <div class=\"form-group\">\n                  <input placeholder=\"Enter Name to Search\" name=\"inputString\" [(ngModel)] = \"inputString\" class=\"form-control\" style=\"max-width:35%; padding-bottom:1%;\">\n                </div>\n              </div>\n              <table class=\"table table-striped\" style=\"padding-top:0px;\">\n                <thead style=\"background-color: navy; color: lightBlue;\">\n                  <tr style=\"  box-shadow: 0px 0px 10px grey;\">\n                    <th><h6><strong>Class Name</strong></h6></th>\n                    <th><h6><strong>Class ID</strong></h6></th>\n                    <th><h6><strong>Start Time</strong></h6></th>\n                    <th><h6><strong>End Time</strong></h6></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr id=\"contacts\">\n                     <tr *ngFor=\"let Class of courseList\">\n                      <td><a>{{Class.className}}</a></td>\n                      <td>{{Class.courseID}}</td>\n                      <td>{{Class.startTime}}</td>\n                      <td><a>{{Class.endTime}}</a></td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n        </div>\n      </div>\n    </div>\n    <p style=\"padding-top:15px; color: #0082FC\">If you notice this then good for you.</p>\n</body>\n"
 
 /***/ }),
 
@@ -532,13 +547,15 @@ var ProfdashComponent = /** @class */ (function () {
         //  if (sessionStorage.length == 0){
         //    this.router.navigate(['/home']);
         //  }
-        //  this.pageLoad();
+        this.pageLoad();
     };
     ProfdashComponent.prototype.pageLoad = function () {
         var temp = sessionStorage.getItem('user');
         this.user = JSON.parse(temp);
         this.authService.storeUser(this.user);
         this.user_id = this.user['id'];
+        this.getCourseList();
+        this.getCourseList();
     };
     ProfdashComponent.prototype.onLogOutButton = function () {
         sessionStorage.clear();
@@ -550,11 +567,39 @@ var ProfdashComponent = /** @class */ (function () {
     ProfdashComponent.prototype.closeModal = function (id) {
         this.modalService.close(id);
     };
+    ProfdashComponent.prototype.clearFields = function () {
+        this.class_name = undefined;
+        this.course_id = undefined;
+        this.start_time = undefined;
+        this.end_time = undefined;
+    };
+    ProfdashComponent.prototype.onAddClassButton = function () {
+        var _this = this;
+        var course = {
+            course_id: this.course_id,
+            class_name: this.class_name,
+            start_time: this.start_time,
+            end_time: this.end_time
+        };
+        this.authService.createClass(course).subscribe(function (data) {
+            _this.clearFields();
+        }, function (err) {
+            alert('Oh no! Something went wrong. Please try again!');
+        });
+        this.getCourseList();
+        this.getCourseList();
+    };
+    ProfdashComponent.prototype.getCourseList = function () {
+        var _this = this;
+        this.authService.getCourses().subscribe(function (data) {
+            _this.courseList = data;
+        });
+    };
     ProfdashComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-profdash',
             template: __webpack_require__(/*! ./profdash.component.html */ "./src/app/profdash/profdash.component.html"),
-            styles: [__webpack_require__(/*! ./profdash.component.css */ "./src/app/profdash/profdash.component.css")]
+            styles: [__webpack_require__(/*! ./profdash.component.css */ "./src/app/profdash/profdash.component.css"), __webpack_require__(/*! ../content/modal.less */ "./src/app/content/modal.less")]
         }),
         __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _services_modal_service__WEBPACK_IMPORTED_MODULE_3__["ModalService"]])
     ], ProfdashComponent);
@@ -630,7 +675,6 @@ var RegisterComponent = /** @class */ (function () {
     };
     RegisterComponent.prototype.onSubmit = function () {
         var _this = this;
-        alert("TEST");
         var user = {
             profNID: this.profNID,
             name: this.name,
@@ -699,6 +743,13 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.loginUser = function (user) {
         return this.http.post('/api/professors/login', user, { headers: this.headers });
+    };
+    AuthService.prototype.createClass = function (course) {
+        return this.http.post('/api/classes/create/' + this.user.profNID, course, { headers: this.headers });
+    };
+    //   // Endpoints for interacting with Contacts
+    AuthService.prototype.getCourses = function () {
+        return this.http.get('/api/classes/' + this.user.profNID, { headers: this.headers });
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({

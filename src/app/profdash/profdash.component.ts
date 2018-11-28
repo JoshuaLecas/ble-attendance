@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { ModalService } from '../services/modal.service';
+import { Class } from '../services/class';
 
 @Component({
   selector: 'app-profdash',
@@ -16,16 +17,18 @@ export class ProfdashComponent implements OnInit {
   user : Object;
   user_id: String;
 
-  courseID: String;
-  className: String;
-  startTime: String;
-  endTime: String;
+  course: Class;
+  courseList: any;
+  course_id: String;
+  class_name: String;
+  start_time: String;
+  end_time: String;
 
   ngOnInit() {
   //  if (sessionStorage.length == 0){
   //    this.router.navigate(['/home']);
   //  }
-  //  this.pageLoad();
+    this.pageLoad();
   }
 
   pageLoad(){
@@ -33,6 +36,8 @@ export class ProfdashComponent implements OnInit {
     this.user = JSON.parse(temp);
     this.authService.storeUser(this.user);
     this.user_id = this.user['id'];
+    this.getCourseList();
+    this.getCourseList();
   }
 
   onLogOutButton(){
@@ -47,14 +52,33 @@ export class ProfdashComponent implements OnInit {
         this.modalService.close(id);
     }
   clearFields(){
-    this.className = undefined;
-    this.courseID = undefined;
-    this.startTime = undefined;
-    this.endTime = undefined;
+    this.class_name = undefined;
+    this.course_id = undefined;
+    this.start_time = undefined;
+    this.end_time = undefined;
   }
   onAddClassButton(){
 
+    const course = {
+      course_id: this.course_id,
+      class_name: this.class_name,
+      start_time: this.start_time,
+      end_time: this.end_time
+    };
+    this.authService.createClass(course).subscribe( data => {
+    this.clearFields();
+    }, err =>{
+    alert('Oh no! Something went wrong. Please try again!');
+    });
+    this.getCourseList();
+    this.getCourseList();
 
+  }
+
+  getCourseList(){
+    this.authService.getCourses().subscribe(data =>{
+    this.courseList = data;
+    })
   }
 
 }

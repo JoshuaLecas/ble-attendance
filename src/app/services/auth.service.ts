@@ -30,10 +30,14 @@ export class AuthService {
     return this.http.post('/api/professors/login', user, {headers:this.headers});
   }
 
+  createClass(course){
+    return this.http.post('/api/classes/create/'+this.user.profNID, course, {headers:this.headers});
+  }
+
 //   // Endpoints for interacting with Contacts
-//   getContacts(){
-//     return this.http.get('/api/contacts/'+this.user.id, {headers:this.headers});
-// }
+  getCourses(){
+    return this.http.get('/api/classes/'+this.user.profNID, {headers:this.headers});
+}
 //
 //   addContact(contact: Contact){
 //     return this.http.post('/api/contacts/create/'+this.user.id, contact, {headers:this.headers});
