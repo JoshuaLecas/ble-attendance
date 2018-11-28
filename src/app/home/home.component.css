@@ -36,7 +36,7 @@ h2
   margin-top: 5%;
   margin-bottom: 5%;
   border: 5px;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 10px 10px 10px 10px;
 }
 
 input[type=submit]
