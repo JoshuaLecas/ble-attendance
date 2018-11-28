@@ -16,7 +16,8 @@ import {AuthService} from './services/auth.service';
 import { ValidateService } from './services/validate.service';
 import { FilterPipe } from './services/filter.pipe';
 
-
+import { ModalComponent } from './directives/modal.component';
+import { ModalService } from './services/modal.service';
 
 const appRoutes: Routes =[
   { path: '', component: HomeComponent },
@@ -35,6 +36,7 @@ const appRoutes: Routes =[
     FilterPipe,
     HomeComponent,
     Navbar2Component,
+    ModalComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -42,7 +44,7 @@ const appRoutes: Routes =[
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,ValidateService],
+  providers: [AuthService,ValidateService,ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

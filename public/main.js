@@ -105,12 +105,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/validate.service */ "./src/app/services/validate.service.ts");
 /* harmony import */ var _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/filter.pipe */ "./src/app/services/filter.pipe.ts");
+/* harmony import */ var _directives_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./directives/modal.component */ "./src/app/directives/modal.component.ts");
+/* harmony import */ var _services_modal_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/modal.service */ "./src/app/services/modal.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -145,6 +149,7 @@ var AppModule = /** @class */ (function () {
                 _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["FilterPipe"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
                 _navbar2_navbar2_component__WEBPACK_IMPORTED_MODULE_9__["Navbar2Component"],
+                _directives_modal_component__WEBPACK_IMPORTED_MODULE_14__["ModalComponent"]
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes),
@@ -152,11 +157,91 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
             ],
-            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _services_validate_service__WEBPACK_IMPORTED_MODULE_12__["ValidateService"]],
+            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _services_validate_service__WEBPACK_IMPORTED_MODULE_12__["ValidateService"], _services_modal_service__WEBPACK_IMPORTED_MODULE_15__["ModalService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/directives/modal.component.ts":
+/*!***********************************************!*\
+  !*** ./src/app/directives/modal.component.ts ***!
+  \***********************************************/
+/*! exports provided: ModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalComponent", function() { return ModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_modal_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/modal.service */ "./src/app/services/modal.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ModalComponent = /** @class */ (function () {
+    function ModalComponent(modalService, el) {
+        this.modalService = modalService;
+        this.el = el;
+        this.element = el.nativeElement;
+    }
+    ModalComponent.prototype.ngOnInit = function () {
+        var modal = this;
+        // ensure id attribute exists
+        if (!this.id) {
+            console.error('modal must have an id');
+            return;
+        }
+        // move element to bottom of page (just before </body>) so it can be displayed above everything else
+        document.body.appendChild(this.element);
+        // close modal on background click
+        this.element.addEventListener('click', function (e) {
+            if (e.target.className === 'jw-modal') {
+                modal.close();
+            }
+        });
+        // add self (this modal instance) to the modal service so it's accessible from controllers
+        this.modalService.add(this);
+    };
+    // remove self from modal service when directive is destroyed
+    ModalComponent.prototype.ngOnDestroy = function () {
+        this.modalService.remove(this.id);
+        this.element.remove();
+    };
+    // open modal
+    ModalComponent.prototype.open = function () {
+        this.element.style.display = 'block';
+        document.body.classList.add('jw-modal-open');
+    };
+    // close modal
+    ModalComponent.prototype.close = function () {
+        this.element.style.display = 'none';
+        document.body.classList.remove('jw-modal-open');
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", String)
+    ], ModalComponent.prototype, "id", void 0);
+    ModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'jw-modal',
+            template: "<div class=\"jw-modal\">\n            <div class=\"jw-modal-body\">\n                <ng-content></ng-content>\n            </div>\n        </div>\n        <div class=\"jw-modal-background\"></div>"
+        }),
+        __metadata("design:paramtypes", [_services_modal_service__WEBPACK_IMPORTED_MODULE_1__["ModalService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+    ], ModalComponent);
+    return ModalComponent;
 }());
 
 
@@ -170,7 +255,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1\n{\n color: #0082FC;\n font-weight: bold;\n margin: 50px;\n margin-bottom: 45px;\n}\n\nh2\n{\n color: #000000;\n font-size: 17px;\n margin: 50px;\n}\n\np\n{\n color: #000000;\n font-size: 15px;\n margin: 50px;\n margin-top: 45px;\n}\n\n.container\n{\n  position: relative;\n}\n\n.intro\n{\n background-color: #ffffff;\n position: absolute;\n top: 120px;\n left: -55px;\n width: 50%;\n font-family: Verdana, sans-serif;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n position: absolute;\n width: 50%;\n right: -55px;\n bottom: -70vh;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\ninput[type=submit]  \n{\n background-color: #fff;\n font-weight: bold;\n position: absolute;\n border: none;\n color: #0082FC;\n top: 500px;\n left: -75px;\n padding: 15px 80px;\n text-align: center;\n text-decoration: none;\n display: inline-block;\n text-transform: uppercase;\n font-size: 13px;\n box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n border-radius: 5px 5px 5px 5px;\n margin: 5px 20px 40px 20px;\n transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n"
+module.exports = "h1\n{\n color: #0082FC;\n font-weight: bold;\n margin: 10%;\n right: 100%;\n}\n\nh2\n{\n color: #000000;\n font-size: 17px;\n margin: 50px;\n}\n\np\n{\n color: #000000;\n font-size: 15px;\n margin: 50px;\n margin-top: 45px;\n}\n\n.container\n{\n  position: relative;\n}\n\n.intro\n{\n background-color: #ffffff;\n position: absolute;\n top: 10vh;\n left: -5%;\n width: 50%;\n font-family: Verdana, sans-serif;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n position: absolute;\n width: 60%;\n right: -6%;\n margin-top: 5%;\n top: 30%;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\ninput[type=submit]  \n{\n background-color: #fff;\n font-weight: bold;\n position: absolute;\n border: none;\n color: #0082FC;\n margin-top: 45%;\n top: 100%;\n left: -5%;\n padding: 15px 80px;\n text-align: center;\n text-decoration: none;\n display: inline-block;\n text-transform: uppercase;\n font-size: 13px;\n box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n border-radius: 5px 5px 5px 5px;\n transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n\n@media only screen (min-width: 800px)\n{\n.intro\n{\n background-color: #ffffff;\n position: absolute;\n top: 10vh;\n left: -5%;\n width: 100%;\n font-family: Verdana, sans-serif;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n position: absolute;\n width: 100%;\n right: -6%;\n margin-top: 5%;\n top: 30%;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n}\n"
 
 /***/ }),
 
@@ -181,7 +266,7 @@ module.exports = "h1\n{\n color: #0082FC;\n font-weight: bold;\n margin: 50px;\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> \n\t<body>\n\t\t<div class = \"container\">\n\t\t\t<div class=\"intro\">\n\n\t\t\t\t<h1>\n\t\t\t\t\tBLU-Attendance\n\t\t\t\t</h1>\n\n\t    \t\t\t<h2>\n\t\t\t\t\tImprove your class attendance grading with a BLU-Attendance\n\t\t\t\t</h2>\n\n\t\t\t\t<p>\n\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\n\t\t\t\t\t<br>\n\t\t\t\t</p>\n\n\t\t\t</div>\n\n\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\t\t\t\n\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\n\t\t</div>\n\t</body>\n</html>\n"
+module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> \n\t<body>\n\t\t<div class = \"container\">\n\t\t\t<div class=\"intro\">\n\n\t\t\t\t<h1>\n\t\t\t\t\tBLU-Attendance\n\t\t\t\t</h1>\n\n\t    \t\t\t<h2>\n\t\t\t\t\tImprove your class attendance grading with a BLU-Attendance\n\t\t\t\t</h2>\n\n\t\t\t\t<p>\n\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\n\t\t\t\t\t<br>\n\t\t\t\t</p>\n\t\t\t\t\n\t\t\t</div>\n\n\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\t\t\t\n\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\n\t\t</div>\n\t</body>\n</html>\n"
 
 /***/ }),
 
@@ -406,7 +491,7 @@ module.exports = "body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n\n<body>\n  <div id=\"dashboard\">\n        <div class=\"container\" id=\"cont\">\n            <div class=\"row\" style=\" padding-top: 10px; padding-bottom: 15px;margin: 5px;background-color: grey;\">\n              <div class=\"col-md-6\"><h2 style=\"color:#779ECB;\">Welcome {{user.name}}</h2></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Class List</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">All Students</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" (click)=\"onLogOutButton()\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Log Out</button></div>\n            </div>\n          <div id=\"dashbody\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <h1>Classes</h1>\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <button style=\"background-color:#779ECB;\">Add a Class</button>\n              </div>\n              <div class=\"col-md-9\">\n              <div class=\"form-group\">\n                  <input placeholder=\"Enter Name to Search\" name=\"inputString\" [(ngModel)] = \"inputString\" class=\"form-control\" style=\"max-width:250px; padding-bottom:10px;\">\n              </div>\n              </div>\n              <table class=\"table table-striped\" style=\"padding-top:0px;\">\n                <thead style=\"background-color: #bfbfbf; color: white;\">\n                  <tr style=\"  box-shadow: 0px 0px 10px grey;\">\n                    <th><h6><strong>Name</strong></h6></th>\n                    <th><h6><strong>Phone</strong></h6></th>\n                    <th><h6><strong>Email</strong></h6></th>\n                    <th><h6><strong>Address</strong></h6></th>\n                    <th><h6><strong>Options</strong></h6></th>\n    \t\t\t\t        <th><h6><strong></strong></h6></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr id=\"contacts\">\n                     <tr *ngFor=\"let contact of contactlist | filter : inputString;\">\n                      <td><a (click)=\"onVcfButton(contact)\" style=\"color: #779ECB;\">{{contact.name}}</a></td>\n                      <td>{{contact.phone}}</td>\n                      <td>{{contact.email}}</td>\n                      <td><a (click)=\"onMapsButton(contact.address)\" style=\"color: #779ECB;;\">{{contact.address}}</a></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onEditButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Edit</button></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onDeleteButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Delete</button></td>\n\n    \t\t\t\t\t            <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                          <!-- <button class=\"btn btn-info\" (click)=\"onVcfButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Download Contact</button></td> -->\n    \t\t\t\t\t           <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                      <!-- <td><button class=\"close\" aria-label=\"Close\"(click)=\"onDeleteButton(contact)\"><span aria-hidden=\"true\">&times;</span></button></td> -->\n\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n        </div>\n      </div>\n    </div>\n      <p style=\"padding-top:15px; color: #0082FC\">If you notice this then good for you.</p>\n</body>\n"
+module.exports = "<!DOCTYPE html>\n\n<body>\n  <jw-modal id=\"custom-modal-1\">\n    <h1>A Custom Modal!</h1>\n    <p>Home page text: <input type=\"text\" [(ngModel)]=\"bodyText\" /></p>\n    <button (click)=\"closeModal('custom-modal-1');\">Close</button>\n</jw-modal>\n  <div id=\"dashboard\">\n        <div class=\"container\" id=\"cont\">\n            <div class=\"row\" style=\" padding-top: 10px; padding-bottom: 15px;margin: 5px;background-color: grey;\">\n              <div class=\"col-md-6\"><h2 style=\"color:#779ECB;\">Welcome {{user.name}}</h2></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Class List</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">All Students</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" (click)=\"onLogOutButton()\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Log Out</button></div>\n            </div>\n          <div id=\"dashbody\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <h1>Classes</h1>\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <button style=\"background-color:#779ECB;\">Add a Class</button>\n              </div>\n              <div class=\"col-md-9\">\n              <div class=\"form-group\">\n                  <input placeholder=\"Enter Name to Search\" name=\"inputString\" [(ngModel)] = \"inputString\" class=\"form-control\" style=\"max-width:250px; padding-bottom:10px;\">\n              </div>\n              </div>\n              <table class=\"table table-striped\" style=\"padding-top:0px;\">\n                <thead style=\"background-color: #bfbfbf; color: white;\">\n                  <tr style=\"  box-shadow: 0px 0px 10px grey;\">\n                    <th><h6><strong>Name</strong></h6></th>\n                    <th><h6><strong>Phone</strong></h6></th>\n                    <th><h6><strong>Email</strong></h6></th>\n                    <th><h6><strong>Address</strong></h6></th>\n                    <th><h6><strong>Options</strong></h6></th>\n    \t\t\t\t        <th><h6><strong></strong></h6></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr id=\"contacts\">\n                     <tr *ngFor=\"let contact of contactlist | filter : inputString;\">\n                      <td><a (click)=\"onVcfButton(contact)\" style=\"color: #779ECB;\">{{contact.name}}</a></td>\n                      <td>{{contact.phone}}</td>\n                      <td>{{contact.email}}</td>\n                      <td><a (click)=\"onMapsButton(contact.address)\" style=\"color: #779ECB;;\">{{contact.address}}</a></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onEditButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Edit</button></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onDeleteButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Delete</button></td>\n\n    \t\t\t\t\t            <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                          <!-- <button class=\"btn btn-info\" (click)=\"onVcfButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Download Contact</button></td> -->\n    \t\t\t\t\t           <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                      <!-- <td><button class=\"close\" aria-label=\"Close\"(click)=\"onDeleteButton(contact)\"><span aria-hidden=\"true\">&times;</span></button></td> -->\n\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n        </div>\n      </div>\n    </div>\n      <p style=\"padding-top:15px; color: #0082FC\">If you notice this then good for you.</p>\n</body>\n"
 
 /***/ }),
 
@@ -423,6 +508,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_modal_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/modal.service */ "./src/app/services/modal.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -435,10 +521,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ProfdashComponent = /** @class */ (function () {
-    function ProfdashComponent(router, authService) {
+    function ProfdashComponent(router, authService, modalService) {
         this.router = router;
         this.authService = authService;
+        this.modalService = modalService;
     }
     ProfdashComponent.prototype.ngOnInit = function () {
         //  if (sessionStorage.length == 0){
@@ -456,13 +544,19 @@ var ProfdashComponent = /** @class */ (function () {
         sessionStorage.clear();
         this.router.navigate(['/home']);
     };
+    ProfdashComponent.prototype.openModal = function (id) {
+        this.modalService.open(id);
+    };
+    ProfdashComponent.prototype.closeModal = function (id) {
+        this.modalService.close(id);
+    };
     ProfdashComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-profdash',
             template: __webpack_require__(/*! ./profdash.component.html */ "./src/app/profdash/profdash.component.html"),
             styles: [__webpack_require__(/*! ./profdash.component.css */ "./src/app/profdash/profdash.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _services_modal_service__WEBPACK_IMPORTED_MODULE_3__["ModalService"]])
     ], ProfdashComponent);
     return ProfdashComponent;
 }());
@@ -656,6 +750,45 @@ var FilterPipe = /** @class */ (function () {
         })
     ], FilterPipe);
     return FilterPipe;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/modal.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/modal.service.ts ***!
+  \*******************************************/
+/*! exports provided: ModalService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalService", function() { return ModalService; });
+var ModalService = /** @class */ (function () {
+    function ModalService() {
+        this.modals = [];
+    }
+    ModalService.prototype.add = function (modal) {
+        // add modal to array of active modals
+        this.modals.push(modal);
+    };
+    ModalService.prototype.remove = function (id) {
+        // remove modal from array of active modals
+        this.modals = this.modals.filter(function (x) { return x.id !== id; });
+    };
+    ModalService.prototype.open = function (id) {
+        // open modal specified by id
+        var modal = this.modals.filter(function (x) { return x.id === id; })[0];
+        modal.open();
+    };
+    ModalService.prototype.close = function (id) {
+        // close modal specified by id
+        var modal = this.modals.filter(function (x) { return x.id === id; })[0];
+        modal.close();
+    };
+    return ModalService;
 }());
 
 
