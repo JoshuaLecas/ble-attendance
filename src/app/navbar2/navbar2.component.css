@@ -111,3 +111,21 @@ body {
  -ms-transform: scale(0.95);
  transform: scale(0.95);
 }
+
+@media only screen and (min-width: 800px)
+{
+  .navbar-brand
+  {
+    font-size: 50px;
+  }
+
+  .nav-link
+  {
+    font-size: 30px;
+  }
+
+  .logIn
+  {
+    font-size: 25px;
+  }
+}

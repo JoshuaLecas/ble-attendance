@@ -90,28 +90,66 @@ input[type=submit]:active
  transform: scale(0.95);
 }
 
-@media only screen (min-width: 800px)
+@media only screen and (min-width: 800px)
 {
-.intro
-{
- background-color: #ffffff;
- position: absolute;
- top: 10vh;
- left: -5%;
- width: 100%;
- font-family: Verdana, sans-serif;
- border: 5px;
- border-radius: 10px 10px 10px 10px;
-}
+  h1
+  {
+    color: #0082FC;
+    font-size: 65px;
+    font-weight: bold;
+    margin-left: 45px;
+  }
 
-#icon
-{
- position: absolute;
- width: 100%;
- right: -6%;
- margin-top: 5%;
- top: 30%;
- border: 5px;
- border-radius: 10px 10px 10px 10px;
-}
+  h2
+  {
+    color: #000000;
+    font-size: 25px;
+    margin: 5%;
+    margin-top: 10%;;
+  }
+
+  p
+  {
+    color: #000000;
+    font-size: 20px;
+    margin: 5%;
+    margin-top: 15%;
+  }
+
+  .container
+  {
+    position: relative; 
+  }
+
+  .intro
+  {
+    background-color: #ffffff;
+    position: absolute;
+    margin-top: 10%;
+    left: -30%;
+    width: 70%;
+    font-family: Verdana, sans-serif;
+    border: 5px;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  #icon
+  {
+    position: absolute;
+    width: 80%;
+    right: -30%;
+    margin-top: 20%;
+    top: 30%;
+    border: 5px;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  input[type=submit]
+  {
+    margin-top: 75%;
+    top: 100%;
+    left: -30%;
+    padding: 20px 90px;
+    font-size: 25px;
+  } 
 }
