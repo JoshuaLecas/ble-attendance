@@ -2,28 +2,57 @@
 <body>
 
   <jw-modal id="custom-modal-1">
-    <div class="col-md-3">
-      <table class="table">
-        <tbody>
-          <tr><h3 class="text-center" id="addtitle" style="color:#779ECB;">Add a class</h3></tr>
-          <tr><input placeholder="Enter Class Title" type="text" name="name" [(ngModel)] = "className" class="form-control" style="margin: 5px;"></tr>
-          <tr><input placeholder="Enter Course ID" type="text" name="phone" [(ngModel)] = "courseID" class="form-control" style="margin: 5px;"></tr>
-          <tr><input placeholder="Enter Start Time" type="text" name="email" [(ngModel)] = "startTime" class="form-control" style="margin: 5px;"></tr>
-          <tr><input placeholder="Enter End Time" type="text" name="address" [(ngModel)] = "endTime" class="form-control" style="margin: 5px;"></tr>
-          <tr><button class="btn btn-success" (click)="onAddClassButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top:10px; margin-left: 5px;  ">Submit</button><button class="btn btn-success" (click)="clearFields()" style="background-color:#c23b22; border-color:#c23b22; margin-top:10px; margin-left: 5px;  ">Clear</button></tr>
-        </tbody>
-      </table>
+    <div class= "container">
+      <div class="col-md-3">
+        <table class="table">
+          <tbody>
+            <tr>
+              <h3 class="text-center" id="addtitle" style="color: navy;">
+                Add a Class
+              </h3>
+            </tr>
+            <tr>
+              <input placeholder="Enter Class Title" type="text" name="name" [(ngModel)] = "className" class="form-control" style="margin-left: 1%;">
+            </tr>
+            <tr>
+              <input placeholder="Enter Course ID" type="text" name="phone" [(ngModel)] = "courseID" class="form-control" style="margin: 1%;">
+            </tr>
+            <tr>
+              <input placeholder="Enter Start Time" type="text" name="email" [(ngModel)] = "startTime" class="form-control" style="margin: 1%;">
+            </tr>
+            <tr>
+              <input placeholder="Enter End Time" type="text" name="address" [(ngModel)] = "endTime" class="form-control" style="margin: 1%;">
+            </tr>
+            <tr>
+              <button class="btn btn-success" (click)="onAddClassButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;">
+                Submit
+              </button>
+              <button class="btn btn-success" (click)="clearFields()" style="background-color:#c23b22; border-color:#c23b22; margin-top: 2%; margin-left: 1%;  ">
+                Clear
+              </button>
+            </tr>
+          </tbody>
+        </table>
+        <button style="background-color:#c23b22; margin: 1%" class="btn btn-danger"(click)="closeModal('custom-modal-1');">Close</button>
+      </div>
     </div>
-    <button style="background-color:#c23b22;" class="btn btn-danger"(click)="closeModal('custom-modal-1');">Close</button>
   </jw-modal>
 
   <div id="dashboard">
         <div class="container" id="cont">
             <div class="row" style=" padding-top: 1%; padding-bottom: 1%;margin: .5%;background-color: navy;">
               <div class="col-md-6"><h2 style="color:lightblue;">Welcome {{user.name}}</h2></div>
-              <div class="col-md-2"><button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB; "> Class List </button></div>
-              <div class="col-md-2"><button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB; "> All Students </button></div>
-              <div class="col-md-2"><button class="btn btn-success" (click)="onLogOutButton()" style="background-color:#779ECB; border-color:#779ECB; "> Log Out </button></div>
+              <div class="col-md-4">
+                <button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB;">
+                  Class List
+                </button>
+                <button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB; margin-left: 5%">
+                  All Students
+                </button>
+                <button class="btn btn-success" (click)="onLogOutButton()" style="background-color:#779ECB; border-color:#779ECB; margin-left: 5%; margin-right: 5%">
+                  Log Out
+                </button>
+              </div>
             </div>
           <div id="dashbody">
             <div class="row">
@@ -34,7 +63,9 @@
 
             <div class="row">
               <div class="col-md-3">
-                <button style="background-color:lightblue;" (click)="openModal('custom-modal-1')">Add a Class</button>
+                <button style="background-color:lightblue;" (click)="openModal('custom-modal-1')">
+                  Add a Class
+                </button>
               </div>
               <div class="col-md-9">
                 <div class="form-group">
@@ -43,13 +74,13 @@
               </div>
               <table class="table table-striped" style="padding-top:0px;">
                 <thead style="background-color: navy; color: lightBlue;">
-                  <tr style="  box-shadow: 0px 0px 10px grey;">
+                  <tr style="box-shadow: 0px 0px 10px navy;">
                     <th><h6><strong>Name</strong></h6></th>
                     <th><h6><strong>Phone</strong></h6></th>
                     <th><h6><strong>Email</strong></h6></th>
                     <th><h6><strong>Address</strong></h6></th>
                     <th><h6><strong>Options</strong></h6></th>
-    				        <th><h6><strong></strong></h6></th>
+    				        <th><h6></h6></th>
                   </tr>
                 </thead>
                 <tbody>
