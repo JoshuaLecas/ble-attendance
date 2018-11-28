@@ -97,13 +97,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
-/* harmony import */ var _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./profdash/profdash.component */ "./src/app/profdash/profdash.component.ts");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/validate.service */ "./src/app/services/validate.service.ts");
-/* harmony import */ var _services_filter_pipe__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/filter.pipe */ "./src/app/services/filter.pipe.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _navbar2_navbar2_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./navbar2/navbar2.component */ "./src/app/navbar2/navbar2.component.ts");
+/* harmony import */ var _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./profdash/profdash.component */ "./src/app/profdash/profdash.component.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
+/* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/validate.service */ "./src/app/services/validate.service.ts");
+/* harmony import */ var _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/filter.pipe */ "./src/app/services/filter.pipe.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -123,10 +124,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var appRoutes = [
-    { path: '', component: _login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"] },
-    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_7__["RegisterComponent"] },
-    { path: 'profdash', component: _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_9__["ProfdashComponent"] },
+    { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"] },
+    { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
+    { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"] },
+    { path: 'profdash', component: _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_10__["ProfdashComponent"] },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
@@ -136,11 +139,12 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-                _login_login_component__WEBPACK_IMPORTED_MODULE_6__["LoginComponent"],
-                _register_register_component__WEBPACK_IMPORTED_MODULE_7__["RegisterComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_8__["NavbarComponent"],
-                _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_9__["ProfdashComponent"],
-                _services_filter_pipe__WEBPACK_IMPORTED_MODULE_12__["FilterPipe"]
+                _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
+                _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"],
+                _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_10__["ProfdashComponent"],
+                _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["FilterPipe"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
+                _navbar2_navbar2_component__WEBPACK_IMPORTED_MODULE_9__["Navbar2Component"],
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes),
@@ -148,11 +152,74 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
             ],
-            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_10__["AuthService"], _services_validate_service__WEBPACK_IMPORTED_MODULE_11__["ValidateService"]],
+            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _services_validate_service__WEBPACK_IMPORTED_MODULE_12__["ValidateService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.css":
+/*!*****************************************!*\
+  !*** ./src/app/home/home.component.css ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "h1\n{\n color: #0082FC;\n font-weight: bold;\n margin: 50px;\n margin-bottom: 45px;\n}\n\nh2\n{\n color: #000000;\n font-size: 17px;\n margin: 50px;\n}\n\np\n{\n color: #000000;\n font-size: 15px;\n margin: 50px;\n margin-top: 45px;\n}\n\n.container\n{\n  position: relative;\n}\n\n.intro\n{\n background-color: #ffffff;\n position: absolute;\n top: 120px;\n left: -55px;\n width: 50%;\n font-family: Verdana, sans-serif;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n position: absolute;\n width: 50%;\n right: -55px;\n bottom: -70vh;\n border: 5px;\n border-radius: 10px 10px 10px 10px;\n}\n\ninput[type=submit]  \n{\n background-color: #fff;\n font-weight: bold;\n position: absolute;\n border: none;\n color: #0082FC;\n top: 500px;\n left: -75px;\n padding: 15px 80px;\n text-align: center;\n text-decoration: none;\n display: inline-block;\n text-transform: uppercase;\n font-size: 13px;\n box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n border-radius: 5px 5px 5px 5px;\n margin: 5px 20px 40px 20px;\n transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.html":
+/*!******************************************!*\
+  !*** ./src/app/home/home.component.html ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> \n\t<body>\n\t\t<div class = \"container\">\n\t\t\t<div class=\"intro\">\n\n\t\t\t\t<h1>\n\t\t\t\t\tBLU-Attendance\n\t\t\t\t</h1>\n\n\t    \t\t\t<h2>\n\t\t\t\t\tImprove your class attendance grading with a BLU-Attendance\n\t\t\t\t</h2>\n\n\t\t\t\t<p>\n\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\n\t\t\t\t\t<br>\n\t\t\t\t</p>\n\n\t\t\t</div>\n\n\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\t\t\t\n\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\n\t\t</div>\n\t</body>\n</html>\n"
+
+/***/ }),
+
+/***/ "./src/app/home/home.component.ts":
+/*!****************************************!*\
+  !*** ./src/app/home/home.component.ts ***!
+  \****************************************/
+/*! exports provided: HomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var HomeComponent = /** @class */ (function () {
+    function HomeComponent() {
+    }
+    HomeComponent.prototype.ngOnInit = function () {
+    };
+    HomeComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-home',
+            template: __webpack_require__(/*! ./home.component.html */ "./src/app/home/home.component.html"),
+            styles: [__webpack_require__(/*! ./home.component.css */ "./src/app/home/home.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], HomeComponent);
+    return HomeComponent;
 }());
 
 
@@ -258,38 +325,38 @@ var LoginComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./src/app/navbar/navbar.component.css":
-/*!*********************************************!*\
-  !*** ./src/app/navbar/navbar.component.css ***!
-  \*********************************************/
+/***/ "./src/app/navbar2/navbar2.component.css":
+/*!***********************************************!*\
+  !*** ./src/app/navbar2/navbar2.component.css ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\n    font-family: 'helvetica',sans-serif;\n}\n\n.navbar-toggler:focus,\n.navbar-toggler:active {\n    outline: 0;\n}\n\n.navbar-brand{\n  font-size: 25px;\n}\n\n.navbar-toggler span {\n   display: block;\n   background-color: #ffffff;\n   height: 3px;\n   width: 25px;\n   margin-top: 4px;\n   margin-bottom: 4px;\n   -webkit-transform: rotate(0deg);\n   transform: rotate(0deg);\n   position: relative;\n   right: 0;\n   opacity: 1;\n}\n\n.navbar-toggler span:nth-child(1),\n.navbar-toggler span:nth-child(3) {\n   transition: -webkit-transform .35s ease-in-out;\n   transition: transform .35s ease-in-out;\n   transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(1) {\n    position: absolute;\n    right: 29px;\n    top: 23px;\n    -webkit-transform: rotate(135deg);\n    transform: rotate(135deg);\n    opacity: 0.9;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(2) {\n    height: 12px;\n    visibility: hidden;\n    background-color: transparent;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(3) {\n    position: absolute;\n    right: 29px;\n    top: 23px;\n    -webkit-transform: rotate(-135deg);\n    transform: rotate(-135deg);\n    opacity: 0.9;\n}\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n"
+module.exports = "body {\n    font-family: 'helvetica',sans-serif;\n}\n\n.navbar-toggler:focus,\n.navbar-toggler:active {\n    outline: 0;\n}\n\n.navbar-brand{\n  font-size: 25px;\n}\n\n.navbar-toggler span {\n   display: block;\n   background-color: #ffffff;\n   height: 3px;\n   width: 25px;\n   margin-top: 4px;\n   margin-bottom: 4px;\n   -webkit-transform: rotate(0deg);\n   transform: rotate(0deg);\n   position: relative;\n   right: 0;\n   opacity: 1;\n}\n\n.navbar-toggler span:nth-child(1),\n.navbar-toggler span:nth-child(3) {\n   transition: -webkit-transform .35s ease-in-out;\n   transition: transform .35s ease-in-out;\n   transition: transform .35s ease-in-out, -webkit-transform .35s ease-in-out;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(1) {\n    position: absolute;\n    right: 29px;\n    top: 23px;\n    -webkit-transform: rotate(135deg);\n    transform: rotate(135deg);\n    opacity: 0.9;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(2) {\n    height: 12px;\n    visibility: hidden;\n    background-color: transparent;\n}\n\n.navbar-toggler:not(.collapsed) span:nth-child(3) {\n    position: absolute;\n    right: 29px;\n    top: 23px;\n    -webkit-transform: rotate(-135deg);\n    transform: rotate(-135deg);\n    opacity: 0.9;\n}\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n\n.logIn\n{\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  background-color: #56baed;\n  padding: 10px 20px;\n  border: none;\n  color: white;\n  box-shadow: 0 5px 10px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n}\n\n.logIn:hover  \n{\n  background-color: #39ace7;\n}\n\n.logIn:active\n{\n -webkit-transform: scale(0.95);\n transform: scale(0.95);\n}\n"
 
 /***/ }),
 
-/***/ "./src/app/navbar/navbar.component.html":
+/***/ "./src/app/navbar2/navbar2.component.html":
+/*!************************************************!*\
+  !*** ./src/app/navbar2/navbar2.component.html ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js\"></script>\n<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n<!--- Include the above in your HEAD tag ---------->\n\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\" style=\"color: #0082FC\">\n  <a class=\"navbar-brand\" href=\"/home\" style=\"color: #0082FC\">Bluetooth Attendance</a>\n  <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-link\">\n        <a class=\"underlineHover\" href=\"#\" style=\"text-decoration: none\">About</a>\n      </li>\n      <li class=\"nav-link\">\n        <a class= \"underlineHover\" href=\"#\" style=\"text-decoration: none\">Purchase Access</a>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <button class=\"logIn\" type=\"submit\" [routerLink] = \"['/login']\">Sign In</button>\n    </form>\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./src/app/navbar2/navbar2.component.ts":
 /*!**********************************************!*\
-  !*** ./src/app/navbar/navbar.component.html ***!
+  !*** ./src/app/navbar2/navbar2.component.ts ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js\"></script>\n<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n<!--- Include the above in your HEAD tag ---------->\n\n<nav class=\"navbar navbar-expand-lg navbar-light bg-light\" style=\"color: #0082FC\">\n  <a class=\"navbar-brand\" href=\"/profdash\" style=\"color: #0082FC\">Bluetooth Attendance Dashboard | </a>\n  <button class=\"navbar-toggler navbar-toggler-right collapsed\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span></span>\n    <span></span>\n    <span></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-link\">\n        <a class=\"underlineHover\" href=\"#\" style=\"text-decoration: none\">About</a>\n      </li>\n      <li class=\"nav-link\">\n        <a class= \"underlineHover\" href=\"#\" style=\"text-decoration: none\">Purchase Access</a>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"color: #0082FC\">Menu</a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\" href=\"#\" style=\"color: #0082FC\">Create Class</a>\n          <a class=\"dropdown-item\" href=\"#\" style=\"color: #0082FC\">Search Students</a>\n          <div class=\"dropdown-divider\"></div>\n          <a class=\"dropdown-item\" href=\"#\" style=\"color: #0082FC\">Account Options</a>\n        </div>\n      </li>\n    </ul>\n    <form class=\"form-inline my-2 my-lg-0\">\n      <button class=\"btn btn-outline-danger my-2 my-sm-0\" type=\"submit\">Log Out</button>\n    </form>\n  </div>\n</nav>\n"
-
-/***/ }),
-
-/***/ "./src/app/navbar/navbar.component.ts":
-/*!********************************************!*\
-  !*** ./src/app/navbar/navbar.component.ts ***!
-  \********************************************/
-/*! exports provided: NavbarComponent */
+/*! exports provided: Navbar2Component */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Navbar2Component", function() { return Navbar2Component; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -301,20 +368,20 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var NavbarComponent = /** @class */ (function () {
-    function NavbarComponent() {
+var Navbar2Component = /** @class */ (function () {
+    function Navbar2Component() {
     }
-    NavbarComponent.prototype.ngOnInit = function () {
+    Navbar2Component.prototype.ngOnInit = function () {
     };
-    NavbarComponent = __decorate([
+    Navbar2Component = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-navbar',
-            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
-            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
+            selector: 'app-navbar2',
+            template: __webpack_require__(/*! ./navbar2.component.html */ "./src/app/navbar2/navbar2.component.html"),
+            styles: [__webpack_require__(/*! ./navbar2.component.css */ "./src/app/navbar2/navbar2.component.css")]
         }),
         __metadata("design:paramtypes", [])
-    ], NavbarComponent);
-    return NavbarComponent;
+    ], Navbar2Component);
+    return Navbar2Component;
 }());
 
 
@@ -328,7 +395,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Poppins');\n\n/* BASIC */\n\nhtml {\n  background-color: #0082fc;\n}\n\nbody {\n  font-family: \"Poppins\", sans-serif;\n  height: 100vh;\n}\n\na {\n  color: #92badd;\n  display:inline-block;\n  text-decoration: none;\n  font-weight: 400;\n}\n\nh2 {\n  text-align: center;\n  font-size: 16px;\n  font-weight: 600;\n  text-transform: uppercase;\n  display:inline-block;\n  margin: 40px 8px 10px 8px;\n  color: #cccccc;\n}\n\n/* STRUCTURE */\n\n.wrapper {\n  display: flex;\n  align-items: center;\n  flex-direction: column;\n  justify-content: center;\n  width: 100%;\n  min-height: 100%;\n  padding: 20px;\n}\n\n#formContent {\n  border-radius: 10px 10px 10px 10px;\n  background: #fff;\n  padding: 30px;\n  width: 90%;\n  max-width: 450px;\n  position: relative;\n  padding: 0px;\n  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);\n  text-align: center;\n}\n\n#formFooter {\n  background-color: #f6f6f6;\n  border-top: 1px solid #dce8f1;\n  padding: 25px;\n  text-align: center;\n  border-radius: 0 0 10px 10px;\n}\n\n/* TABS */\n\nh2.inactive {\n  color: #cccccc;\n}\n\nh2.active {\n  color: #0d0d0d;\n  border-bottom: 2px solid #5fbae9;\n}\n\n/* FORM TYPOGRAPHY*/\n\ninput[type=button], input[type=submit], input[type=reset]  {\n  background-color: #56baed;\n  border: none;\n  color: white;\n  padding: 15px 80px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  font-size: 13px;\n  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n  margin: 5px 20px 40px 20px;\n  transition: all 0.3s ease-in-out;\n}\n\ninput[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {\n  background-color: #39ace7;\n}\n\ninput[type=button]:active, input[type=submit]:active, input[type=reset]:active  {\n  -webkit-transform: scale(0.95);\n  transform: scale(0.95);\n}\n\ninput[type=text] {\n  background-color: #f6f6f6;\n  border: none;\n  color: #0d0d0d;\n  padding: 15px 32px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 5px;\n  width: 85%;\n  border: 2px solid #f6f6f6;\n  transition: all 0.5s ease-in-out;\n  border-radius: 5px 5px 5px 5px;\n}\n\ninput[type=text]:focus {\n  background-color: #fff;\n  border-bottom: 2px solid #5fbae9;\n}\n\ninput[type=text]:placeholder {\n  color: #cccccc;\n}\n\n/* ANIMATIONS */\n\n/* Simple CSS3 Fade-in-down Animation */\n\n.fadeInDown {\n  -webkit-animation-name: fadeInDown;\n  animation-name: fadeInDown;\n  -webkit-animation-duration: 1s;\n  animation-duration: 1s;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both;\n}\n\n@-webkit-keyframes fadeInDown {\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n    transform: translate3d(0, -100%, 0);\n  }\n  100% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n}\n\n@keyframes fadeInDown {\n  0% {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n    transform: translate3d(0, -100%, 0);\n  }\n  100% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n}\n\n/* Simple CSS3 Fade-in Animation */\n\n@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\n\n@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\n\n.fadeIn {\n  opacity:0;\n  -webkit-animation:fadeIn ease-in 1;\n  animation:fadeIn ease-in 1;\n\n  -webkit-animation-fill-mode:forwards;\n  animation-fill-mode:forwards;\n\n  -webkit-animation-duration:1s;\n  animation-duration:1s;\n}\n\n.fadeIn.first {\n  -webkit-animation-delay: 0.4s;\n  animation-delay: 0.4s;\n}\n\n.fadeIn.second {\n  -webkit-animation-delay: 0.6s;\n  animation-delay: 0.6s;\n}\n\n.fadeIn.third {\n  -webkit-animation-delay: 0.8s;\n  animation-delay: 0.8s;\n}\n\n.fadeIn.fourth {\n  -webkit-animation-delay: 1s;\n  animation-delay: 1s;\n}\n\n/* Simple CSS3 Fade-in Animation */\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n\n/* OTHERS */\n\n*:focus {\n    outline: none;\n}\n\n#icon {\n  width:60%;\n}\n\n* {\n  box-sizing: border-box;\n}\n"
+module.exports = "body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-wrap: break-word;\n}\n#dash .container  {\n  margin-top: 30px;\n\n  height: 500px;\n  box-shadow: 0px 0px 20px grey;\n\n}\n#dash .container #login-row #login-column #login-box #login-form {\n  padding: 20px;\n}\n#dash .container #login-row #login-column #login-box #login-form #register-link {\n  margin-top: -85px;\n}\n#dash .btn-info {\n  background-color: #0082FC;\n  border-color:#0082FC;\n}\n#dash .btn-succes {\n  background-color: #0082FC;\n  border-color: #0082FC;\n}\n#dash .text-info {\n  color: #0082FC!important;\n}\n#cont {\n  margin-top:10vh;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background-color:  #F9F8FA;\n  box-shadow: 0px 0px 20px grey;\n}\n#dashbody{\n  margin-top:5vh;\n}\n.alignRight{\n  text-align: right;\n}\n"
 
 /***/ }),
 
@@ -339,7 +406,7 @@ module.exports = "@import url('https://fonts.googleapis.com/css?family=Poppins')
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<app-navbar></app-navbar>\n"
+module.exports = "<!DOCTYPE html>\n\n<body>\n  <div id=\"dashboard\">\n        <div class=\"container\" id=\"cont\">\n            <div class=\"row\" style=\" padding-top: 10px; padding-bottom: 15px;margin: 5px;background-color: grey;\">\n              <div class=\"col-md-6\"><h2 style=\"color:#779ECB;\">Welcome {{user.name}}</h2></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Class List</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">All Students</button></div>\n              <div class=\"col-md-2\"><button class=\"btn btn-success\" (click)=\"onLogOutButton()\" style=\"background-color:#779ECB; border-color:#779ECB;margin-left: 25%;\">Log Out</button></div>\n            </div>\n          <div id=\"dashbody\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <h1>Classes</h1>\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <button style=\"background-color:#779ECB;\">Add a Class</button>\n              </div>\n              <div class=\"col-md-9\">\n              <div class=\"form-group\">\n                  <input placeholder=\"Enter Name to Search\" name=\"inputString\" [(ngModel)] = \"inputString\" class=\"form-control\" style=\"max-width:250px; padding-bottom:10px;\">\n              </div>\n              </div>\n              <table class=\"table table-striped\" style=\"padding-top:0px;\">\n                <thead style=\"background-color: #bfbfbf; color: white;\">\n                  <tr style=\"  box-shadow: 0px 0px 10px grey;\">\n                    <th><h6><strong>Name</strong></h6></th>\n                    <th><h6><strong>Phone</strong></h6></th>\n                    <th><h6><strong>Email</strong></h6></th>\n                    <th><h6><strong>Address</strong></h6></th>\n                    <th><h6><strong>Options</strong></h6></th>\n    \t\t\t\t        <th><h6><strong></strong></h6></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr id=\"contacts\">\n                     <tr *ngFor=\"let contact of contactlist | filter : inputString;\">\n                      <td><a (click)=\"onVcfButton(contact)\" style=\"color: #779ECB;\">{{contact.name}}</a></td>\n                      <td>{{contact.phone}}</td>\n                      <td>{{contact.email}}</td>\n                      <td><a (click)=\"onMapsButton(contact.address)\" style=\"color: #779ECB;;\">{{contact.address}}</a></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onEditButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Edit</button></td>\n                      <td><button class=\"btn btn-info\" (click)=\"onDeleteButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;  \">Delete</button></td>\n\n    \t\t\t\t\t            <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                          <!-- <button class=\"btn btn-info\" (click)=\"onVcfButton(contact)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Download Contact</button></td> -->\n    \t\t\t\t\t           <!-- <button class=\"btn btn-info\" (click)=\"onMapsButton(contact.address)\" style=\"background-color:#779ECB; border-color:#779ECB;\">Open in Google Maps</button> -->\n                      <!-- <td><button class=\"close\" aria-label=\"Close\"(click)=\"onDeleteButton(contact)\"><span aria-hidden=\"true\">&times;</span></button></td> -->\n\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n        </div>\n      </div>\n    </div>\n      <p style=\"padding-top:15px; color: #0082FC\">If you notice this then good for you.</p>\n</body>\n"
 
 /***/ }),
 
@@ -355,6 +422,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfdashComponent", function() { return ProfdashComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -366,11 +434,27 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var ProfdashComponent = /** @class */ (function () {
-    function ProfdashComponent(router) {
+    function ProfdashComponent(router, authService) {
         this.router = router;
+        this.authService = authService;
     }
     ProfdashComponent.prototype.ngOnInit = function () {
+        //  if (sessionStorage.length == 0){
+        //    this.router.navigate(['/home']);
+        //  }
+        //  this.pageLoad();
+    };
+    ProfdashComponent.prototype.pageLoad = function () {
+        var temp = sessionStorage.getItem('user');
+        this.user = JSON.parse(temp);
+        this.authService.storeUser(this.user);
+        this.user_id = this.user['id'];
+    };
+    ProfdashComponent.prototype.onLogOutButton = function () {
+        sessionStorage.clear();
+        this.router.navigate(['/home']);
     };
     ProfdashComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -378,7 +462,7 @@ var ProfdashComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./profdash.component.html */ "./src/app/profdash/profdash.component.html"),
             styles: [__webpack_require__(/*! ./profdash.component.css */ "./src/app/profdash/profdash.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], ProfdashComponent);
     return ProfdashComponent;
 }());
@@ -394,7 +478,7 @@ var ProfdashComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "@import url('https://fonts.googleapis.com/css?family=Poppins');\n\nhtml \n{\n  background-color: #0082fc;\n}\n\nbody \n{\n  font-family: \"Poppins\", sans-serif;\n  height: 100vh;\n}\n\na\n{\n  color: #A9A9A9;\n  display:inline-block;\n  text-decoration: none;\n  font-weight: 400;\n}\n\nh1\n{\n  text-align: center;\n  font-family: \"Poppins\", sans-serif;\n}\n\nh2 \n{\n  text-align: center;\n  font-size: 16px;\n  font-weight: 600;\n  text-transform: uppercase;\n  display:inline-block;\n  margin: 40px 8px 10px 8px;\n  color: #cccccc;\n}\n\n#passwordShow\n{\n  margin-right: 240px;\n  margin-top: 10px;\n  margin-bottom: 20px;\n  color: #696969;\n  font-family: \"Poppins\", sans-serif;\n}\n\n#header\n{\n  text-align: center;\n  font-size: 16px;\n  font-weight: 600;\n  text-transform: uppercase;\n  display:inline-block;\n  margin: 40px 8px 10px 8px;\n}\n\n/* Animations of the Main Box */\n\n.wrapper \n{\n  display: flex;\n  align-items: center;\n  flex-direction: column;\n  justify-content: center;\n  width: 100%;\n  min-height: 100%;\n  padding: 20px;\n}\n\n#formContent \n{\n  border-radius: 10px 10px 10px 10px;\n  background: #fff;\n  padding: 30px;\n  width: 90%;\n  max-width: 450px;\n  position: relative;\n  padding: 0px;\n  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);\n  text-align: center;\n}\n\n.fadeInDown \n{\n  -webkit-animation-name: fadeInDown;\n  animation-name: fadeInDown;\n  -webkit-animation-duration: 1s;\n  animation-duration: 1s;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both;\n}\n\n@-webkit-keyframes fadeInDown \n{\n  0% \n  {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n    transform: translate3d(0, -100%, 0);\n  }\n  100% \n  {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n}\n\n@keyframes fadeInDown \n{\n  0% \n  {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n    transform: translate3d(0, -100%, 0);\n  }\n  100% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n}\n\n/* Simple CSS3 Fade-in Animation */\n\n@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\n\n@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\n\n.fadeIn \n{\n  opacity:0;\n  -webkit-animation:fadeIn ease-in 1;\n  animation:fadeIn ease-in 1;\n\n  -webkit-animation-fill-mode:forwards;\n  animation-fill-mode:forwards;\n\n  -webkit-animation-duration: 0.5s;\n  animation-duration: 0.5s;\n}\n\n.fadeIn.zero \n{\n  -webkit-animation-delay: 0.2s;\n  animation-delay: 0.2s;\n}\n\n.fadeIn.first \n{\n  -webkit-animation-delay: 0.3s;\n  animation-delay: 0.3s;\n}\n\n.fadeIn.second \n{\n  -webkit-animation-delay: 0.4s;\n  animation-delay: 0.4s;\n}\n\n.fadeIn.third \n{\n  -webkit-animation-delay: 0.5s;\n  animation-delay: 0.5s;\n}\n\n.fadeIn.fourth \n{\n  -webkit-animation-delay: 0.6s;\n  animation-delay: 0.6s;\n}\n\n.fadeIn.fifth\n{\n  -webkit-animation-delay: 0.7s;\n  animation-delay: 0.7s;\n}\n\n/* FORM TYPOGRAPHY*/\n\ninput[type=button], input[type=submit], input[type=reset]  \n{\n  background-color: #56baed;\n  border: none;\n  color: white;\n  padding: 15px 80px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  font-size: 13px;\n  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n  margin: 5px 20px 40px 20px;\n  transition: all 0.3s ease-in-out;\n}\n\ninput[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  \n{\n  background-color: #39ace7;\n}\n\ninput[type=button]:active, input[type=submit]:active, input[type=reset]:active  \n{\n  -webkit-transform: scale(0.95);\n  transform: scale(0.95);\n}\n\ninput[type=text], [type=password], [type=email] \n{\n  background-color: #f6f6f6;\n  border: none;\n  color: #0d0d0d;\n  padding: 15px 32px;\n  text-align: left;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 5px;\n  width: 85%;\n  border: 2px solid #f6f6f6;\n  transition: all 0.5s ease-in-out;\n  border-radius: 5px 5px 5px 5px;\n}\n\ninput[type=text]:focus, [type=password]:focus \n{\n  background-color: #fff;\n  border-bottom: 2px solid #5fbae9;\n}\n\ninput[type=text]:placeholder , [type=password]:placeholder, [type=email]:placeholder  \n{\n  color: #cccccc;\n}\n\n/* Underlining of the Links */\n\nh2.inactive \n{\n  color: #cccccc;\n}\n\nh2.active \n{\n  color: #0d0d0d;\n  border-bottom: 2px solid #5fbae9;\n}\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n\n#icon \n{\n  width:50%;\n}\n\n*:focus \n{\n  outline: none;\n}\n\n* \n{\n  box-sizing: border-box;\n}\n\n"
+module.exports = "@import url('https://fonts.googleapis.com/css?family=Poppins');\n\nhtml \n{\n  background-color: #0082fc;\n}\n\nbody \n{\n  font-family: \"Poppins\", sans-serif;\n  height: 100vh;\n}\n\na\n{\n  color: #A9A9A9;\n  display:inline-block;\n  text-decoration: none;\n  font-weight: 400;\n}\n\nh1\n{\n  text-align: center;\n  font-family: \"Poppins\", sans-serif;\n}\n\nh2 \n{\n  text-align: center;\n  font-size: 16px;\n  font-weight: 600;\n  text-transform: uppercase;\n  display:inline-block;\n  margin: 40px 8px 10px 8px;\n  color: #cccccc;\n}\n\n#passwordShow\n{\n  margin-right: 240px;\n  margin-top: 10px;\n  margin-bottom: 20px;\n  color: #696969;\n  font-family: \"Poppins\", sans-serif;\n}\n\n#header\n{\n  text-align: center;\n  font-size: 16px;\n  font-weight: 600;\n  text-transform: uppercase;\n  display:inline-block;\n  margin: 40px 8px 10px 8px;\n}\n\n/* Animations of the Main Box */\n\n.wrapper \n{\n  display: flex;\n  align-items: center;\n  flex-direction: column;\n  justify-content: center;\n  width: 100%;\n  min-height: 100%;\n  padding: 20px;\n}\n\n#formContent \n{\n  border-radius: 10px 10px 10px 10px;\n  background: #fff;\n  padding: 30px;\n  width: 90%;\n  max-width: 450px;\n  position: relative;\n  padding: 0px;\n  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);\n  text-align: center;\n}\n\n.fadeInDown \n{\n  -webkit-animation-name: fadeInDown;\n  animation-name: fadeInDown;\n  -webkit-animation-duration: 1s;\n  animation-duration: 1s;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both;\n}\n\n@-webkit-keyframes fadeInDown \n{\n  0% \n  {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n    transform: translate3d(0, -100%, 0);\n  }\n  100% \n  {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n}\n\n@keyframes fadeInDown \n{\n  0% \n  {\n    opacity: 0;\n    -webkit-transform: translate3d(0, -100%, 0);\n    transform: translate3d(0, -100%, 0);\n  }\n  100% {\n    opacity: 1;\n    -webkit-transform: none;\n    transform: none;\n  }\n}\n\n/* Simple CSS3 Fade-in Animation */\n\n@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\n\n@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }\n\n.fadeIn \n{\n  opacity:0;\n  -webkit-animation:fadeIn ease-in 1;\n  animation:fadeIn ease-in 1;\n\n  -webkit-animation-fill-mode:forwards;\n  animation-fill-mode:forwards;\n\n  -webkit-animation-duration: 0.5s;\n  animation-duration: 0.5s;\n}\n\n.fadeIn.zero \n{\n  -webkit-animation-delay: 0.2s;\n  animation-delay: 0.2s;\n}\n\n.fadeIn.first \n{\n  -webkit-animation-delay: 0.3s;\n  animation-delay: 0.3s;\n}\n\n.fadeIn.second \n{\n  -webkit-animation-delay: 0.4s;\n  animation-delay: 0.4s;\n}\n\n.fadeIn.third \n{\n  -webkit-animation-delay: 0.5s;\n  animation-delay: 0.5s;\n}\n\n.fadeIn.fourth \n{\n  -webkit-animation-delay: 0.6s;\n  animation-delay: 0.6s;\n}\n\n.fadeIn.fifth\n{\n  -webkit-animation-delay: 0.7s;\n  animation-delay: 0.7s;\n}\n\n/* FORM TYPOGRAPHY*/\n\ninput[type=button], input[type=submit], input[type=reset]  \n{\n  background-color: #56baed;\n  border: none;\n  color: white;\n  padding: 15px 80px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  font-size: 13px;\n  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n  margin: 5px 20px 40px 20px;\n  transition: all 0.3s ease-in-out;\n}\n\ninput[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  \n{\n  background-color: #39ace7;\n}\n\ninput[type=button]:active, input[type=submit]:active, input[type=reset]:active  \n{\n  -webkit-transform: scale(0.95);\n  transform: scale(0.95);\n}\n\ninput[type=text], [type=password], [type=email] \n{\n  background-color: #f6f6f6;\n  border: none;\n  color: #0d0d0d;\n  padding: 15px 32px;\n  text-align: left;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 16px;\n  margin: 5px;\n  width: 85%;\n  border: 2px solid #f6f6f6;\n  transition: all 0.5s ease-in-out;\n  border-radius: 5px 5px 5px 5px;\n}\n\ninput[type=text]:focus, [type=password]:focus, [type=email]:focus  \n{\n  background-color: #fff;\n  border-bottom: 2px solid #5fbae9;\n}\n\ninput[type=text]:placeholder , [type=password]:placeholder, [type=email]:placeholder  \n{\n  color: #cccccc;\n}\n\n/* Underlining of the Links */\n\nh2.inactive \n{\n  color: #cccccc;\n}\n\nh2.active \n{\n  color: #0d0d0d;\n  border-bottom: 2px solid #5fbae9;\n}\n\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n\n.underlineHover:hover:after{\n  width: 100%;\n}\n\n#icon \n{\n  margin: 20px;\n  width:50%;\n}\n\n*:focus \n{\n  outline: none;\n}\n\n* \n{\n  box-sizing: border-box;\n}\n\ninput:invalid\n{\n  box-shadow: none;\n}\n\n"
 
 /***/ }),
 
@@ -405,7 +489,7 @@ module.exports = "@import url('https://fonts.googleapis.com/css?family=Poppins')
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n\n<html>\n\n  <h1>Please Fill in All the Fields</h1> \n\n  <div class=\"wrapper fadeInDown\">    \n\n     <div id=\"formContent\">\n        <a [routerLink] = \"['/login']\" id=\"header\" class=\"underlineHover\" hrep=\"#\"> Sign In </a>\n        <h2 href=\"#\" class=\"active\" id=\"sign-up\">Sign Up </h2>\n\n        <!-- Logo -->\n        <div class=\"fadeIn zero\">\n           <img src=\"http://superstation95.com/wp-content/uploads/2018/07/daftar10.png\" id=\"icon\" alt=\"Computer Hope\"/>\n        </div> \n\n        <input type=\"text\" id=\"fname\" class=\"fadeIn first\" name=\"fname\" placeholder=\"Full Name\">\n\n        <input type=\"email\" id=\"email\" class=\"fadeIn second\" name=\"uname\" placeholder=\"Email\">\n\n        <input type=\"text\" id=\"univId\" class=\"fadeIn third\" name=\"univId\" placeholder=\"University ID\">\n \n        <input type=\"text\" id=\"access\" class=\"fadeIn fifth\" name=\"access\" placeholder=\"Access Key\">\n\n        <input type=\"password\" id=\"password\" class=\"fadeIn fifth\" name=\"password\" placeholder=\"Password\">\n\n        <div id=\"passwordShow\">\n           <input type=\"checkbox\" (click)=\"showPassword()\"> Show Password\n        </div>\n\n        <!-- Submit -->\n        <div>\n           <input type=\"submit\" class=\"fadeIn fourth\" value=\"Submit\">\n        </div>\n\n     </div>\n  </div>\n\n</html>\n"
+module.exports = "<!DOCTYPE html>\n\n<html>\n\n  <h1>Please Fill in All the Fields</h1>\n\n  <div class=\"wrapper fadeInDown\">\n\n     <div id=\"formContent\">\n        <a [routerLink] = \"['/login']\" id=\"header\" class=\"underlineHover\" hrep=\"#\"> Sign In </a>\n        <h2 href=\"#\" class=\"active\" id=\"sign-up\">Sign Up </h2>\n\n        <!-- Logo -->\n        <div class=\"fadeIn zero\">\n           <img src=\"https://1607.tel/icons/register.png\" id=\"icon\" alt=\"Computer Hope\"/>\n        </div>\n\n        <div class=\"fadeIn first\">\n           <input type=\"text\" id=\"fname\" name=\"fname\" placeholder=\"Full Name\" required [(ngModel)]=\"name\" #fullname=\"ngModel\">\n              <div *ngIf=\"fullname.errors && (fullname.dirty || fullname.touched)\" class=\"alert alert-danger\">\n\n                 <div [hidden]=\"!fullname.errors.required\">\n                    Full Name is Required!\n                 </div>\n\n              </div>\n        </div>\n\n        <div class=\"fadeIn Second\">\n           <input type=\"email\" id=\"email\" name=\"uname\" placeholder=\"Email\" required [(ngModel)]=\"email\" #ngEmail=\"ngModel\">\n              <div *ngIf=\"ngEmail.errors && (ngEmail.dirty || ngEmail.touched)\" class=\"alert alert-danger\">\n\n                 <div [hidden]=\"!ngEmail.errors.required\">\n                    Email is Required!\n                 </div>\n\n              </div>\n        </div>\n\n        <div class=\"fadeIn third\">\n           <input type=\"text\" id=\"univId\" name=\"univId\" placeholder=\"University ID\" required [(ngModel)]=\"profNID\" #ngId=\"ngModel\">\n              <div *ngIf=\"ngId.errors && (ngId.dirty || ngId.touched)\" class=\"alert alert-danger\">\n\n                 <div [hidden]=\"!ngId.errors.required\">\n                    University ID is Required!\n                 </div>\n\n              </div>\n        </div>\n\n        <div class=\"fadeIn fifth\">\n           <input type=\"password\" id=\"password\" name=\"password\" placeholder=\"Password\" required minlength=\"7\" [(ngModel)]=\"password\" #ngPassword=\"ngModel\">\n              <div *ngIf=\"ngPassword.errors && (ngPassword.dirty || ngPassword.touched)\" class=\"alert alert-danger\">\n\n                 <div [hidden]=\"!ngPassword.errors.required\">\n                    Password is Required!\n                 </div>\n\n                 <div [hidden]=\"!ngPassword.errors.minlength\">\n                    At least 7 characters are Required!\n                 </div>\n\n              </div>\n        </div>\n\n        <div id=\"passwordShow\">\n           <input type=\"checkbox\" (click)=\"showPassword()\"> Show Password\n        </div>\n\n        <!-- Submit -->\n        <div>\n           <input type=\"submit\" class=\"fadeIn fourth\" value=\"Submit\" (click)=\"onSubmit()\">\n        </div>\n\n     </div>\n  </div>\n\n</html>\n"
 
 /***/ }),
 
@@ -421,6 +505,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterComponent", function() { return RegisterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -432,9 +517,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var RegisterComponent = /** @class */ (function () {
-    function RegisterComponent(router) {
+    function RegisterComponent(router, authService) {
         this.router = router;
+        this.authService = authService;
     }
     RegisterComponent.prototype.ngOnInit = function () {
     };
@@ -447,13 +534,29 @@ var RegisterComponent = /** @class */ (function () {
             x.type = "password";
         }
     };
+    RegisterComponent.prototype.onSubmit = function () {
+        var _this = this;
+        alert("TEST");
+        var user = {
+            profNID: this.profNID,
+            name: this.name,
+            password: this.password,
+            email: this.email
+        };
+        this.authService.registerUser(user).subscribe(function (data) {
+            _this.router.navigate(['/login']);
+        }, function (err) {
+            alert('Oh no! Something went wrong. Please try again!');
+            _this.router.navigate(['/register']);
+        });
+    };
     RegisterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-register',
             template: __webpack_require__(/*! ./register.component.html */ "./src/app/register/register.component.html"),
             styles: [__webpack_require__(/*! ./register.component.css */ "./src/app/register/register.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -498,26 +601,10 @@ var AuthService = /** @class */ (function () {
     };
     // Endpoints for logging in and registering user
     AuthService.prototype.registerUser = function (user) {
-        return this.http.post('/api/users/createuser', user, { headers: this.headers });
+        return this.http.post('/api/professors/createProfessor', user, { headers: this.headers });
     };
     AuthService.prototype.loginUser = function (user) {
         return this.http.post('/api/professors/login', user, { headers: this.headers });
-    };
-    // Endpoints for interacting with Contacts
-    AuthService.prototype.getContacts = function () {
-        return this.http.get('/api/contacts/' + this.user.id, { headers: this.headers });
-    };
-    AuthService.prototype.addContact = function (contact) {
-        return this.http.post('/api/contacts/create/' + this.user.id, contact, { headers: this.headers });
-    };
-    AuthService.prototype.updateContact = function (contact) {
-        return this.http.post('/api/contacts/update/' + contact._id, contact, { headers: this.headers });
-    };
-    AuthService.prototype.deleteContact = function (contact) {
-        return this.http.post('/api/contacts/delete/' + contact._id, { headers: this.headers });
-    };
-    AuthService.prototype.downloadContact = function (contact) {
-        return this.http.post('/api/contacts/download/' + contact._id, contact, { headers: this.headers });
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
