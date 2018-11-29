@@ -23,6 +23,119 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/add-class/add-class.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/add-class/add-class.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-wrap: break-word;\n}\n\n#dash .container  {\n  margin-top: 30px;\n\n  height: 500px;\n  box-shadow: 0px 0px 20px grey;\n\n}\n#dash .container #login-row #login-column #login-box #login-form {\n  padding: 20px;\n}\n#dash .container #login-row #login-column #login-box #login-form #register-link {\n  margin-top: -85px;\n}\n#dash .btn-info {\n  background-color: #0082FC;\n  border-color:#0082FC;\n}\n#dash .btn-succes {\n  background-color: #0082FC;\n  border-color: #0082FC;\n}\n#dash .text-info {\n  color: #0082FC!important;\n}\n#cont {\n  margin-top:10vh;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background-color:  #F9F8FA;\n  box-shadow: 0px 0px 20px grey;\n}\n\n#dashbody{\n  margin-top:5vh;\n}\n.alignRight{\n  text-align: right;\n}\n\n/* MODAL STYLES\n-------------------------------*/\n/* jw-modal {\n  display: none;\n}\njw-modal .jw-modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  overflow: auto;\n}\njw-modal .jw-modal .jw-modal-body {\n  padding: 20px;\n  background: #000;\n  margin: 40px;\n}\njw-modal .jw-modal-background {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #000;\n  opacity: 0.75;\n  z-index: 900;\n}\nbody.jw-modal-open {\n  overflow: hidden;\n} */\nbody {\n  font-size: .875rem;\n}\n.feather {\n  width: 16px;\n  height: 16px;\n  vertical-align: text-bottom;\n}\n/*\n * Sidebar\n */\n.sidebar {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 100; /* Behind the navbar */\n  padding: 0;\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 48px; /* Height of navbar */\n  height: calc(100vh - 48px);\n  padding-top: .5rem;\n  overflow-x: hidden;\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link {\n  font-weight: 500;\n  color: #333;\n}\n.sidebar .nav-link .feather {\n  margin-right: 4px;\n  color: #999;\n}\n.sidebar .nav-link.active {\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather,\n.sidebar .nav-link.active .feather {\n  color: inherit;\n}\n.sidebar-heading {\n  font-size: .75rem;\n  text-transform: uppercase;\n}\n/*\n * Navbar\n */\n.navbar-brand {\n  padding-top: .75rem;\n  padding-bottom: .75rem;\n  font-size: 1rem;\n  background-color: rgba(0, 0, 0, .25);\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control {\n  padding: .75rem 1rem;\n  border-width: 0;\n  border-radius: 0;\n}\n.form-control-dark {\n  color: #fff;\n  background-color: rgba(255, 255, 255, .1);\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark:focus {\n  border-color: transparent;\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\n/*\n * Utilities\n */\n.border-top { border-top: 1px solid #e5e5e5; }\n.border-bottom { border-bottom: 1px solid #e5e5e5; }\n"
+
+/***/ }),
+
+/***/ "./src/app/add-class/add-class.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/add-class/add-class.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink]='[\"/profdash\"]'>\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\">\n                  <span data-feather=\"students\"></span>\n                  Students\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link active\">\n                  <span data-feather=\"addclass\"></span>\n                  Add a class <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Add a class</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n\n            </div>\n          </div>\n          <div>\n            <div class=\"col-md-5\">\n              <table class=\"table\">\n                <tbody>\n\n                  <tr>\n                    <input placeholder=\"Enter Class Title\" type=\"text\" name=\"name\" [(ngModel)] = \"class_name\" class=\"form-control\" style=\"margin-left: 1%;\">\n                  </tr>\n                  <tr>\n                    <input placeholder=\"Enter Course ID\" type=\"text\" name=\"phone\" [(ngModel)] = \"course_id\" class=\"form-control\" style=\"margin: 1%;\">\n                  </tr>\n                  <tr>\n                    <input placeholder=\"Enter Start Time\" type=\"text\" name=\"email\" [(ngModel)] = \"start_time\" class=\"form-control\" style=\"margin: 1%;\">\n                  </tr>\n                  <tr>\n                    <input placeholder=\"Enter End Time\" type=\"text\" name=\"address\" [(ngModel)] = \"end_time\" class=\"form-control\" style=\"margin: 1%;\">\n                  </tr>\n                  <tr>\n                    <button class=\"btn btn-success\" (click)=\"onAddClassButton()\" style=\"background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;\">\n                      Submit\n                    </button>\n                    <button class=\"btn btn-success\" (click)=\"clearFields()\" style=\"background-color:#c23b22; border-color:#c23b22; margin-top: 2%; margin-left: 1%;  \">\n                      Clear\n                    </button>\n                  </tr>\n                </tbody>\n              </table>\n              \n            </div>\n          </div>\n        </main>\n        <div class=\"col-md-5  pt-3 px-4\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Classes on Account</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n\n            </div>\n          </div>\n\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let course of courseList\">\n                    <td>{{course.className}}</td>\n                    <td>{{course.courseID}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
+
+/***/ }),
+
+/***/ "./src/app/add-class/add-class.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/add-class/add-class.component.ts ***!
+  \**************************************************/
+/*! exports provided: AddClassComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddClassComponent", function() { return AddClassComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AddClassComponent = /** @class */ (function () {
+    function AddClassComponent(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    AddClassComponent.prototype.ngOnInit = function () {
+        //  if (sessionStorage.length == 0){
+        //    this.router.navigate(['/home']);
+        //  }
+        this.pageLoad();
+    };
+    AddClassComponent.prototype.pageLoad = function () {
+        var temp = sessionStorage.getItem('user');
+        this.user = JSON.parse(temp);
+        this.authService.storeUser(this.user);
+        this.user_id = this.user['id'];
+        this.getCourseList();
+        this.getCourseList();
+    };
+    AddClassComponent.prototype.onLogOutButton = function () {
+        sessionStorage.clear();
+        this.router.navigate(['/home']);
+    };
+    AddClassComponent.prototype.clearFields = function () {
+        this.class_name = undefined;
+        this.course_id = undefined;
+        this.start_time = undefined;
+        this.end_time = undefined;
+    };
+    AddClassComponent.prototype.onAddClassButton = function () {
+        var _this = this;
+        var course = {
+            course_id: this.course_id,
+            class_name: this.class_name,
+            start_time: this.start_time,
+            end_time: this.end_time
+        };
+        this.authService.createClass(course).subscribe(function (data) {
+            _this.clearFields();
+        }, function (err) {
+            alert('Oh no! Something went wrong. Please try again!');
+        });
+        this.getCourseList();
+        this.getCourseList();
+    };
+    AddClassComponent.prototype.getCourseList = function () {
+        var _this = this;
+        this.authService.getCourses().subscribe(function (data) {
+            _this.courseList = data;
+        });
+    };
+    AddClassComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-add-class',
+            template: __webpack_require__(/*! ./add-class.component.html */ "./src/app/add-class/add-class.component.html"),
+            styles: [__webpack_require__(/*! ./add-class.component.css */ "./src/app/add-class/add-class.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+    ], AddClassComponent);
+    return AddClassComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -56,15 +169,12 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _content_modal_less__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./content/modal.less */ "./src/app/content/modal.less");
-/* harmony import */ var _content_modal_less__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_content_modal_less__WEBPACK_IMPORTED_MODULE_1__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
@@ -108,15 +218,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/validate.service */ "./src/app/services/validate.service.ts");
 /* harmony import */ var _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/filter.pipe */ "./src/app/services/filter.pipe.ts");
-/* harmony import */ var _directives_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./directives/modal.component */ "./src/app/directives/modal.component.ts");
-/* harmony import */ var _services_modal_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/modal.service */ "./src/app/services/modal.service.ts");
+/* harmony import */ var _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./add-class/add-class.component */ "./src/app/add-class/add-class.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -137,6 +245,7 @@ var appRoutes = [
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"] },
     { path: 'profdash', component: _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_10__["ProfdashComponent"] },
+    { path: 'addclass', component: _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__["AddClassComponent"] },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
@@ -152,7 +261,7 @@ var AppModule = /** @class */ (function () {
                 _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["FilterPipe"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
                 _navbar2_navbar2_component__WEBPACK_IMPORTED_MODULE_9__["Navbar2Component"],
-                _directives_modal_component__WEBPACK_IMPORTED_MODULE_14__["ModalComponent"]
+                _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__["AddClassComponent"]
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes),
@@ -160,102 +269,11 @@ var AppModule = /** @class */ (function () {
                 _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"]
             ],
-            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _services_validate_service__WEBPACK_IMPORTED_MODULE_12__["ValidateService"], _services_modal_service__WEBPACK_IMPORTED_MODULE_15__["ModalService"]],
+            providers: [_services_auth_service__WEBPACK_IMPORTED_MODULE_11__["AuthService"], _services_validate_service__WEBPACK_IMPORTED_MODULE_12__["ValidateService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/content/modal.less":
-/*!************************************!*\
-  !*** ./src/app/content/modal.less ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/* MODAL STYLES\n-------------------------------*/\njw-modal {\n  /* modals are hidden by default */\n  display: none;\n}\njw-modal .jw-modal {\n  /* modal container fixed across whole screen */\n  position: center;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  /* z-index must be higher than .jw-modal-background */\n  z-index: 1000;\n  /* enables scrolling for tall modals */\n  overflow: auto;\n}\njw-modal .jw-modal .jw-modal-body {\n  padding: 20px;\n  background: #fff;\n  /* margin exposes part of the modal background */\n  margin: 40px;\n}\njw-modal .jw-modal-background {\n  /* modal background fixed across whole screen */\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  /* semi-transparent black  */\n  background-color: #000;\n  opacity: 0.75;\n  /* z-index must be below .jw-modal and above everything else  */\n  z-index: 900;\n}\nbody.jw-modal-open {\n  /* body overflow is hidden to hide main scrollbar when modal window is open */\n  overflow: hidden;\n}\n"
-
-/***/ }),
-
-/***/ "./src/app/directives/modal.component.ts":
-/*!***********************************************!*\
-  !*** ./src/app/directives/modal.component.ts ***!
-  \***********************************************/
-/*! exports provided: ModalComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalComponent", function() { return ModalComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_modal_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/modal.service */ "./src/app/services/modal.service.ts");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (undefined && undefined.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var ModalComponent = /** @class */ (function () {
-    function ModalComponent(modalService, el) {
-        this.modalService = modalService;
-        this.el = el;
-        this.element = el.nativeElement;
-    }
-    ModalComponent.prototype.ngOnInit = function () {
-        var modal = this;
-        // ensure id attribute exists
-        if (!this.id) {
-            console.error('modal must have an id');
-            return;
-        }
-        // move element to bottom of page (just before </body>) so it can be displayed above everything else
-        document.body.appendChild(this.element);
-        // close modal on background click
-        this.element.addEventListener('click', function (e) {
-            if (e.target.className === 'jw-modal') {
-                modal.close();
-            }
-        });
-        // add self (this modal instance) to the modal service so it's accessible from controllers
-        this.modalService.add(this);
-    };
-    // remove self from modal service when directive is destroyed
-    ModalComponent.prototype.ngOnDestroy = function () {
-        this.modalService.remove(this.id);
-        this.element.remove();
-    };
-    // open modal
-    ModalComponent.prototype.open = function () {
-        this.element.style.display = 'block';
-        document.body.classList.add('jw-modal-open');
-    };
-    // close modal
-    ModalComponent.prototype.close = function () {
-        this.element.style.display = 'none';
-        document.body.classList.remove('jw-modal-open');
-    };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
-        __metadata("design:type", String)
-    ], ModalComponent.prototype, "id", void 0);
-    ModalComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'jw-modal',
-            template: "<div class=\"jw-modal\">\n            <div class=\"jw-modal-body\">\n                <ng-content></ng-content>\n            </div>\n        </div>\n        <div class=\"jw-modal-background\"></div>"
-        }),
-        __metadata("design:paramtypes", [_services_modal_service__WEBPACK_IMPORTED_MODULE_1__["ModalService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
-    ], ModalComponent);
-    return ModalComponent;
 }());
 
 
@@ -269,7 +287,7 @@ var ModalComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1\n{\n  color: #0082FC;\n  margin-left: 3%;\n  margin-top: 11%;\n}\n\nh2\n{\n  color: #000000;\n  font-size: 15px;\n  margin-left: 3%;\n  margin-right: 3%;\n  margin-top: 8%;\n  margin-bottom: 11%;\n}\n\n.container\n{\n  position: relative;\n}\n\n.intro\n{\n  background-color: #ffffff;\n  position: absolute;\n  top: 30%;\n  left: -1%;\n  width: 50%;\n  margin-top: 5%;\n  font-family: Verdana, sans-serif;\n  border: 5px;\n  border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n  position: absolute;\n  right: -1%;\n  width: 50%;\n  margin-top: 5%;\n  border: 10px;\n  border-radius: 5px 5px 5px 5px;\n}\n\ninput[type=submit]\n{\n  background-color: #fff;\n  font-weight: bold;\n  position: absolute;\n  border: none;\n  color: #0082FC;\n  margin-top: 40%;\n  top: 100%;\n  left: -1%;\n  padding: 15px 80px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  font-size: 13px;\n  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n  transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n  background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n  -webkit-transform: scale(0.95);\n  transform: scale(0.95);\n}\n\n/*\n@media only screen and (min-width: 800px)\n{\n  h1\n  {\n    color: #0082FC;\n    font-size: 65px;\n    font-weight: bold;\n    margin-left: 45px;\n  }\n\n  h2\n  {\n    color: #000000;\n    font-size: 25px;\n    margin: 5%;\n    margin-top: 10%;;\n  }\n\n  p\n  {\n    color: #000000;\n    font-size: 20px;\n    margin: 5%;\n    margin-top: 15%;\n  }\n\n  .container\n  {\n    position: relative;\n  }\n\n  .intro\n  {\n    background-color: #ffffff;\n    position: absolute;\n    margin-top: 10%;\n    left: -30%;\n    width: 70%;\n    font-family: Verdana, sans-serif;\n    border: 5px;\n    border-radius: 10px 10px 10px 10px;\n  }\n\n  #icon\n  {\n    position: absolute;\n    width: 80%;\n    right: -30%;\n    margin-top: 20%;\n    top: 30%;\n    border: 5px;\n    border-radius: 10px 10px 10px 10px;\n  }\n\n  input[type=submit]\n  {\n    margin-top: 75%;\n    top: 100%;\n    left: -30%;\n    padding: 20px 90px;\n    font-size: 25px;\n  }\n} */\n"
+module.exports = "\nh1\n{\n  color: #0082FC;\n  margin-left: 3%;\n  margin-top: 11%;\n}\n\nh2\n{\n  color: #000000;\n  font-size: 18px;\n  margin-left: 3%;\n  margin-right: 3%;\n  margin-top: 8%;\n  margin-bottom: 11%;\n}\n\n.intro\n{\n  background-color: #ffffff;\n  position: absolute;\n  left: 1%;\n  width: 48.5%;\n  margin-top: 5%;\n  margin-bottom: 5%;\n  border: 5px;\n  border-radius: 10px 10px 10px 10px;\n}\n\n#icon\n{\n  position: absolute;\n  right: 1%;\n  width: 48.5%;\n  margin-top: 5%;\n  margin-bottom: 5%;\n  border: 5px;\n  border-radius: 10px 10px 10px 10px;\n}\n\ninput[type=submit]\n{\n  background-color: #ffffff;\n  font-weight: bold;\n  position: absolute;\n  border: none;\n  color: #0082FC;\n  bottom: 10%;\n  left: 1%;\n  padding: 15px 80px;\n  text-align: center;\n  text-decoration: none;\n  display: inline-block;\n  text-transform: uppercase;\n  font-size: 15px;\n  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);\n  border-radius: 5px 5px 5px 5px;\n  transition: all 0.3s ease-in-out;\n}\n\ninput[type=submit]:hover\n{\n  background-color: #fff;\n}\n\ninput[type=submit]:active\n{\n  -webkit-transform: scale(0.95);\n  transform: scale(0.95);\n}\n\n/*\n@media only screen and (min-width: 800px)\n{\n  h1\n  {\n    color: #0082FC;\n    font-size: 65px;\n    font-weight: bold;\n    margin-left: 45px;\n  }\n\n  h2\n  {\n    color: #000000;\n    font-size: 25px;\n    margin: 5%;\n    margin-top: 10%;;\n  }\n\n  p\n  {\n    color: #000000;\n    font-size: 20px;\n    margin: 5%;\n    margin-top: 15%;\n  }\n\n  .container\n  {\n    position: relative;\n  }\n\n  .intro\n  {\n    background-color: #ffffff;\n    position: absolute;\n    margin-top: 10%;\n    left: -30%;\n    width: 70%;\n    font-family: Verdana, sans-serif;\n    border: 5px;\n    border-radius: 10px 10px 10px 10px;\n  }\n\n  #icon\n  {\n    position: absolute;\n    width: 80%;\n    right: -30%;\n    margin-top: 20%;\n    top: 30%;\n    border: 5px;\n    border-radius: 10px 10px 10px 10px;\n  }\n\n  input[type=submit]\n  {\n    margin-top: 75%;\n    top: 100%;\n    left: -30%;\n    padding: 20px 90px;\n    font-size: 25px;\n  }\n} */\n"
 
 /***/ }),
 
@@ -280,7 +298,7 @@ module.exports = "h1\n{\n  color: #0082FC;\n  margin-left: 3%;\n  margin-top: 11
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<body>\n\t\t<div class = \"container\">\n\t\t\t<div class=\"intro\">\n\n\t\t\t\t<h1>\n\t\t\t\t\tBLU-Attendance\n\t\t\t\t</h1>\n\n\t    \t<h2>\n\t\t\t\t\tImprove your class attendance grading with BLU-Attendance. <br> <br>\n\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\t\t\t\t</h2>\n\n\t\t\t</div>\n\n\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\n\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\n\t\t</div>\n\t</body>\n</html>\n"
+module.exports = "<!DOCTYPE html>\n\n<html>\n\t<app-navbar2></app-navbar2>\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t<body>\n\t\t\t<div id = \"First\" class = \"table row\">\n\t\t\t\t<tbody>\n\t\t\t\t\t<tr>\n\t\t\t\t\t\t<div class=\"intro\">\n\n\t\t\t\t\t\t\t<h1>\n\t\t\t\t\t\t\t\tBLU-Attendance\n\t\t\t\t\t\t\t</h1>\n\n\t\t\t\t    \t<h2>\n\t\t\t\t\t\t\t\tImprove your class attendance grading with BLU-Attendance. <br> <br>\n\t\t\t\t\t\t\t\tAn application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.\n\t\t\t\t\t\t\t</h2>\n\n\t\t\t\t\t\t</div>\n\n\t\t\t\t\t\t<img src=\"http://www.theinteractivestudio.com/blicker/images/system.png\" id=\"icon\" alt=\"computer hope\"/>\n\t\t\t\t\t</tr>\n\t\t\t\t</tbody>\n\t\t\t</div>\n\t\t\t<div  id = \"Second\" class = \"row\">\n\t\t\t\t<input type=\"submit\" class=\"register\" value=\"Sign Up\" [routerLink] = \"['/register']\">\n\t\t\t</div>\n\t</body>\n</html>\n"
 
 /***/ }),
 
@@ -495,7 +513,7 @@ var Navbar2Component = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-wrap: break-word;\n}\n#dash .container  {\n  margin-top: 30px;\n\n  height: 500px;\n  box-shadow: 0px 0px 20px grey;\n\n}\n#dash .container #login-row #login-column #login-box #login-form {\n  padding: 20px;\n}\n#dash .container #login-row #login-column #login-box #login-form #register-link {\n  margin-top: -85px;\n}\n#dash .btn-info {\n  background-color: #0082FC;\n  border-color:#0082FC;\n}\n#dash .btn-succes {\n  background-color: #0082FC;\n  border-color: #0082FC;\n}\n#dash .text-info {\n  color: #0082FC!important;\n}\n#cont {\n  margin-top:10vh;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background-color:  #F9F8FA;\n  box-shadow: 0px 0px 20px grey;\n}\n#dashbody{\n  margin-top:5vh;\n}\n.alignRight{\n  text-align: right;\n}\n"
+module.exports = "/* body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-wrap: break-word;\n}\n\n#dash .container  {\n  margin-top: 30px;\n\n  height: 500px;\n  box-shadow: 0px 0px 20px grey;\n\n}\n#dash .container #login-row #login-column #login-box #login-form {\n  padding: 20px;\n}\n#dash .container #login-row #login-column #login-box #login-form #register-link {\n  margin-top: -85px;\n}\n#dash .btn-info {\n  background-color: #0082FC;\n  border-color:#0082FC;\n}\n#dash .btn-succes {\n  background-color: #0082FC;\n  border-color: #0082FC;\n}\n#dash .text-info {\n  color: #0082FC!important;\n}\n#cont {\n  margin-top:10vh;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background-color:  #F9F8FA;\n  box-shadow: 0px 0px 20px grey;\n}\n\n#dashbody{\n  margin-top:5vh;\n}\n.alignRight{\n  text-align: right;\n}\n\n/* MODAL STYLES\n-------------------------------*/\n/* jw-modal {\n  display: none;\n}\njw-modal .jw-modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  overflow: auto;\n}\njw-modal .jw-modal .jw-modal-body {\n  padding: 20px;\n  background: #000;\n  margin: 40px;\n}\njw-modal .jw-modal-background {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #000;\n  opacity: 0.75;\n  z-index: 900;\n}\nbody.jw-modal-open {\n  overflow: hidden;\n} */\nbody {\n  font-size: .875rem;\n}\n.feather {\n  width: 16px;\n  height: 16px;\n  vertical-align: text-bottom;\n}\n/*\n * Sidebar\n */\n.sidebar {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 100; /* Behind the navbar */\n  padding: 0;\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 48px; /* Height of navbar */\n  height: calc(100vh - 48px);\n  padding-top: .5rem;\n  overflow-x: hidden;\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link {\n  font-weight: 500;\n  color: #333;\n}\n.sidebar .nav-link .feather {\n  margin-right: 4px;\n  color: #999;\n}\n.sidebar .nav-link.active {\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather,\n.sidebar .nav-link.active .feather {\n  color: inherit;\n}\n.sidebar-heading {\n  font-size: .75rem;\n  text-transform: uppercase;\n}\n/*\n * Navbar\n */\n.navbar-brand {\n  padding-top: .75rem;\n  padding-bottom: .75rem;\n  font-size: 1rem;\n  background-color: rgba(0, 0, 0, .25);\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control {\n  padding: .75rem 1rem;\n  border-width: 0;\n  border-radius: 0;\n}\n.form-control-dark {\n  color: #fff;\n  background-color: rgba(255, 255, 255, .1);\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark:focus {\n  border-color: transparent;\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\n/*\n * Utilities\n */\n.border-top { border-top: 1px solid #e5e5e5; }\n.border-bottom { border-bottom: 1px solid #e5e5e5; }\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n.underlineHover:hover:after{\n  width: 100%;\n}\n"
 
 /***/ }),
 
@@ -506,7 +524,7 @@ module.exports = "body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!DOCTYPE html>\n<body>\n\n  <jw-modal class=\"container\" id=\"custom-modal-1\">\n    <div>\n      <div class=\"col-md-3\">\n        <table class=\"table\">\n          <tbody>\n            <tr>\n              <h3 class=\"text-center\" id=\"addtitle\" style=\"color: navy;\">\n                Add a Class\n              </h3>\n            </tr>\n            <tr>\n              <input placeholder=\"Enter Class Title\" type=\"text\" name=\"name\" [(ngModel)] = \"class_name\" class=\"form-control\" style=\"margin-left: 1%;\">\n            </tr>\n            <tr>\n              <input placeholder=\"Enter Course ID\" type=\"text\" name=\"phone\" [(ngModel)] = \"course_id\" class=\"form-control\" style=\"margin: 1%;\">\n            </tr>\n            <tr>\n              <input placeholder=\"Enter Start Time\" type=\"text\" name=\"email\" [(ngModel)] = \"start_time\" class=\"form-control\" style=\"margin: 1%;\">\n            </tr>\n            <tr>\n              <input placeholder=\"Enter End Time\" type=\"text\" name=\"address\" [(ngModel)] = \"end_time\" class=\"form-control\" style=\"margin: 1%;\">\n            </tr>\n            <tr>\n              <button class=\"btn btn-success\" (click)=\"onAddClassButton()\" style=\"background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;\">\n                Submit\n              </button>\n              <button class=\"btn btn-success\" (click)=\"clearFields()\" style=\"background-color:#c23b22; border-color:#c23b22; margin-top: 2%; margin-left: 1%;  \">\n                Clear\n              </button>\n            </tr>\n          </tbody>\n        </table>\n        <button style=\"background-color:#c23b22; margin: 1%\" class=\"btn btn-danger\"(click)=\"closeModal('custom-modal-1');\">Close</button>\n      </div>\n    </div>\n  </jw-modal>\n\n  <div id=\"dashboard\">\n        <div class=\"container\" id=\"cont\">\n            <div class=\"row\" style=\" padding-top: 1%; padding-bottom: 1%;margin: .5%;background-color: navy;\">\n              <div class=\"col-md-6\"><h2 style=\"color:lightblue;\">Welcome {{user.name}}</h2></div>\n              <div class=\"col-md-4\">\n                <button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB;\">\n                  Class List\n                </button>\n                <button class=\"btn btn-success\" style=\"background-color:#779ECB; border-color:#779ECB; margin-left: 5%;\">\n                  All Students\n                </button>\n                <button class=\"btn btn-success\" (click)=\"onLogOutButton()\" style=\"background-color:#779ECB; border-color:#779ECB; margin-left: 5%; margin-right: 5%;\">\n                  Log Out\n                </button>\n              </div>\n            </div>\n          <div id=\"dashbody\">\n            <div class=\"row\">\n              <div class=\"col-md-12\">\n                <h1>Classes</h1>\n              </div>\n            </div>\n\n            <div class=\"row\">\n              <div class=\"col-md-3\">\n                <button style=\"background-color:lightblue;\" (click)=\"openModal('custom-modal-1')\">\n                  Add a Class\n                </button>\n              </div>\n              <div class=\"col-md-9\">\n                <div class=\"form-group\">\n                  <input placeholder=\"Enter Name to Search\" name=\"inputString\" [(ngModel)] = \"inputString\" class=\"form-control\" style=\"max-width:35%; padding-bottom:1%;\">\n                </div>\n              </div>\n              <table class=\"table table-striped\" style=\"padding-top:0px;\">\n                <thead style=\"background-color: navy; color: lightBlue;\">\n                  <tr style=\"  box-shadow: 0px 0px 10px navy;\">\n                    <th><h6><strong>Class Name</strong></h6></th>\n                    <th><h6><strong>Class ID</strong></h6></th>\n                    <th><h6><strong>Start Time</strong></h6></th>\n                    <th><h6><strong>End Time</strong></h6></th>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr id=\"contacts\">\n                     <tr *ngFor=\"let Class of courseList\">\n                      <td><a>{{Class.className}}</a></td>\n                      <td>{{Class.courseID}}</td>\n                      <td>{{Class.startTime}}</td>\n                      <td><a>{{Class.endTime}}</a></td>\n                  </tr>\n                </tbody>\n              </table>\n            </div>\n\n        </div>\n      </div>\n    </div>\n    <p style=\"padding-top:15px; color: #0082FC\">If you notice this then good for you.</p>\n</body>\n"
+module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"nav-link active\" href=\"#\">\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" href=\"#\">\n                  <span data-feather=\"file\"></span>\n                  Students\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink] = \"['/addclass']\" hrep=\"#\">\n                  <span data-feather=\"shopping-cart\"></span>\n                  Add a class <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Classes</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n                <input class=\"form-control form-control-dark w-100\" type=\"text\" name=\"inputString\" style=\"background-color: lightgrey;\" [(ngModel)]=\"inputString\" placeholder=\"Search Classes\" aria-label=\"Search\">\n              </div>\n\n            </div>\n          </div>\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                  <th><h6>Start Time</h6></th>\n                  <th><h6>End Time</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let Class of hack(courseList) | filter:inputString; let i = index\">\n                    <td><a (click)=\"courseClicked(Class)\">{{Class.className}}</a></td>\n                    <td>{{Class.courseID}}</td>\n                    <td>{{Class.startTime}}</td>\n                    <td><a>{{Class.endTime}}</a></td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </main>\n        <div class=\"col-md-5  pt-3 px-4\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Lectures for Selected Class</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n\n              </div>\n\n            </div>\n          </div>\n\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Date</h6></th>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let lecture of lectureList\">\n                    <td><a>{{lecture.date}}</a></td>\n                    <td>{{selectedCourse.className}}</td>\n                    <td>{{selectedCourse.courseID}}</td>\n\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
 
 /***/ }),
 
@@ -523,7 +541,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
-/* harmony import */ var _services_modal_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/modal.service */ "./src/app/services/modal.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -536,12 +553,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-
 var ProfdashComponent = /** @class */ (function () {
-    function ProfdashComponent(router, authService, modalService) {
+    function ProfdashComponent(router, authService) {
         this.router = router;
         this.authService = authService;
-        this.modalService = modalService;
     }
     ProfdashComponent.prototype.ngOnInit = function () {
         //  if (sessionStorage.length == 0){
@@ -557,15 +572,13 @@ var ProfdashComponent = /** @class */ (function () {
         this.getCourseList();
         this.getCourseList();
     };
+    ProfdashComponent.prototype.hack = function (val) {
+        console.log("hack: " + val);
+        return val;
+    };
     ProfdashComponent.prototype.onLogOutButton = function () {
         sessionStorage.clear();
         this.router.navigate(['/home']);
-    };
-    ProfdashComponent.prototype.openModal = function (id) {
-        this.modalService.open(id);
-    };
-    ProfdashComponent.prototype.closeModal = function (id) {
-        this.modalService.close(id);
     };
     ProfdashComponent.prototype.clearFields = function () {
         this.class_name = undefined;
@@ -595,13 +608,22 @@ var ProfdashComponent = /** @class */ (function () {
             _this.courseList = data;
         });
     };
+    ProfdashComponent.prototype.getLectureList = function (selectedCourse) {
+        var _this = this;
+        this.authService.getLectures(selectedCourse).subscribe(function (data) {
+            _this.lectureList = data;
+        });
+    };
+    ProfdashComponent.prototype.courseClicked = function (course) {
+        this.selectedCourse = course;
+    };
     ProfdashComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-profdash',
             template: __webpack_require__(/*! ./profdash.component.html */ "./src/app/profdash/profdash.component.html"),
-            styles: [__webpack_require__(/*! ./profdash.component.css */ "./src/app/profdash/profdash.component.css"), __webpack_require__(/*! ../content/modal.less */ "./src/app/content/modal.less")]
+            styles: [__webpack_require__(/*! ./profdash.component.css */ "./src/app/profdash/profdash.component.css")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _services_modal_service__WEBPACK_IMPORTED_MODULE_3__["ModalService"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
     ], ProfdashComponent);
     return ProfdashComponent;
 }());
@@ -751,6 +773,9 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.getCourses = function () {
         return this.http.get('/api/classes/' + this.user.profNID, { headers: this.headers });
     };
+    AuthService.prototype.getLectures = function (course) {
+        return this.http.get('/api/classes/' + course.courseID, { headers: this.headers });
+    };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -785,13 +810,13 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var FilterPipe = /** @class */ (function () {
     function FilterPipe() {
     }
-    FilterPipe.prototype.transform = function (contactlist, inputString) {
+    FilterPipe.prototype.transform = function (courseList, inputString) {
         // Check if the search inputString is empty/undefined
-        if (inputString === undefined) {
-            return contactlist;
+        if (inputString == undefined) {
+            return courseList;
         }
         // If there is input string to search:
-        return contactlist.filter(function (retVal) {
+        return courseList.filter(function (retVal) {
             return retVal.name.toLowerCase().includes(inputString.toLowerCase());
         });
     };
@@ -801,45 +826,6 @@ var FilterPipe = /** @class */ (function () {
         })
     ], FilterPipe);
     return FilterPipe;
-}());
-
-
-
-/***/ }),
-
-/***/ "./src/app/services/modal.service.ts":
-/*!*******************************************!*\
-  !*** ./src/app/services/modal.service.ts ***!
-  \*******************************************/
-/*! exports provided: ModalService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalService", function() { return ModalService; });
-var ModalService = /** @class */ (function () {
-    function ModalService() {
-        this.modals = [];
-    }
-    ModalService.prototype.add = function (modal) {
-        // add modal to array of active modals
-        this.modals.push(modal);
-    };
-    ModalService.prototype.remove = function (id) {
-        // remove modal from array of active modals
-        this.modals = this.modals.filter(function (x) { return x.id !== id; });
-    };
-    ModalService.prototype.open = function (id) {
-        // open modal specified by id
-        var modal = this.modals.filter(function (x) { return x.id === id; })[0];
-        modal.open();
-    };
-    ModalService.prototype.close = function (id) {
-        // close modal specified by id
-        var modal = this.modals.filter(function (x) { return x.id === id; })[0];
-        modal.close();
-    };
-    return ModalService;
 }());
 
 

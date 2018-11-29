@@ -2,19 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Class } from '../services/class';
-import { FormsModule } from '@angular/forms';
 
-import { Lecture } from '../services/lecture';
 @Component({
-  selector: 'app-profdash',
-  templateUrl: './profdash.component.html',
-  styleUrls: ['./profdash.component.css']
+  selector: 'app-add-class',
+  templateUrl: './add-class.component.html',
+  styleUrls: ['./add-class.component.css']
 })
-export class ProfdashComponent implements OnInit {
+export class AddClassComponent implements OnInit {
 
   constructor(private router: Router, public authService:AuthService) { }
-
-  inputString: string;
 
   user : Object;
   user_id: String;
@@ -25,9 +21,6 @@ export class ProfdashComponent implements OnInit {
   class_name: String;
   start_time: String;
   end_time: String;
-
-  lecture: Lecture;
-  lectureList: any;
 
   selectedCourse: Class;
 
@@ -45,11 +38,6 @@ export class ProfdashComponent implements OnInit {
     this.user_id = this.user['id'];
     this.getCourseList();
     this.getCourseList();
-  }
-
-  hack(val){
-    console.log("hack: "+val);
-    return val;
   }
 
   onLogOutButton(){
@@ -86,15 +74,4 @@ export class ProfdashComponent implements OnInit {
     this.courseList = data;
     })
   }
-
-  getLectureList(selectedCourse){
-    this.authService.getLectures(selectedCourse).subscribe(data =>{
-    this.lectureList = data;
-    })
-  }
-
-  courseClicked(course){
-    this.selectedCourse = course;
-  }
-
 }

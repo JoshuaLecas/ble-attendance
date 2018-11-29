@@ -16,15 +16,16 @@ import {AuthService} from './services/auth.service';
 import { ValidateService } from './services/validate.service';
 import { FilterPipe } from './services/filter.pipe';
 
-import { ModalComponent } from './directives/modal.component';
-import { ModalService } from './services/modal.service';
+import { AddClassComponent } from './add-class/add-class.component';
 
 const appRoutes: Routes =[
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'profdash', component: ProfdashComponent},
+  { path: 'addclass', component: AddClassComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
+
 ];
 
 @NgModule({
@@ -36,7 +37,7 @@ const appRoutes: Routes =[
     FilterPipe,
     HomeComponent,
     Navbar2Component,
-    ModalComponent
+    AddClassComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -44,7 +45,7 @@ const appRoutes: Routes =[
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,ValidateService,ModalService],
+  providers: [AuthService,ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

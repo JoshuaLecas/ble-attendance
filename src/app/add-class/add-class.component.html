@@ -27,20 +27,20 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="underlineHover nav-link" [routerLink]='["/profdash"]'>
                   <span data-feather="home"></span>
                   Class List
                 </a>
               </li>
               <li class="nav-item">
-                <a class="underlineHover nav-link" href="#">
-                  <span data-feather="file"></span>
+                <a class="underlineHover nav-link">
+                  <span data-feather="students"></span>
                   Students
                 </a>
               </li>
               <li class="nav-item">
-                <a class="underlineHover nav-link" [routerLink] = "['/addclass']" hrep="#">
-                  <span data-feather="shopping-cart"></span>
+                <a class="nav-link active">
+                  <span data-feather="addclass"></span>
                   Add a class <span class="sr-only">(current)</span>
                 </a>
               </li>
@@ -51,43 +51,46 @@
 
         <main role="main" class="col-md-5 ml-sm-auto col-lg-6 pt-3 px-4" style="height: 100vh; border-right: 1px solid lightgrey;">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Classes</h1>
+            <h1 class="h2">Add a class</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="inputString" placeholder="Search Classes" aria-label="Search">
-              </div>
 
             </div>
           </div>
-          <div id="class_table">
-            <table class="table table-striped" style="padding-top:0px;">
-              <thead style="background-color: lightgrey; color: grey">
-                <tr>
-                  <th><h6>Class Name</h6></th>
-                  <th><h6>Class ID</h6></th>
-                  <th><h6>Start Time</h6></th>
-                  <th><h6>End Time</h6></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="contacts">
-                   <tr *ngFor="let Class of hack(courseList) | filter:inputString; let i = index">
-                    <td><a (click)="courseClicked(Class)">{{Class.className}}</a></td>
-                    <td>{{Class.courseID}}</td>
-                    <td>{{Class.startTime}}</td>
-                    <td><a>{{Class.endTime}}</a></td>
-                </tr>
-              </tbody>
-            </table>
+          <div>
+            <div class="col-md-5">
+              <table class="table">
+                <tbody>
+
+                  <tr>
+                    <input placeholder="Enter Class Title" type="text" name="name" [(ngModel)] = "class_name" class="form-control" style="margin-left: 1%;">
+                  </tr>
+                  <tr>
+                    <input placeholder="Enter Course ID" type="text" name="phone" [(ngModel)] = "course_id" class="form-control" style="margin: 1%;">
+                  </tr>
+                  <tr>
+                    <input placeholder="Enter Start Time" type="text" name="email" [(ngModel)] = "start_time" class="form-control" style="margin: 1%;">
+                  </tr>
+                  <tr>
+                    <input placeholder="Enter End Time" type="text" name="address" [(ngModel)] = "end_time" class="form-control" style="margin: 1%;">
+                  </tr>
+                  <tr>
+                    <button class="btn btn-success" (click)="onAddClassButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;">
+                      Submit
+                    </button>
+                    <button class="btn btn-success" (click)="clearFields()" style="background-color:#c23b22; border-color:#c23b22; margin-top: 2%; margin-left: 1%;  ">
+                      Clear
+                    </button>
+                  </tr>
+                </tbody>
+              </table>
+              
+            </div>
           </div>
         </main>
         <div class="col-md-5  pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Lectures for Selected Class</h1>
+            <h1 class="h2">Classes on Account</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-
-              </div>
 
             </div>
           </div>
@@ -96,18 +99,15 @@
             <table class="table table-striped" style="padding-top:0px;">
               <thead style="background-color: lightgrey; color: grey">
                 <tr>
-                  <th><h6>Date</h6></th>
                   <th><h6>Class Name</h6></th>
                   <th><h6>Class ID</h6></th>
                 </tr>
               </thead>
               <tbody>
                 <tr id="contacts">
-                   <tr *ngFor="let lecture of lectureList">
-                    <td><a>{{lecture.date}}</a></td>
-                    <td>{{selectedCourse.className}}</td>
-                    <td>{{selectedCourse.courseID}}</td>
-
+                   <tr *ngFor="let course of courseList">
+                    <td>{{course.className}}</td>
+                    <td>{{course.courseID}}</td>
                 </tr>
               </tbody>
             </table>
