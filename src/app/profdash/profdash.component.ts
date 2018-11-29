@@ -7,7 +7,7 @@ import { Class } from '../services/class';
 @Component({
   selector: 'app-profdash',
   templateUrl: './profdash.component.html',
-  styleUrls: ['./profdash.component.css','../content/modal.less']
+  styleUrls: ['./profdash.component.css']
 })
 export class ProfdashComponent implements OnInit {
 

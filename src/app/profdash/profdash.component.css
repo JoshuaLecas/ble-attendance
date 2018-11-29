@@ -44,3 +44,36 @@ table, tr{
 .alignRight{
   text-align: right;
 }
+
+/* MODAL STYLES
+-------------------------------*/
+jw-modal {
+  display: none;
+}
+jw-modal .jw-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  overflow: auto;
+}
+jw-modal .jw-modal .jw-modal-body {
+  padding: 20px;
+  background: #000;
+  margin: 40px;
+}
+jw-modal .jw-modal-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.75;
+  z-index: 900;
+}
+body.jw-modal-open {
+  overflow: hidden;
+}
