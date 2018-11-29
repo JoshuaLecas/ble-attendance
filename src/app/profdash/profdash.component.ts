@@ -48,7 +48,6 @@ export class ProfdashComponent implements OnInit {
   }
 
   hack(val){
-    console.log("hack: "+val);
     return val;
   }
 
