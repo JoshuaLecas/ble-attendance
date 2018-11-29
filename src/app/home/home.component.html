@@ -4,24 +4,28 @@
 	<app-navbar2></app-navbar2>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<body>
-		<div class = "container">
-			<div class="intro">
+			<div id = "First" class = "table row">
+				<tbody>
+					<tr>
+						<div class="intro">
 
-				<h1>
-					BLU-Attendance
-				</h1>
+							<h1>
+								BLU-Attendance
+							</h1>
 
-	    	<h2>
-					Improve your class attendance grading with BLU-Attendance. <br> <br>
-					An application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.
-				</h2>
+				    	<h2>
+								Improve your class attendance grading with BLU-Attendance. <br> <br>
+								An application that allows for professors to track student attendance via mobile app and Bluetooth, removing the need for expensive hardware and without being easily faked.
+							</h2>
 
+						</div>
+
+						<img src="http://www.theinteractivestudio.com/blicker/images/system.png" id="icon" alt="computer hope"/>
+					</tr>
+				</tbody>
 			</div>
-
-			<img src="http://www.theinteractivestudio.com/blicker/images/system.png" id="icon" alt="computer hope"/>
-
-			<input type="submit" class="register" value="Sign Up" [routerLink] = "['/register']">
-
-		</div>
+			<div  id = "Second" class = "row">
+				<input type="submit" class="register" value="Sign Up" [routerLink] = "['/register']">
+			</div>
 	</body>
 </html>
