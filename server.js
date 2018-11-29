@@ -575,11 +575,6 @@ app.post("/api/classes/addToClass/:key", function(req, res){
 			}
 			else {
 				console.log("Found student");
-				var isin = new isIn({
-					class_id: req.params.id,
-					studentNID: req.body.nid,
-					studentUUID: stud.studentUUID
-				});
 
 				if(!req.body.nid) {
 					handleError(res, "Invalid user input", "Missing nid parameter", 400);
@@ -598,6 +593,11 @@ app.post("/api/classes/addToClass/:key", function(req, res){
 									handleError(res, "Class not found", "Invalid registration code")
 								}
 								else {
+									var isin = new isIn({
+										class_id: classy._id,
+										studentNID: req.body.nid,
+										studentUUID: stud.studentUUID
+									});
 									isin.save(function(err, isin){
 										if(err) return handleError(res, "Failed to create isIn", "Failed to add student to class");
 										else {
