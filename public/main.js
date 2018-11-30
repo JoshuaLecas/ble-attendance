@@ -397,6 +397,8 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         var temp = this.authService.getKey();
+        alert(temp);
+        alert(temp['ket']);
         this.key = temp;
         this.authService.storeKey(this.key);
     };
@@ -769,9 +771,6 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.storeKey = function (key) {
         sessionStorage.setItem('key', JSON.stringify(key));
         this.apiKey = key;
-        alert(this.apiKey.ket);
-        alert(this.apiKey['ket']);
-        alert(this.apiKey);
     };
     // Endpoints for logging in and registering user
     AuthService.prototype.getKey = function () {
