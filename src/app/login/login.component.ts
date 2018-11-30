@@ -12,10 +12,14 @@ export class LoginComponent implements OnInit {
 
   email: String;
   password: String;
+  key: any;
 
   constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(){
+    var temp = this.authService.getKey();
+    this.key = temp;
+
   }
 
   showPassword() {

@@ -97,6 +97,10 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
+app.get("/api/demo", function(req, res) {
+	res.status(201).json(process.env.APIKEY);
+});
+
 // *** Professor API Routes ***
 
 // Create Professor
@@ -416,6 +420,7 @@ app.post("/api/classes/create/:id/:key", function(req, res) {
 		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
 		return;
 	}
+
 	// "class" is a reserved word in js
 	var classy = new Class({
 		courseID: req.body.course_id,
@@ -423,7 +428,7 @@ app.post("/api/classes/create/:id/:key", function(req, res) {
 		createdByProfNID: req.params.id,
 		startTime: req.body.start_time,
 		endTime: req.body.end_time,
-		regCode: req.body.reg_code
+		regCode: genAlphaKey()
 	});
 
 	if(!req.body.course_id) {
@@ -1199,6 +1204,16 @@ let genKey = function() {
 	var retStr = "";
 	for(var i = 0; i < 16; i++) {
 		var c = Math.floor(Math.random() * 10);
+		retStr += c;
+	}
+	return retStr;
+};
+
+let genAlphaKey = function() {
+	var retStr = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for(var i = 0; i < 6; i++) {
+		var c = possible.charAt(Math.floor(Math.random() * possible.length));
 		retStr += c;
 	}
 	return retStr;

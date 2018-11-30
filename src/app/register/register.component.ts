@@ -18,9 +18,11 @@ export class RegisterComponent implements OnInit
   name: String;
   password: String;
   email: String;
-
+  key: any;
   ngOnInit()
   {
+    var temp = this.authService.getKey();
+    this.key = temp;
   }
 
   showPassword()
@@ -38,7 +40,7 @@ export class RegisterComponent implements OnInit
   }
 
   onSubmit(){
-    
+
     const user = {
       profNID: this.profNID,
       name: this.name,
