@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit
   {
     var temp = this.authService.getKey();
     this.key = temp;
+    this.authService.storeKey(this.key);
   }
 
   showPassword()

@@ -398,6 +398,7 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.ngOnInit = function () {
         var temp = this.authService.getKey();
         this.key = temp;
+        this.authService.storeKey(this.key);
     };
     LoginComponent.prototype.showPassword = function () {
         var x = document.getElementById("password");
@@ -690,6 +691,7 @@ var RegisterComponent = /** @class */ (function () {
     RegisterComponent.prototype.ngOnInit = function () {
         var temp = this.authService.getKey();
         this.key = temp;
+        this.authService.storeKey(this.key);
     };
     RegisterComponent.prototype.showPassword = function () {
         var x = document.getElementById("password");
