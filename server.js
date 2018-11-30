@@ -98,7 +98,8 @@ function handleError(res, reason, message, code) {
 }
 
 app.get("/api/demo", function(req, res) {
-	res.status(201).json(process.env.APIKEY);
+	var ker = '{ "ket" :' + process.env.APIKEY +'}';
+	res.status(201).json(ker);
 });
 
 // *** Professor API Routes ***
