@@ -97,6 +97,10 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
+app.get("/api/demo", function(req, res) {
+	res.status(201).json(process.env.APIKEY);
+});
+
 // *** Professor API Routes ***
 
 // Create Professor
