@@ -715,7 +715,7 @@ app.post("/api/students/createStudent/:key", function(req, res){
 						}
 						else {
 							console.log("Student successfully created");
-							res.status(201).json("success");
+							res.status(201).json({ "Message": "Success" });
 						}
 					});
 				}
@@ -736,12 +736,12 @@ app.post("/api/students/createStudent/:key", function(req, res){
 								}
 								else{
 									console.log(student);
-									res.status(201).json("Success");
+									res.status(201).json({"Message": "Success" });
 								}
 							})
 						}
 						else {
-							res.status(201).json("Student already exists");
+							res.status(201).json({"Error" : "Student already exists" });
 						}
 					}
 
