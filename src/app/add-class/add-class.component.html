@@ -1,0 +1,165 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <!-- Bootstrap core CSS -->
+
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-1 col-md-1 mr-0" href="#">Welcome, {{user.name}}</a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="#" (click)="onLogOutButton()" style="color: red; font-size: 24px">Log out</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-1 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="underlineHover nav-link" [routerLink]='["/profdash"]'>
+                  <span data-feather="home"></span>
+                  Class List
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="underlineHover nav-link">
+                  <span data-feather="students"></span>
+                  Students
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active">
+                  <span data-feather="addclass"></span>
+                  Add a class <span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-5 ml-sm-auto col-lg-6 pt-3 px-4" style="height: 100vh; border-right: 1px solid lightgrey;">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Add a class</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+
+            </div>
+          </div>
+          <div>
+            <div class="col-md-5">
+              <table class="table">
+                <tbody>
+
+                  <tr>
+                    <input placeholder="Enter Class Title" type="text" name="title" [(ngModel)] = "class_name" class="form-control" style="margin-left: 1%;">
+                  </tr>
+                  <tr>
+                    <input placeholder="Enter Course ID" type="text" name="courseid" [(ngModel)] = "course_id" class="form-control" style="margin: 1%;">
+                  </tr>
+                  <tr>
+                    <input placeholder="Enter Start Time" type="time" name="starttime" [(ngModel)] = "start_time" class="form-control" style="margin: 1%;">
+                  </tr>
+                  <tr>
+                    <input placeholder="Enter End Time" type="time" name="starttime" [(ngModel)] = "end_time" class="form-control" style="margin: 1%;">
+                  </tr>
+                  <tr>
+                    <button class="btn btn-success" (click)="onAddClassButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;">
+                      Submit
+                    </button>
+                    <button class="btn btn-success" (click)="clearFields()" style="background-color:#c23b22; border-color:#c23b22; margin-top: 2%; margin-left: 1%;  ">
+                      Clear
+                    </button>
+                  </tr>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </main>
+        <div class="col-md-5  pt-3 px-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+            <h1 class="h2">Classes on Account</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+
+            </div>
+          </div>
+
+          <div id="class_table">
+            <table class="table table-striped" style="padding-top:0px;">
+              <thead style="background-color: lightgrey; color: grey">
+                <tr>
+                  <th><h6>Class Name</h6></th>
+                  <th><h6>Class ID</h6></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="contacts">
+                   <tr *ngFor="let course of courseList">
+                    <td>{{course.className}}</td>
+                    <td>{{course.courseID}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          datasets: [{
+            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

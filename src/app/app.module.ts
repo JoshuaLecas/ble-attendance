@@ -6,18 +6,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { Navbar2Component } from './navbar2/navbar2.component';
 import { ProfdashComponent } from './profdash/profdash.component';
 
+import {AuthService} from './services/auth.service';
+import { ValidateService } from './services/validate.service';
+import { FilterPipe } from './services/filter.pipe';
 
+import { AddClassComponent } from './add-class/add-class.component';
 
 const appRoutes: Routes =[
-  { path:'', component: LoginComponent },
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent},
-  { path:'profdash', component: ProfdashComponent},
+  { path: 'profdash', component: ProfdashComponent},
+  { path: 'addclass', component: AddClassComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
+
 ];
 
 @NgModule({
@@ -25,8 +33,11 @@ const appRoutes: Routes =[
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent,
-    ProfdashComponent
+    ProfdashComponent,
+    FilterPipe,
+    HomeComponent,
+    Navbar2Component,
+    AddClassComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -34,7 +45,7 @@ const appRoutes: Routes =[
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService,ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
