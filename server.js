@@ -80,6 +80,10 @@ var attendedSchema = new mongoose.Schema({
 	studentNID: String
 });
 
+var keySchema = new  mongoose.Schema({
+	key: String
+});
+
 // *** Models ***
 
 var Student = mongoose.model("Student", studentSchema);
@@ -90,6 +94,7 @@ var AccessKey = mongoose.model("AccessKey", accessKeySchema);
 var Uses = mongoose.model("Uses", usesSchema);
 var isIn = mongoose.model("isIn", isInSchema);
 var Attended = mongoose.model("Attended", attendedSchema);
+var Key = mongoose.model("Key", keySchema);
 
 
 function handleError(res, reason, message, code) {
@@ -99,8 +104,10 @@ function handleError(res, reason, message, code) {
 
 app.get("/api/demo", function(req, res) {
 
-	var ker = '{ "ket" :"' + process.env.APIKEY +'"}';
-	res.status(201).json(ker);
+	var ket = new Key({
+		key: process.env.APIKEY
+	});
+	res.status(201).json(ket);
 
 });
 
