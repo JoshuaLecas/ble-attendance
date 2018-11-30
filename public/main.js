@@ -396,13 +396,9 @@ var LoginComponent = /** @class */ (function () {
         this.authService = authService;
     }
     LoginComponent.prototype.ngOnInit = function () {
-        var temp = this.authService.getKey();
-        this.key = temp;
-        alert(this.key);
+        this.key = this.authService.getKey();
         alert(this.key['key']);
         alert(this.key.key);
-        alert(temp);
-        alert(temp['key']);
         this.authService.storeKey(this.key);
     };
     LoginComponent.prototype.showPassword = function () {
