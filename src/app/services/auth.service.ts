@@ -31,7 +31,7 @@ export class AuthService {
 
   // Endpoints for logging in and registering user
   getKey(){
-    return this.http.post('/api/demo', {headers:this.headers});
+    return this.http.get('/api/demo', {headers:this.headers});
 }
 
   registerUser(user){
