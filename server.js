@@ -15,8 +15,8 @@ mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function(){
-  // should be connected
-  console.log('connected to remote database');
+  // should be connected
+  console.log('connected to remote database');
 });
 
 // Initialize the app.
@@ -39,7 +39,7 @@ var professorSchema = new mongoose.Schema({
   profNID: String,
   name: String,
   password: String,
-  hasPaid: Boolean, 
+  hasPaid: Boolean,
   bleUUID: String,
   email: String
 });
@@ -56,7 +56,7 @@ var classSchema = new mongoose.Schema({
 var lectureSchema = new mongoose.Schema({
 	class_id: String,
 	date: String,
-	profUUID: String 
+	profUUID: String
 });
 
 var accessKeySchema = new mongoose.Schema({
@@ -65,18 +65,18 @@ var accessKeySchema = new mongoose.Schema({
 });
 
 var usesSchema = new mongoose.Schema({
-	key_id: String, // exception, get from access key 
+	key_id: String, // exception, get from access key
 	usedByProfNID: String
 });
 
 var isInSchema = new mongoose.Schema({
-	class_id: String, 
+	class_id: String,
 	studentNID: String,
 	studentUUID: String
 });
 
 var attendedSchema = new mongoose.Schema({
-	lecture_id: String, 
+	lecture_id: String,
 	studentNID: String
 });
 
@@ -103,17 +103,19 @@ function handleError(res, reason, message, code) {
 }
 
 app.get("/api/demo", function(req, res) {
+
 	var ket = new Key({
 		key: process.env.APIKEY
 	});
 	res.status(201).json(ket);
+
 });
 
 // *** Professor API Routes ***
 
 // Create Professor
 
-// JSON 
+// JSON
 // nid: "professorNidHere"
 // name: "professerName"
 // password: "password"
@@ -139,9 +141,9 @@ app.post("/api/professors/createProfessor/:key", function(req,res) {
     if(err) {
       handleError(res, "Database error while creating", "Failed to create professor");
     } else {
-     console.log("Professor successfully created!");
-     res.status(201).json("Successfully created professor");
-     }
+     console.log("Professor successfully created!");
+     res.status(201).json("Successfully created professor");
+     }
     });
   }
 });
@@ -201,7 +203,7 @@ app.post("/api/professors/deleteProfessor/:id/:key", function(req, res) {
 				AccessKey.findOneAndUpdate({_id: deleteUse.key_id}, {isUsed: false}, {new: true}, function(err, accessKey) {
 					if(err) {
 						handleError(res, "Database error while searching", "Failed to update access key");
-					} 
+					}
 					else {
 						console.log("Successfully updated access key");
 					}
@@ -252,7 +254,7 @@ app.post("/api/professors/deleteProfessor/:id/:key", function(req, res) {
 										console.log("Successfully deleted lecture");
 									}
 								});
-							}			
+							}
 						}
 					});
 					Class.findOneAndDelete({_id: classDelete._id}, function(err, deletedClass) {
@@ -276,7 +278,7 @@ app.post("/api/professors/deleteProfessor/:id/:key", function(req, res) {
 	Professor.findOneAndDelete({profNID: req.params.id}, function(err, deleteProf) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete professor");
-		} 
+		}
 		else {
 			if(!deleteProf) {
 				handleError(res, "Failed to find professor to delete", "Failed to delete professor");
@@ -419,7 +421,7 @@ app.get("/api/professors/:key", function(req, res) {
 // JSON
 // course_id: "cop4331"
 // name: "poop"
-// start_time: "13:00" 
+// start_time: "13:00"
 // end_time: "14:50"
 // reg_code: "abC13Fa"
 
@@ -514,7 +516,7 @@ app.post("/api/classes/delete/:id/:key", function(req, res) {
 						console.log("Successfully deleted lecture");
 					}
 				});
-			}			
+			}
 		}
 	});
 	Class.findOneAndDelete({_id: req.params.id}, function(err, deletedClass) {
@@ -705,7 +707,7 @@ app.post("/api/students/createStudent/:key", function(req, res){
 
 				if(!req.body.nid || !req.body.name || !req.body.email) {
 					handleError(res, "Invalid user input", "Missing input field", 400);
-				} 
+				}
 				else {
 					student.save(function(err, student) {
 						if(err) {
@@ -727,7 +729,7 @@ app.post("/api/students/createStudent/:key", function(req, res){
 					else {
 						if(student.studentUUID && student.studentUUID == "-1"){
 							console.log("Overriding student")
-							
+
 							Student.findOneAndUpdate({studentNID: req.body.nid}, {studentUUID:req.body.uuid}, {new:true},function (err, student){
 								if(err){
 									handleError(res, "Could not update", "Failed to update");
@@ -744,16 +746,17 @@ app.post("/api/students/createStudent/:key", function(req, res){
 					}
 
 				});
-				
+
 			}
 		}
 	});
-	
+
 });
 
 // Update Student
 
-// Please DO NOT update studentNID 
+// Please DO NOT update studentNID
+
 // Student UUID Should only update if professor has allowed override, meaning UUID is set to -1
 
 // If you want to update a field, just add what you want to change in the json
@@ -776,7 +779,7 @@ app.post("/api/students/updateStudent/:id/:key", function(req, res) {
 	if(req.body.studentUUID)
 	{
 		Student.findOne({studentNID: req.params.id}, function(err, student){
-		
+
 		if (err) {
 			handleError(res, "Database Error while searching", "Failed to find student");
 		}
@@ -787,7 +790,7 @@ app.post("/api/students/updateStudent/:id/:key", function(req, res) {
 			if(student.studentUUID != '-1') {
 				res.status(201).json("Cannot update");
 			}
-			
+
 
 		}
 
@@ -797,14 +800,15 @@ app.post("/api/students/updateStudent/:id/:key", function(req, res) {
 	Student.findOneAndUpdate({studentNID: req.params.id}, req.body, {new: true}, function(err, stud) {
 		if(err) {
 			handleError(res, "Database error while updating", "Failed to update student");
-		} 
+		}
 		else {
 			console.log(req.params.id);
 			console.log(stud);
 			if(!stud) {
 				res.status(201).json("Could not find student with that id!")
 			}
-			else{ 
+
+			else{
 			res.status(201).json(stud);
 			}
 		}
@@ -876,7 +880,7 @@ app.post("/api/students/override/:id/:key", function(req,res){
 				res.status(201).json("Could not find student");
 			}
 		}
-		
+
 	})
 
 
@@ -885,7 +889,7 @@ app.post("/api/students/override/:id/:key", function(req,res){
 
 // View All Students
 
-// For testing purposes 
+// For testing purposes
 
 app.get("/api/students/:key", function(req, res){
 	if(req.params.key != process.env.APIKEY) {
@@ -976,8 +980,8 @@ app.get("/api/students/attendedLecture/:id/:class_id/:key", function(req, res) {
 									}
 								}
 							});
-							
-							
+
+
 						}
 					}
 				});
@@ -987,8 +991,8 @@ app.get("/api/students/attendedLecture/:id/:class_id/:key", function(req, res) {
 });
 
 // Mark (Student) Here
-// If they can see the prof uuid then they are at lecture within 
-// the class time, given that the prof uuid is generated new every lecture 
+// If they can see the prof uuid then they are at lecture within
+// the class time, given that the prof uuid is generated new every lecture
 
 // :id - "studUUID"
 // JSON
@@ -1026,7 +1030,7 @@ app.post("/api/students/markHere/:id/:key", function(req, res) {
 								else {
 									if(!isin) {
 										res.json("Failed to find isin");
-									} 
+									}
 									else {
 										console.log("Successfully found isin");
 										Attended.findOne({studentNID: isin.studentNID, lecture_id: lecture._id}, function(err, attendee) {
@@ -1114,7 +1118,7 @@ app.post("/api/lectures/create/:id/:uuid/:key", function(req, res){
 						}
 					}
 				});
-				
+
 			}
 			else {
 				console.log("Lecture already exists");
@@ -1147,7 +1151,7 @@ app.post("/api/lectures/delete/:id/:key", function(req, res) {
 	Lecture.findOneAndDelete({_id: req.params.id}, function(err, deletedLecture){
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete lecture");
-		} 
+		}
 		else {
 			if(!deletedLecture) {
 				handleError(res, "Failed to delete lecture", "Failed to delete lecture");
@@ -1158,7 +1162,7 @@ app.post("/api/lectures/delete/:id/:key", function(req, res) {
 		}
 	});
 });
- 
+
 // View Lectures (for Class)
 
 // :id - "_id of class"
@@ -1272,4 +1276,3 @@ app.post("/api/accessKeys/delete/:id/:key", function(req, res) {
 		}
 	});
 });
-

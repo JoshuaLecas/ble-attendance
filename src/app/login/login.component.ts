@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, Route } from '@angular/router';
-
+import { AuthService } from '../services/auth.service';
+import { ValidateService } from '../services/validate.service';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,58 @@ import { Router, Route } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  email: String;
+  password: String;
+  key: any;
 
-  ngOnInit() {
+  constructor(private router: Router, public authService: AuthService) { }
+
+  ngOnInit(){
+    var temp = this.authService.getKey();
+    alert(temp);
+    alert(temp['ket']);
+    this.key = temp;
+    this.authService.storeKey(this.key);
+
   }
+
+  showPassword() {
+    var x = (<HTMLInputElement>document.getElementById("password"));
+
+    if (x.type === "password")
+    {
+       x.type = "text";
+    }
+    else
+    {
+       x.type = "password";
+    }
+  }
+
+  onSubmit(){
+    const user = {
+      email: this.email,
+      password : this.password
+    };
+
+    this.authService.loginUser(user).subscribe( data => {
+      if (data == 'Failed') {
+        alert('User not found, please try again');
+        this.router.navigate(['']);
+      }
+      else {
+        console.log(data);
+        const user = data;
+        this.authService.storeUser(user)
+        this.router.navigate(['/profdash'])
+      }
+
+    }, err =>{
+    alert('Oh no! Something went wrong. Please try again!');
+    this.router.navigate(['/home']);
+  });
+  }
+
+
 
 }

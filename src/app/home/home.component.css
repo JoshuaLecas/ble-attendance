@@ -1,0 +1,145 @@
+
+h1
+{
+  color: #0082FC;
+  margin-left: 3%;
+  margin-top: 11%;
+}
+
+h2
+{
+  color: #000000;
+  font-size: 18px;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 8%;
+  margin-bottom: 11%;
+}
+
+.intro
+{
+  background-color: #ffffff;
+  position: absolute;
+  left: 1%;
+  width: 48.5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: 5px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+#icon
+{
+  position: absolute;
+  right: 1%;
+  width: 48.5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: 5px;
+  border-radius: 10px 10px 10px 10px;
+}
+
+input[type=submit]
+{
+  background-color: #ffffff;
+  font-weight: bold;
+  position: absolute;
+  border: none;
+  color: #0082FC;
+  bottom: 10%;
+  left: 1%;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 15px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type=submit]:hover
+{
+  background-color: #fff;
+}
+
+input[type=submit]:active
+{
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+/*
+@media only screen and (min-width: 800px)
+{
+  h1
+  {
+    color: #0082FC;
+    font-size: 65px;
+    font-weight: bold;
+    margin-left: 45px;
+  }
+
+  h2
+  {
+    color: #000000;
+    font-size: 25px;
+    margin: 5%;
+    margin-top: 10%;;
+  }
+
+  p
+  {
+    color: #000000;
+    font-size: 20px;
+    margin: 5%;
+    margin-top: 15%;
+  }
+
+  .container
+  {
+    position: relative;
+  }
+
+  .intro
+  {
+    background-color: #ffffff;
+    position: absolute;
+    margin-top: 10%;
+    left: -30%;
+    width: 70%;
+    font-family: Verdana, sans-serif;
+    border: 5px;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  #icon
+  {
+    position: absolute;
+    width: 80%;
+    right: -30%;
+    margin-top: 20%;
+    top: 30%;
+    border: 5px;
+    border-radius: 10px 10px 10px 10px;
+  }
+
+  input[type=submit]
+  {
+    margin-top: 75%;
+    top: 100%;
+    left: -30%;
+    padding: 20px 90px;
+    font-size: 25px;
+  }
+} */

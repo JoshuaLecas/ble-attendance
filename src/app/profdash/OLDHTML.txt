@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<body>
+
+  <jw-modal class="container" id="custom-modal-1">
+    <div>
+      <div class="col-md-3">
+        <table class="table">
+          <tbody>
+            <tr>
+              <h3 class="text-center" id="addtitle" style="color: navy;">
+                Add a Class
+              </h3>
+            </tr>
+            <tr>
+              <input placeholder="Enter Class Title" type="text" name="name" [(ngModel)] = "class_name" class="form-control" style="margin-left: 1%;">
+            </tr>
+            <tr>
+              <input placeholder="Enter Course ID" type="text" name="phone" [(ngModel)] = "course_id" class="form-control" style="margin: 1%;">
+            </tr>
+            <tr>
+              <input placeholder="Enter Start Time" type="text" name="email" [(ngModel)] = "start_time" class="form-control" style="margin: 1%;">
+            </tr>
+            <tr>
+              <input placeholder="Enter End Time" type="text" name="address" [(ngModel)] = "end_time" class="form-control" style="margin: 1%;">
+            </tr>
+            <tr>
+              <button class="btn btn-success" (click)="onAddClassButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;">
+                Submit
+              </button>
+              <button class="btn btn-success" (click)="clearFields()" style="background-color:#c23b22; border-color:#c23b22; margin-top: 2%; margin-left: 1%;  ">
+                Clear
+              </button>
+            </tr>
+          </tbody>
+        </table>
+        <button style="background-color:#c23b22; margin: 1%" class="btn btn-danger"(click)="closeModal('custom-modal-1');">Close</button>
+      </div>
+    </div>
+  </jw-modal>
+
+  <div id="dashboard">
+        <div class="container" id="cont">
+            <div class="row" style=" padding-top: 1%; padding-bottom: 1%;margin: .5%;background-color: navy;">
+              <div class="col-md-4"><h2 style="color:lightblue;">Welcome {{user.name}}</h2></div>
+              <div class="col-md-8">
+                <button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB;">
+                  Class List
+                </button>
+                <button class="btn btn-success" style="background-color:#779ECB; border-color:#779ECB; margin-left: 5%;">
+                  All Students
+                </button>
+                <button class="btn btn-success" (click)="onLogOutButton()" style="background-color:#779ECB; border-color:#779ECB; margin-left: 5%; margin-right: 5%;">
+                  Log Out
+                </button>
+              </div>
+            </div>
+          <div id="dashbody">
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Classes</h1>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3">
+                <button style="background-color:lightblue;" (click)="openModal('custom-modal-1')">
+                  Add a Class
+                </button>
+              </div>
+              <div class="col-md-9">
+                <div class="form-group">
+                  <input placeholder="Enter Name to Search" name="inputString" [(ngModel)] = "inputString" class="form-control" style="max-width:35%; padding-bottom:1%;">
+                </div>
+              </div>
+              <table class="table table-striped" style="padding-top:0px;">
+                <thead style="background-color: navy; color: lightBlue;">
+                  <tr style="  box-shadow: 0px 0px 10px navy;">
+                    <th><h6><strong>Class Name</strong></h6></th>
+                    <th><h6><strong>Class ID</strong></h6></th>
+                    <th><h6><strong>Start Time</strong></h6></th>
+                    <th><h6><strong>End Time</strong></h6></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="contacts">
+                     <tr *ngFor="let Class of courseList">
+                      <td><a>{{Class.className}}</a></td>
+                      <td>{{Class.courseID}}</td>
+                      <td>{{Class.startTime}}</td>
+                      <td><a>{{Class.endTime}}</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+        </div>
+      </div>
+    </div>
+    <p style="padding-top:15px; color: #0082FC">If you notice this then good for you.</p>
+</body>

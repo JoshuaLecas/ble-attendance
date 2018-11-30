@@ -1,3 +1,78 @@
-<p>
-  register works!
-</p>
+<!DOCTYPE html>
+
+<html>
+
+  <h1>Please Fill in All the Fields</h1>
+
+  <div class="wrapper fadeInDown">
+
+     <div id="formContent">
+        <a [routerLink] = "['/login']" id="header" class="underlineHover" hrep="#"> Sign In </a>
+        <h2 href="#" class="active" id="sign-up">Sign Up </h2>
+
+        <!-- Logo -->
+        <div class="fadeIn zero">
+           <img src="https://1607.tel/icons/register.png" id="icon" alt="Computer Hope"/>
+        </div>
+
+        <div class="fadeIn first">
+           <input type="text" id="fname" name="fname" placeholder="Full Name" required [(ngModel)]="name" #fullname="ngModel">
+              <div *ngIf="fullname.errors && (fullname.dirty || fullname.touched)" class="alert alert-danger">
+
+                 <div [hidden]="!fullname.errors.required">
+                    Full Name is Required!
+                 </div>
+
+              </div>
+        </div>
+
+        <div class="fadeIn Second">
+           <input type="email" id="email" name="uname" placeholder="Email" required [(ngModel)]="email" #ngEmail="ngModel">
+              <div *ngIf="ngEmail.errors && (ngEmail.dirty || ngEmail.touched)" class="alert alert-danger">
+
+                 <div [hidden]="!ngEmail.errors.required">
+                    Email is Required!
+                 </div>
+
+              </div>
+        </div>
+
+        <div class="fadeIn third">
+           <input type="text" id="univId" name="univId" placeholder="University ID" required [(ngModel)]="profNID" #ngId="ngModel">
+              <div *ngIf="ngId.errors && (ngId.dirty || ngId.touched)" class="alert alert-danger">
+
+                 <div [hidden]="!ngId.errors.required">
+                    University ID is Required!
+                 </div>
+
+              </div>
+        </div>
+
+        <div class="fadeIn fifth">
+           <input type="password" id="password" name="password" placeholder="Password" required minlength="7" [(ngModel)]="password" #ngPassword="ngModel">
+              <div *ngIf="ngPassword.errors && (ngPassword.dirty || ngPassword.touched)" class="alert alert-danger">
+
+                 <div [hidden]="!ngPassword.errors.required">
+                    Password is Required!
+                 </div>
+
+                 <div [hidden]="!ngPassword.errors.minlength">
+                    At least 7 characters are Required!
+                 </div>
+
+              </div>
+        </div>
+
+        <div id="passwordShow">
+           <input type="checkbox" (click)="showPassword()"> Show Password
+        </div>
+
+        <!-- Submit -->
+        <div>
+           <input type="submit" class="fadeIn fourth" value="Submit" (click)="onSubmit()">
+        </div>
+
+     </div>
+  </div>
+
+</html>
