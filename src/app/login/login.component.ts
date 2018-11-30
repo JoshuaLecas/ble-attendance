@@ -20,6 +20,8 @@ export class LoginComponent implements OnInit {
     var temp = this.authService.getKey();
     this.key = temp;
     this.authService.storeKey(this.key);
+    alert(this.key['ket']);
+    alert(this.key);
 
   }
 
