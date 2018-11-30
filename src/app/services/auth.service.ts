@@ -23,6 +23,9 @@ export class AuthService {
   storeKey(key){
     sessionStorage.setItem('key', JSON.stringify(key));
     this.apiKey = key;
+    alert(this.apiKey.ket);
+    alert(this.apiKey['ket']);
+    alert(this.apiKey);
   }
 
 

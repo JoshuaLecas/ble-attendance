@@ -399,8 +399,6 @@ var LoginComponent = /** @class */ (function () {
         var temp = this.authService.getKey();
         this.key = temp;
         this.authService.storeKey(this.key);
-        alert(this.key['ket']);
-        alert(this.key);
     };
     LoginComponent.prototype.showPassword = function () {
         var x = document.getElementById("password");
@@ -771,26 +769,29 @@ var AuthService = /** @class */ (function () {
     AuthService.prototype.storeKey = function (key) {
         sessionStorage.setItem('key', JSON.stringify(key));
         this.apiKey = key;
+        alert(this.apiKey.ket);
+        alert(this.apiKey['ket']);
+        alert(this.apiKey);
     };
     // Endpoints for logging in and registering user
     AuthService.prototype.getKey = function () {
         return this.http.post('/api/demo', { headers: this.headers });
     };
     AuthService.prototype.registerUser = function (user) {
-        return this.http.post('/api/professors/createProfessor/' + this.apiKey['ket'], user, { headers: this.headers });
+        return this.http.post('/api/professors/createProfessor/' + this.apiKey.ket, user, { headers: this.headers });
     };
     AuthService.prototype.loginUser = function (user) {
-        return this.http.post('/api/professors/login/' + this.apiKey['ket'], user, { headers: this.headers });
+        return this.http.post('/api/professors/login/' + this.apiKey.ket, user, { headers: this.headers });
     };
     AuthService.prototype.createClass = function (course) {
-        return this.http.post('/api/classes/create/' + this.user.profNID + '/' + this.apiKey['ket'], course, { headers: this.headers });
+        return this.http.post('/api/classes/create/' + this.user.profNID + '/' + this.apiKey.ket, course, { headers: this.headers });
     };
     //   // Endpoints for interacting with Contacts
     AuthService.prototype.getCourses = function () {
-        return this.http.get('/api/classes/' + this.user.profNID + '/' + this.apiKey['ket'], { headers: this.headers });
+        return this.http.get('/api/classes/' + this.user.profNID + '/' + this.apiKey.ket, { headers: this.headers });
     };
     AuthService.prototype.getLectures = function (course) {
-        return this.http.get('/api/lectures/' + course._id + '/' + this.apiKey['ket'], { headers: this.headers });
+        return this.http.get('/api/lectures/' + course._id + '/' + this.apiKey.ket, { headers: this.headers });
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
