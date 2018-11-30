@@ -3,6 +3,16 @@ body
   font-family: 'helvetica',sans-serif;
 }
 
+.img
+{
+  width:25%;
+}
+
+.navbar
+{ 
+  margin-bottom: -20px;
+}
+
 .navbar-toggler:focus,
 .navbar-toggler:active
 {
@@ -11,6 +21,8 @@ body
 
 .navbar-brand{
   font-size: 25px;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .navbar-toggler span {
@@ -112,22 +124,4 @@ body
  -o-transform: scale(0.95);
  -ms-transform: scale(0.95);
  transform: scale(0.95);
-}
-
-@media only screen and (min-width: 800px)
-{
-  .navbar-brand
-  {
-    font-size: 50px;
-  }
-
-  .nav-link
-  {
-    font-size: 30px;
-  }
-
-  .logIn
-  {
-    font-size: 25px;
-  }
 }

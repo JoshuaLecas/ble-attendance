@@ -4,6 +4,7 @@ h1
   color: #0082FC;
   margin-left: 3%;
   margin-top: 11%;
+  font-size: 60px;
 }
 
 h2
@@ -20,20 +21,21 @@ h2
 {
   background-color: #ffffff;
   position: absolute;
-  left: 1%;
-  width: 48.5%;
-  margin-top: 5%;
-  margin-bottom: 5%;
+  left: 0%;
+  width: 48.7%;
+  margin-top: 6%;
+  margin-bottom: 6%;
   border: 5px;
   border-radius: 10px 10px 10px 10px;
+  font-family: URW Chancery L, cursive;
 }
 
 #icon
 {
   position: absolute;
-  right: 1%;
-  width: 48.5%;
-  margin-top: 5%;
+  right: 0%;
+  width: 50%;
+  margin-top: 6%;
   margin-bottom: 5%;
   border: 5px;
   border-radius: 10px 10px 10px 10px;
@@ -47,7 +49,7 @@ input[type=submit]
   border: none;
   color: #0082FC;
   bottom: 10%;
-  left: 1%;
+  left: 0%;
   padding: 15px 80px;
   text-align: center;
   text-decoration: none;
@@ -78,68 +80,3 @@ input[type=submit]:active
   -ms-transform: scale(0.95);
   transform: scale(0.95);
 }
-
-/*
-@media only screen and (min-width: 800px)
-{
-  h1
-  {
-    color: #0082FC;
-    font-size: 65px;
-    font-weight: bold;
-    margin-left: 45px;
-  }
-
-  h2
-  {
-    color: #000000;
-    font-size: 25px;
-    margin: 5%;
-    margin-top: 10%;;
-  }
-
-  p
-  {
-    color: #000000;
-    font-size: 20px;
-    margin: 5%;
-    margin-top: 15%;
-  }
-
-  .container
-  {
-    position: relative;
-  }
-
-  .intro
-  {
-    background-color: #ffffff;
-    position: absolute;
-    margin-top: 10%;
-    left: -30%;
-    width: 70%;
-    font-family: Verdana, sans-serif;
-    border: 5px;
-    border-radius: 10px 10px 10px 10px;
-  }
-
-  #icon
-  {
-    position: absolute;
-    width: 80%;
-    right: -30%;
-    margin-top: 20%;
-    top: 30%;
-    border: 5px;
-    border-radius: 10px 10px 10px 10px;
-  }
-
-  input[type=submit]
-  {
-    margin-top: 75%;
-    top: 100%;
-    left: -30%;
-    padding: 20px 90px;
-    font-size: 25px;
-  }
-} */
