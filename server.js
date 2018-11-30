@@ -1207,8 +1207,9 @@ let genKey = function() {
 
 let genAlphaKey = function() {
 	var retStr = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for(var i = 0; i < 6; i++) {
-		var c = (Math.floor(Math.random() * 25)) + 'a';
+		var c = possible.charAt(Math.floor(Math.random() * possible.length));
 		retStr += c;
 	}
 	return retStr;
