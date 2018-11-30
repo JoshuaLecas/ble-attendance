@@ -23,24 +23,24 @@ export class AuthService {
 
   // Endpoints for logging in and registering user
   registerUser(user){
-    return this.http.post('/api/professors/createProfessor', user, {headers:this.headers});
+    return this.http.post('/api/professors/createProfessor/' +process.env.APIKEY, user, {headers:this.headers});
   }
 
   loginUser(user){
-    return this.http.post('/api/professors/login', user, {headers:this.headers});
+    return this.http.post('/api/professors/login'+process.env.APIKEY, user, {headers:this.headers});
   }
 
   createClass(course){
-    return this.http.post('/api/classes/create/'+this.user.profNID, course, {headers:this.headers});
+    return this.http.post('/api/classes/create/'+this.user.profNID+'/'+process.env.APIKEY, course, {headers:this.headers});
   }
 
 //   // Endpoints for interacting with Contacts
   getCourses(){
-    return this.http.get('/api/classes/'+this.user.profNID, {headers:this.headers});
+    return this.http.get('/api/classes/'+this.user.profNID+'/'+process.env.APIKEY, {headers:this.headers});
 }
 
   getLectures(course){
-  return this.http.get('/api/classes/'+course.courseID, {headers:this.headers});
+  return this.http.get('/api/lectures/'+course._id+'/'+process.env.APIKEY, {headers:this.headers});
 }
 //
 //   addContact(contact: Contact){

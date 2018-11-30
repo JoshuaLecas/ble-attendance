@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require("path");
-const config = require('./dbcreds');
 const crypto = require("crypto");
 
 // *** Connection and Starting the app ***
@@ -12,12 +11,12 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to the database before starting the application server.
-mongoose.connect(config.dburl);
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function(){
-  // should be connected
-  console.log('connected to remote database');
+  // should be connected
+  console.log('connected to remote database');
 });
 
 // Initialize the app.
@@ -50,7 +49,8 @@ var classSchema = new mongoose.Schema({
 	className: String,
 	createdByProfNID: String,
 	startTime: String,
-	endTime: String
+	endTime: String,
+	regCode: String
 });
 
 var lectureSchema = new mongoose.Schema({
@@ -107,25 +107,29 @@ function handleError(res, reason, message, code) {
 // password: "password"
 // email: "email"
 
-app.post("/api/professors/createProfessor", function(req,res) {
+app.post("/api/professors/createProfessor/:key", function(req,res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 
   var professor = new Professor({
-    profNID: req.body.profNID,
+    profNID: req.body.nid,
     name: req.body.name,
     password : crypto.createHash('sha256').update(JSON.stringify(req.body.password)).digest('hex'),
     email : req.body.email,
     hasPaid: false
     });
-  if(!req.body.profNID || !req.body.name || !req.body.password || !req.body.email) {
+  if(!req.body.nid || !req.body.name || !req.body.password || !req.body.email) {
     handleError(res, "Invalid user input", "Missing input field", 400);
   } else {
     professor.save(function(err, professor) {
     if(err) {
       handleError(res, "Database error while creating", "Failed to create professor");
     } else {
-     console.log("Professor successfully created!");
-     res.status(201).json("Successfully created professor");
-     }
+     console.log("Professor successfully created!");
+     res.status(201).json("Successfully created professor");
+     }
     });
   }
 });
@@ -136,7 +140,11 @@ app.post("/api/professors/createProfessor", function(req,res) {
 // email: "email"
 // password: "password"
 
-app.post("/api/professors/login", function(req, res) {
+app.post("/api/professors/login/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	req.body.password = crypto.createHash('sha256').update(JSON.stringify(req.body.password)).digest('hex');
 	Professor.findOne(req.body, function(err, prof) {
 		if(err) {
@@ -163,7 +171,11 @@ app.post("/api/professors/login", function(req, res) {
 
 // :id - "profNID"
 
-app.post("/api/professors/deleteProfessor/:id", function(req, res) {
+app.post("/api/professors/deleteProfessor/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Uses.findOneAndDelete({usedByProfNID: req.params.id}, function(err, deleteUse) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to remove access key");
@@ -273,7 +285,11 @@ app.post("/api/professors/deleteProfessor/:id", function(req, res) {
 // JSON
 // uuid: "ble uuid"
 
-app.post("/api/professors/updateUUID/:id", function(req, res) {
+app.post("/api/professors/updateUUID/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	console.log(req.body);
 	Professor.findOneAndUpdate({"profNID": req.params.id}, {"bleUUID": req.body.uuid}, {new: true}, function(err, model){
 		if(err) {
@@ -300,7 +316,11 @@ app.post("/api/professors/updateUUID/:id", function(req, res) {
 // email: "rickyemail"
 // password: "password"
 
-app.post("/api/professors/updateProfessor/:id", function(req, res) {
+app.post("/api/professors/updateProfessor/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	console.log(req.body);
 	Professor.findOneAndUpdate({"profNID": req.params.id}, req.body, {new: true}, function(err, model){
 		if(err) {
@@ -321,7 +341,11 @@ app.post("/api/professors/updateProfessor/:id", function(req, res) {
 // JSON
 // keyValue: "123456789"
 
-app.post("/api/professors/useAccessKey/:id", function(req, res) {
+app.post("/api/professors/useAccessKey/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	AccessKey.findOneAndUpdate({keyValue: req.body.keyValue}, {isUsed: true}, {new: true}, function(err, accessKey) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find access key");
@@ -360,7 +384,11 @@ app.post("/api/professors/useAccessKey/:id", function(req, res) {
 
 // For testing purposes
 
-app.get("/api/professors", function(req, res) {
+app.get("/api/professors/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Professor.find(function(err, professors) {
 		if(err){
 			handleError(res, err.message, "Couldn't get professors");
@@ -381,15 +409,21 @@ app.get("/api/professors", function(req, res) {
 // name: "poop"
 // start_time: "13:00"
 // end_time: "14:50"
+// reg_code: "abC13Fa"
 
-app.post("/api/classes/create/:id", function(req, res) {
+app.post("/api/classes/create/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	// "class" is a reserved word in js
 	var classy = new Class({
 		courseID: req.body.course_id,
-		className: req.body.class_name,
+		className: req.body.name,
 		createdByProfNID: req.params.id,
 		startTime: req.body.start_time,
-		endTime: req.body.end_time
+		endTime: req.body.end_time,
+		regCode: req.body.reg_code
 	});
 
 	if(!req.body.course_id) {
@@ -411,7 +445,11 @@ app.post("/api/classes/create/:id", function(req, res) {
 
 // :id - "profNID"
 
-app.get("/api/classes/:id", function(req, res) {
+app.get("/api/classes/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Class.find({createdByProfNID: req.params.id}, function(err, profClasses) {
 		if(err) {
 			handleError(res, "Database error error while searching", "Failed get classes for professor");
@@ -427,7 +465,11 @@ app.get("/api/classes/:id", function(req, res) {
 
 // :id - "_id of class"
 
-app.post("/api/classes/delete/:id", function(req, res) {
+app.post("/api/classes/delete/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	isIn.deleteMany({class_id: req.params.id}, function(err) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete students from class");
@@ -490,8 +532,13 @@ app.post("/api/classes/delete/:id", function(req, res) {
 // className: "poop"
 // startTime: "12:00"
 // endTime: "13:50"
+// reg_code: "acbk3j@!"
 
-app.post("/api/classes/update/:id", function(req, res) {
+app.post("/api/classes/update/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	console.log(req.body);
 	Class.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, model){
 		if(err) {
@@ -510,8 +557,13 @@ app.post("/api/classes/update/:id", function(req, res) {
 // :id - "_id of class"
 // JSON
 // nid: "ab123456"
+// reg_code: "jbsdfjkbasfdadfs"
 
-app.post("/api/classes/addToClass/:id", function(req, res){
+app.post("/api/classes/addToClass/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 
 	Student.findOne({studentNID: req.body.nid}, function(err, stud) {
 		if(err) {
@@ -523,28 +575,44 @@ app.post("/api/classes/addToClass/:id", function(req, res){
 			}
 			else {
 				console.log("Found student");
-				var isin = new isIn({
-					class_id: req.params.id,
-					studentNID: req.body.nid,
-					studentUUID: stud.studentUUID
-				});
 
 				if(!req.body.nid) {
 					handleError(res, "Invalid user input", "Missing nid parameter", 400);
 				}
 				else {
-					isin.save(function(err, isin){
-						if(err) return handleError(res, "Failed to create isIn", "Failed to add student to class");
-						else {
-							console.log("isIn successfully created");
-							res.status(201).json(isin);
-						}
-					});
+					if(!req.body.reg_code) {
+						handleError(res, "Invalid user input", "Missing reg_code parameter", 400)
+					}
+					else {
+						Class.findOne({regCode: req.body.reg_code}, function(err, classy) {
+							if(err){
+								handleError(res, "Database error", "Error with database")
+							}
+							else {
+								if(!classy){
+									handleError(res, "Class not found", "Invalid registration code")
+								}
+								else {
+									var isin = new isIn({
+										class_id: classy._id,
+										studentNID: req.body.nid,
+										studentUUID: stud.studentUUID
+									});
+									isin.save(function(err, isin){
+										if(err) return handleError(res, "Failed to create isIn", "Failed to add student to class");
+										else {
+											console.log("isIn successfully created");
+											res.status(201).json(isin);
+										}
+									});
+								}
+							}
+						});
+					}
 				}
 			}
 		}
 	});
-
 });
 
 // Remove Student (from Class)
@@ -553,7 +621,11 @@ app.post("/api/classes/addToClass/:id", function(req, res){
 // JSON
 // nid: "ab123456"
 
-app.post("/api/classes/removeStudent/:id", function(req, res){
+app.post("/api/classes/removeStudent/:id/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	isIn.findOneAndDelete({class_id:req.params.id, studentNID: req.body.nid}, function(err, deletedIsIn){
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to remove from class");
@@ -574,7 +646,11 @@ app.post("/api/classes/removeStudent/:id", function(req, res){
 
 // :id - "_id of class"
 
-app.get("/api/classes/viewStudents/:id", function(req, res){
+app.get("/api/classes/viewStudents/:id/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	isIn.find({class_id: req.params.id}, function(err, studentsForClass){
 		if(err) {
 			handleError(res, err.message, "Couldn't get students for this class");
@@ -596,7 +672,11 @@ app.get("/api/classes/viewStudents/:id", function(req, res){
 // email: "email"
 // uuid: "12345ab"
 
-app.post("/api/students/createStudent", function(req, res){
+app.post("/api/students/createStudent/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Student.findOne({studentNID: req.body.nid}, function(err, stud){
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find student");
@@ -627,7 +707,31 @@ app.post("/api/students/createStudent", function(req, res){
 			}
 			else {
 				console.log("Student already exists");
-				res.status(201).json("Student already exists");
+				Student.findOne({studentNID: req.body.nid}, function(err,student){
+					if(err){
+						handleError(res, "Error retrieving student", "Student exists")
+					}
+					else {
+						if(student.studentUUID && student.studentUUID == "-1"){
+							console.log("Overriding student")
+
+							Student.findOneAndUpdate({studentNID: req.body.nid}, {studentUUID:req.body.uuid}, {new:true},function (err, student){
+								if(err){
+									handleError(res, "Could not update", "Failed to update");
+								}
+								else{
+									console.log(student);
+									res.status(201).json("Success");
+								}
+							})
+						}
+						else {
+							res.status(201).json("Student already exists");
+						}
+					}
+
+				});
+
 			}
 		}
 	});
@@ -636,7 +740,8 @@ app.post("/api/students/createStudent", function(req, res){
 
 // Update Student
 
-// Please DO NOT update studentNID or studentUUID
+// Please DO NOT update studentNID
+// Student UUID Should only update if professor has allowed override, meaning UUID is set to -1
 
 // If you want to update a field, just add what you want to change in the json
 
@@ -645,9 +750,37 @@ app.post("/api/students/createStudent", function(req, res){
 // JSON
 // name: "joe noe"
 // email: "joesemail"
+// studentUUID: "15"
 
-app.post("/api/students/updateStudent/:id", function(req, res) {
+app.post("/api/students/updateStudent/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	console.log(req.body);
+
+	// Check that the UUID is -1 first before updating student UUID. This means they were overridden by prof
+	if(req.body.studentUUID)
+	{
+		Student.findOne({studentNID: req.params.id}, function(err, student){
+
+		if (err) {
+			handleError(res, "Database Error while searching", "Failed to find student");
+		}
+
+		else{
+			console.log(student);
+			console.log("UUID in body")
+			if(student.studentUUID != '-1') {
+				res.status(201).json("Cannot update");
+			}
+
+
+		}
+
+
+		})
+	}
 	Student.findOneAndUpdate({studentNID: req.params.id}, req.body, {new: true}, function(err, stud) {
 		if(err) {
 			handleError(res, "Database error while updating", "Failed to update student");
@@ -655,7 +788,12 @@ app.post("/api/students/updateStudent/:id", function(req, res) {
 		else {
 			console.log(req.params.id);
 			console.log(stud);
+			if(!stud) {
+				res.status(201).json("Could not find student with that id!")
+			}
+			else{
 			res.status(201).json(stud);
+			}
 		}
 	});
 });
@@ -664,7 +802,11 @@ app.post("/api/students/updateStudent/:id", function(req, res) {
 
 // :id - "studNID"
 
-app.post("/api/students/deleteStudent/:id", function(req, res) {
+app.post("/api/students/deleteStudent/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	isIn.deleteMany({studentNID: req.params.id}, function(err) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete isIn classes");
@@ -697,11 +839,46 @@ app.post("/api/students/deleteStudent/:id", function(req, res) {
 	});
 });
 
+// Override Student
+
+// Allows professors to let students link account to a different device
+
+//:id - "studentNID"
+
+app.post("/api/students/override/:id/:key", function(req,res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
+
+	Student.findOneAndUpdate({studentNID: req.params.id}, {studentUUID: "-1"}, {new:true} ,function(err,student){
+		if(err){
+			handleError(res, "Error finding student to update", "Could not update student");
+		}
+		else{
+			if(student){
+				res.status(201).json("Success")
+			}
+			else {
+				res.status(201).json("Could not find student");
+			}
+		}
+
+	})
+
+
+
+});
+
 // View All Students
 
 // For testing purposes
 
-app.get("/api/students", function(req, res){
+app.get("/api/students/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Student.find(function(err, students) {
 		if(err) {
 			handleError(res, err.message, "Couldn't get students");
@@ -717,7 +894,11 @@ app.get("/api/students", function(req, res){
 
 // :id - "studNID"
 
-app.get("/api/students/viewClasses/:id", function(req, res){
+app.get("/api/students/viewClasses/:id/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	isIn.find({studentNID: req.params.id}, function(err, classesForStud){
 		if(err) {
 			handleError(res, err.message, "Couldn't get classes for this student");
@@ -734,7 +915,11 @@ app.get("/api/students/viewClasses/:id", function(req, res){
 // :id - "studNID"
 // :class_id - "_id of class"
 
-app.get("/api/students/attendedLecture/:id/:class_id", function(req, res) {
+app.get("/api/students/attendedLecture/:id/:class_id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Class.findOne({_id: req.params.class_id}, function(err, classy) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find class");
@@ -796,7 +981,11 @@ app.get("/api/students/attendedLecture/:id/:class_id", function(req, res) {
 // JSON
 // profUUID: "ab123456"
 
-app.post("/api/students/markHere/:id", function(req, res) {
+app.post("/api/students/markHere/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Professor.findOne({bleUUID: req.body.profUUID}, function(err, prof) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find prof");
@@ -872,7 +1061,11 @@ app.post("/api/students/markHere/:id", function(req, res) {
 // :id - "_id of class"
 // :uuid - "profUUID"
 
-app.post("/api/lectures/create/:id/:uuid", function(req, res){
+app.post("/api/lectures/create/:id/:uuid/:key", function(req, res){
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Lecture.findOne({date: new Date().toLocaleString().split(",")[0], class_id: req.params.id}, function(err, foundLect) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find lecture");
@@ -925,7 +1118,11 @@ app.post("/api/lectures/create/:id/:uuid", function(req, res){
 
 // :id - "_id of lecture"
 
-app.post("/api/lectures/delete/:id", function(req, res) {
+app.post("/api/lectures/delete/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Attended.deleteMany({lecture_id: req.params.id}, function(err) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete attendeds");
@@ -953,7 +1150,11 @@ app.post("/api/lectures/delete/:id", function(req, res) {
 
 // :id - "_id of class"
 
-app.get("/api/lectures/:id", function(req, res) {
+app.get("/api/lectures/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Lecture.find({class_id: req.params.id}, function(err, classLectures) {
 		if(err) {
 			handleError(res, err.message, "Couldn't get lectures for class");
@@ -968,7 +1169,11 @@ app.get("/api/lectures/:id", function(req, res) {
 
 // :id - "_id of lecture"
 
-app.get("/api/lectures/viewAttendance/:id", function(req, res) {
+app.get("/api/lectures/viewAttendance/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	Lecture.findOne({_id: req.params.id}, function(err, lecture) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find lecture");
@@ -1001,7 +1206,11 @@ let genKey = function() {
 
 // Generate Access Key
 
-app.post("/api/accessKeys/generate", function(req, res) {
+app.post("/api/accessKeys/generate/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	var accesskey = new AccessKey({
 		keyValue: genKey(),
 		isUsed: false
@@ -1021,7 +1230,11 @@ app.post("/api/accessKeys/generate", function(req, res) {
 
 // :id - "_id of access key"
 
-app.post("/api/accessKeys/delete/:id", function(req, res) {
+app.post("/api/accessKeys/delete/:id/:key", function(req, res) {
+	if(req.params.key != process.env.APIKEY) {
+		handleError(res, "Attempted access with invalid api key", "Unauthorized access", 403);
+		return;
+	}
 	AccessKey.findOneAndDelete({_id: req.params.id}, function(err, deleteAccessKey) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete access key");

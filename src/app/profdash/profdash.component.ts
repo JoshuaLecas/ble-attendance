@@ -94,6 +94,8 @@ export class ProfdashComponent implements OnInit {
 
   courseClicked(course){
     this.selectedCourse = course;
+    this.getLectureList(course);
+    this.getLectureList(course);
   }
 
 }

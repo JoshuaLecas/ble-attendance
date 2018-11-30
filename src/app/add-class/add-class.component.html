@@ -62,16 +62,16 @@
                 <tbody>
 
                   <tr>
-                    <input placeholder="Enter Class Title" type="text" name="name" [(ngModel)] = "class_name" class="form-control" style="margin-left: 1%;">
+                    <input placeholder="Enter Class Title" type="text" name="title" [(ngModel)] = "class_name" class="form-control" style="margin-left: 1%;">
                   </tr>
                   <tr>
-                    <input placeholder="Enter Course ID" type="text" name="phone" [(ngModel)] = "course_id" class="form-control" style="margin: 1%;">
+                    <input placeholder="Enter Course ID" type="text" name="courseid" [(ngModel)] = "course_id" class="form-control" style="margin: 1%;">
                   </tr>
                   <tr>
-                    <input placeholder="Enter Start Time" type="text" name="email" [(ngModel)] = "start_time" class="form-control" style="margin: 1%;">
+                    <input placeholder="Enter Start Time" type="time" name="starttime" [(ngModel)] = "start_time" class="form-control" style="margin: 1%;">
                   </tr>
                   <tr>
-                    <input placeholder="Enter End Time" type="text" name="address" [(ngModel)] = "end_time" class="form-control" style="margin: 1%;">
+                    <input placeholder="Enter End Time" type="time" name="starttime" [(ngModel)] = "end_time" class="form-control" style="margin: 1%;">
                   </tr>
                   <tr>
                     <button class="btn btn-success" (click)="onAddClassButton()" style="background-color:#779ECB; border-color:#779ECB; margin-top: 2%; margin-left: 1%;">
@@ -83,7 +83,7 @@
                   </tr>
                 </tbody>
               </table>
-              
+
             </div>
           </div>
         </main>
