@@ -775,7 +775,7 @@ var AuthService = /** @class */ (function () {
     };
     // Endpoints for logging in and registering user
     AuthService.prototype.getKey = function () {
-        return this.http.post('/api/demo', { headers: this.headers });
+        return this.http.get('/api/demo', { headers: this.headers });
     };
     AuthService.prototype.registerUser = function (user) {
         return this.http.post('/api/professors/createProfessor/' + this.apiKey.ket, user, { headers: this.headers });
