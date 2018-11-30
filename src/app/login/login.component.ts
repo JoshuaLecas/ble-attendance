@@ -18,9 +18,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(){
     var temp = this.authService.getKey();
-    this.key = JSON.parse(temp);
-    alert(key);
-    alert(this.key['ket']);
+    this.key = temp;
+    alert(this.key);
+    alert(this.key['key']);
+    alert(this.key.key);
+    alert(temp);
+    alert(temp['key']);
     this.authService.storeKey(this.key);
 
   }
