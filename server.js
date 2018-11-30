@@ -98,7 +98,10 @@ function handleError(res, reason, message, code) {
 }
 
 app.get("/api/demo", function(req, res) {
-	res.status(201).json(process.env.APIKEY);
+
+	var ker = '{ "ket" :"' + process.env.APIKEY +'"}';
+	res.status(201).json(ker);
+
 });
 
 // *** Professor API Routes ***
@@ -746,6 +749,7 @@ app.post("/api/students/createStudent/:key", function(req, res){
 // Update Student
 
 // Please DO NOT update studentNID
+
 // Student UUID Should only update if professor has allowed override, meaning UUID is set to -1
 
 // If you want to update a field, just add what you want to change in the json
@@ -796,6 +800,7 @@ app.post("/api/students/updateStudent/:id/:key", function(req, res) {
 			if(!stud) {
 				res.status(201).json("Could not find student with that id!")
 			}
+
 			else{
 			res.status(201).json(stud);
 			}
