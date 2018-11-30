@@ -399,6 +399,8 @@ var LoginComponent = /** @class */ (function () {
         var temp = this.authService.getKey();
         this.key = temp;
         this.authService.storeKey(this.key);
+        alert(this.key['ket']);
+        alert(this.key);
     };
     LoginComponent.prototype.showPassword = function () {
         var x = document.getElementById("password");
