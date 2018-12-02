@@ -396,10 +396,6 @@ var LoginComponent = /** @class */ (function () {
         this.authService = authService;
     }
     LoginComponent.prototype.ngOnInit = function () {
-        this.key = this.authService.getKey();
-        alert(this.key['key']);
-        alert(this.key.key);
-        this.authService.storeKey(this.key);
     };
     LoginComponent.prototype.showPassword = function () {
         var x = document.getElementById("password");
@@ -690,9 +686,6 @@ var RegisterComponent = /** @class */ (function () {
         this.authService = authService;
     }
     RegisterComponent.prototype.ngOnInit = function () {
-        var temp = this.authService.getKey();
-        this.key = temp;
-        this.authService.storeKey(this.key);
     };
     RegisterComponent.prototype.showPassword = function () {
         var x = document.getElementById("password");
@@ -767,29 +760,22 @@ var AuthService = /** @class */ (function () {
         sessionStorage.setItem('user', JSON.stringify(user));
         this.user = user;
     };
-    AuthService.prototype.storeKey = function (key) {
-        sessionStorage.setItem('key', JSON.stringify(key));
-        this.apiKey = key;
-    };
     // Endpoints for logging in and registering user
-    AuthService.prototype.getKey = function () {
-        return this.http.get('/api/demo', { headers: this.headers });
-    };
     AuthService.prototype.registerUser = function (user) {
-        return this.http.post('/api/professors/createProfessor/' + this.apiKey.ket, user, { headers: this.headers });
+        return this.http.post('/api/professors/createProfessor/', user, { headers: this.headers });
     };
     AuthService.prototype.loginUser = function (user) {
-        return this.http.post('/api/professors/login/' + this.apiKey.ket, user, { headers: this.headers });
+        return this.http.post('/api/professors/login/', user, { headers: this.headers });
     };
     AuthService.prototype.createClass = function (course) {
-        return this.http.post('/api/classes/create/' + this.user.profNID + '/' + this.apiKey.ket, course, { headers: this.headers });
+        return this.http.post('/api/classes/create/' + this.user.profNID, course, { headers: this.headers });
     };
     //   // Endpoints for interacting with Contacts
     AuthService.prototype.getCourses = function () {
-        return this.http.get('/api/classes/' + this.user.profNID + '/' + this.apiKey.ket, { headers: this.headers });
+        return this.http.get('/api/classes/' + this.user.profNID, { headers: this.headers });
     };
     AuthService.prototype.getLectures = function (course) {
-        return this.http.get('/api/lectures/' + course._id + '/' + this.apiKey.ket, { headers: this.headers });
+        return this.http.get('/api/lectures/' + course._id, { headers: this.headers });
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
