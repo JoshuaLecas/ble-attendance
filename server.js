@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const path = require("path");
 const crypto = require("crypto");
 
+
 // *** Connection and Starting the app ***
 
 var app = express();
@@ -108,7 +109,7 @@ function handleError(res, reason, message, code) {
 // email: "email"
 
 app.post("/api/professors/createProfessor", function(req,res) {
-	
+
 
   var professor = new Professor({
     profNID: req.body.nid,
@@ -138,7 +139,7 @@ app.post("/api/professors/createProfessor", function(req,res) {
 // password: "password"
 
 app.post("/api/professors/login", function(req, res) {
-	
+
 	req.body.password = crypto.createHash('sha256').update(JSON.stringify(req.body.password)).digest('hex');
 	Professor.findOne(req.body, function(err, prof) {
 		if(err) {
@@ -166,7 +167,7 @@ app.post("/api/professors/login", function(req, res) {
 // :id - "profNID"
 
 app.post("/api/professors/deleteProfessor/:id", function(req, res) {
-	
+
 	Uses.findOneAndDelete({usedByProfNID: req.params.id}, function(err, deleteUse) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to remove access key");
@@ -277,7 +278,7 @@ app.post("/api/professors/deleteProfessor/:id", function(req, res) {
 // uuid: "ble uuid"
 
 app.post("/api/professors/updateUUID/:id", function(req, res) {
-	
+
 	console.log(req.body);
 	Professor.findOneAndUpdate({"profNID": req.params.id}, {"bleUUID": req.body.uuid}, {new: true}, function(err, model){
 		if(err) {
@@ -305,7 +306,7 @@ app.post("/api/professors/updateUUID/:id", function(req, res) {
 // password: "password"
 
 app.post("/api/professors/updateProfessor/:id", function(req, res) {
-	
+
 	console.log(req.body);
 	Professor.findOneAndUpdate({"profNID": req.params.id}, req.body, {new: true}, function(err, model){
 		if(err) {
@@ -327,7 +328,7 @@ app.post("/api/professors/updateProfessor/:id", function(req, res) {
 // keyValue: "123456789"
 
 app.post("/api/professors/useAccessKey/:id", function(req, res) {
-	
+
 	AccessKey.findOneAndUpdate({keyValue: req.body.keyValue}, {isUsed: true}, {new: true}, function(err, accessKey) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find access key");
@@ -367,7 +368,7 @@ app.post("/api/professors/useAccessKey/:id", function(req, res) {
 // For testing purposes
 
 app.get("/api/professors", function(req, res) {
-	
+
 	Professor.find(function(err, professors) {
 		if(err){
 			handleError(res, err.message, "Couldn't get professors");
@@ -391,7 +392,7 @@ app.get("/api/professors", function(req, res) {
 // reg_code: "abC13Fa"
 
 app.post("/api/classes/create/:id", function(req, res) {
-	
+
 
 	// "class" is a reserved word in js
 	var classy = new Class({
@@ -423,7 +424,7 @@ app.post("/api/classes/create/:id", function(req, res) {
 // :id - "profNID"
 
 app.get("/api/classes/:id", function(req, res) {
-	
+
 	Class.find({createdByProfNID: req.params.id}, function(err, profClasses) {
 		if(err) {
 			handleError(res, "Database error error while searching", "Failed get classes for professor");
@@ -440,7 +441,7 @@ app.get("/api/classes/:id", function(req, res) {
 // :id - "_id of class"
 
 app.post("/api/classes/delete/:id", function(req, res) {
-	
+
 	isIn.deleteMany({class_id: req.params.id}, function(err) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete students from class");
@@ -506,7 +507,7 @@ app.post("/api/classes/delete/:id", function(req, res) {
 // reg_code: "acbk3j@!"
 
 app.post("/api/classes/update/:id", function(req, res) {
-	
+
 	console.log(req.body);
 	Class.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function(err, model){
 		if(err) {
@@ -528,7 +529,7 @@ app.post("/api/classes/update/:id", function(req, res) {
 // reg_code: "jbsdfjkbasfdadfs"
 
 app.post("/api/classes/addToClass", function(req, res){
-	
+
 
 	Student.findOne({studentNID: req.body.nid}, function(err, stud) {
 		if(err) {
@@ -587,7 +588,7 @@ app.post("/api/classes/addToClass", function(req, res){
 // nid: "ab123456"
 
 app.post("/api/classes/removeStudent/:id", function(req, res){
-	
+
 	isIn.findOneAndDelete({class_id:req.params.id, studentNID: req.body.nid}, function(err, deletedIsIn){
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to remove from class");
@@ -609,7 +610,7 @@ app.post("/api/classes/removeStudent/:id", function(req, res){
 // :id - "_id of class"
 
 app.get("/api/classes/viewStudents/:id", function(req, res){
-	
+
 	isIn.find({class_id: req.params.id}, function(err, studentsForClass){
 		if(err) {
 			handleError(res, err.message, "Couldn't get students for this class");
@@ -632,7 +633,7 @@ app.get("/api/classes/viewStudents/:id", function(req, res){
 // uuid: "12345ab"
 
 app.post("/api/students/createStudent", function(req, res){
-	
+
 	Student.findOne({studentNID: req.body.nid}, function(err, stud){
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find student");
@@ -710,7 +711,7 @@ app.post("/api/students/createStudent", function(req, res){
 // studentUUID: "15"
 
 app.post("/api/students/updateStudent/:id", function(req, res) {
-	
+
 	console.log(req.body);
 
 	// Check that the UUID is -1 first before updating student UUID. This means they were overridden by prof
@@ -758,7 +759,7 @@ app.post("/api/students/updateStudent/:id", function(req, res) {
 // :id - "studNID"
 
 app.post("/api/students/deleteStudent/:id", function(req, res) {
-	
+
 	isIn.deleteMany({studentNID: req.params.id}, function(err) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete isIn classes");
@@ -798,7 +799,7 @@ app.post("/api/students/deleteStudent/:id", function(req, res) {
 //:id - "studentNID"
 
 app.post("/api/students/override/:id", function(req,res){
-	
+
 
 	Student.findOneAndUpdate({studentNID: req.params.id}, {studentUUID: "-1"}, {new:true} ,function(err,student){
 		if(err){
@@ -824,7 +825,7 @@ app.post("/api/students/override/:id", function(req,res){
 // For testing purposes
 
 app.get("/api/students", function(req, res){
-	
+
 	Student.find(function(err, students) {
 		if(err) {
 			handleError(res, err.message, "Couldn't get students");
@@ -841,7 +842,7 @@ app.get("/api/students", function(req, res){
 // :id - "studNID"
 
 app.get("/api/students/viewClasses/:id", function(req, res){
-	
+
 	isIn.find({studentNID: req.params.id}, function(err, classesForStud){
 		if(err) {
 			handleError(res, err.message, "Couldn't get classes for this student");
@@ -859,7 +860,7 @@ app.get("/api/students/viewClasses/:id", function(req, res){
 // :class_id - "_id of class"
 
 app.get("/api/students/attendedLecture/:id/:class_id", function(req, res) {
-	
+
 	Class.findOne({_id: req.params.class_id}, function(err, classy) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find class");
@@ -922,7 +923,7 @@ app.get("/api/students/attendedLecture/:id/:class_id", function(req, res) {
 // profUUID: "ab123456"
 
 app.post("/api/students/markHere/:id", function(req, res) {
-	
+
 	Professor.findOne({bleUUID: req.body.profUUID}, function(err, prof) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find prof");
@@ -999,7 +1000,7 @@ app.post("/api/students/markHere/:id", function(req, res) {
 // :uuid - "profUUID"
 
 app.post("/api/lectures/create/:id/:uuid", function(req, res){
-	
+
 	Lecture.findOne({date: new Date().toLocaleString().split(",")[0], class_id: req.params.id}, function(err, foundLect) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find lecture");
@@ -1053,7 +1054,7 @@ app.post("/api/lectures/create/:id/:uuid", function(req, res){
 // :id - "_id of lecture"
 
 app.post("/api/lectures/delete/:id", function(req, res) {
-	
+
 	Attended.deleteMany({lecture_id: req.params.id}, function(err) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete attendeds");
@@ -1082,7 +1083,7 @@ app.post("/api/lectures/delete/:id", function(req, res) {
 // :id - "_id of class"
 
 app.get("/api/lectures/:id", function(req, res) {
-	
+
 	Lecture.find({class_id: req.params.id}, function(err, classLectures) {
 		if(err) {
 			handleError(res, err.message, "Couldn't get lectures for class");
@@ -1098,7 +1099,7 @@ app.get("/api/lectures/:id", function(req, res) {
 // :id - "_id of lecture"
 
 app.get("/api/lectures/viewAttendance/:id", function(req, res) {
-	
+
 	Lecture.findOne({_id: req.params.id}, function(err, lecture) {
 		if(err) {
 			handleError(res, "Database error while searching", "Failed to find lecture");
@@ -1142,7 +1143,7 @@ let genAlphaKey = function() {
 // Generate Access Key
 
 app.post("/api/accessKeys/generate", function(req, res) {
-	
+
 	var accesskey = new AccessKey({
 		keyValue: genKey(),
 		isUsed: false
@@ -1163,7 +1164,7 @@ app.post("/api/accessKeys/generate", function(req, res) {
 // :id - "_id of access key"
 
 app.post("/api/accessKeys/delete/:id", function(req, res) {
-	
+
 	AccessKey.findOneAndDelete({_id: req.params.id}, function(err, deleteAccessKey) {
 		if(err) {
 			handleError(res, "Database error while deleting", "Failed to delete access key");

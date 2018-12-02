@@ -18,7 +18,7 @@ export class AddClassComponent implements OnInit {
   course: Class;
   courseList: any;
   course_id: String;
-  class_name: String;
+  name: String;
   start_time: String;
   end_time: String;
 
@@ -46,7 +46,7 @@ export class AddClassComponent implements OnInit {
   }
 
   clearFields(){
-    this.class_name = undefined;
+    this.name = undefined;
     this.course_id = undefined;
     this.start_time = undefined;
     this.end_time = undefined;
@@ -55,7 +55,7 @@ export class AddClassComponent implements OnInit {
 
     const course = {
       course_id: this.course_id,
-      class_name: this.class_name,
+      name: this.name,
       start_time: this.start_time,
       end_time: this.end_time
     };

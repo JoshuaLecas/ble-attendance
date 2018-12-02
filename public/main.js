@@ -103,7 +103,7 @@ var AddClassComponent = /** @class */ (function () {
         var _this = this;
         var course = {
             course_id: this.course_id,
-            class_name: this.class_name,
+            name: this.class_name,
             start_time: this.start_time,
             end_time: this.end_time
         };
