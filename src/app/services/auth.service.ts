@@ -20,36 +20,29 @@ export class AuthService {
     this.user = user;
   }
 
-  storeKey(key){
-    sessionStorage.setItem('key', JSON.stringify(key));
-    this.apiKey = key;
-  }
 
 
   // Endpoints for logging in and registering user
-  getKey(){
-    return this.http.get('/api/demo', {headers:this.headers});
-}
 
   registerUser(user){
-    return this.http.post('/api/professors/createProfessor/' + this.apiKey.ket, user, {headers:this.headers});
+    return this.http.post('/api/professors/createProfessor/', user, {headers:this.headers});
   }
 
   loginUser(user){
-    return this.http.post('/api/professors/login/'+this.apiKey.ket, user, {headers:this.headers});
+    return this.http.post('/api/professors/login/', user, {headers:this.headers});
   }
 
   createClass(course){
-    return this.http.post('/api/classes/create/'+this.user.profNID+'/'+this.apiKey.ket, course, {headers:this.headers});
+    return this.http.post('/api/classes/create/'+this.user.profNID, course, {headers:this.headers});
   }
 
 //   // Endpoints for interacting with Contacts
   getCourses(){
-    return this.http.get('/api/classes/'+this.user.profNID+'/'+this.apiKey.ket, {headers:this.headers});
+    return this.http.get('/api/classes/'+this.user.profNID, {headers:this.headers});
 }
 
   getLectures(course){
-  return this.http.get('/api/lectures/'+course._id+'/'+this.apiKey.ket, {headers:this.headers});
+  return this.http.get('/api/lectures/'+course._id, {headers:this.headers});
 }
 //
 //   addContact(contact: Contact){

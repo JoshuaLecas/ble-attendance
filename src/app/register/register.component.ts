@@ -21,9 +21,7 @@ export class RegisterComponent implements OnInit
   key: any;
   ngOnInit()
   {
-    var temp = this.authService.getKey();
-    this.key = temp;
-    this.authService.storeKey(this.key);
+
   }
 
   showPassword()

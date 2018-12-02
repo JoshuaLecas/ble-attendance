@@ -17,11 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(){
-    this.key = this.authService.getKey();
-    alert(this.key['key']);
-    alert(this.key.key);
-    this.authService.storeKey(this.key);
-
+  
   }
 
   showPassword() {
