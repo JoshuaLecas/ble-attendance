@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require("path");
 const crypto = require("crypto");
-const config = require('./dbcreds');
+
 
 // *** Connection and Starting the app ***
 
