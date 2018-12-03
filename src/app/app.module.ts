@@ -17,6 +17,9 @@ import { ValidateService } from './services/validate.service';
 import { FilterPipe } from './services/filter.pipe';
 
 import { AddClassComponent } from './add-class/add-class.component';
+import { StudentListComponent } from './student-list/student-list.component';
+import { SelectedlectureComponent } from './selectedlecture/selectedlecture.component';
+import { SelectedclassComponent } from './selectedclass/selectedclass.component';
 
 const appRoutes: Routes =[
   { path: '', component: HomeComponent },
@@ -24,6 +27,9 @@ const appRoutes: Routes =[
   { path: 'register', component: RegisterComponent},
   { path: 'profdash', component: ProfdashComponent},
   { path: 'addclass', component: AddClassComponent},
+  { path: 'selectedclass', component: SelectedclassComponent},
+  { path: 'selectedlecture', component: SelectedlectureComponent},
+  { path: 'students', component: StudentListComponent},
   { path: '**', redirectTo: '', pathMatch: 'full' }
 
 ];
@@ -37,7 +43,10 @@ const appRoutes: Routes =[
     FilterPipe,
     HomeComponent,
     Navbar2Component,
-    AddClassComponent
+    AddClassComponent,
+    StudentListComponent,
+    SelectedlectureComponent,
+    SelectedclassComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

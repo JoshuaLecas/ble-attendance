@@ -219,6 +219,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/validate.service */ "./src/app/services/validate.service.ts");
 /* harmony import */ var _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/filter.pipe */ "./src/app/services/filter.pipe.ts");
 /* harmony import */ var _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./add-class/add-class.component */ "./src/app/add-class/add-class.component.ts");
+/* harmony import */ var _student_list_student_list_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./student-list/student-list.component */ "./src/app/student-list/student-list.component.ts");
+/* harmony import */ var _selectedlecture_selectedlecture_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./selectedlecture/selectedlecture.component */ "./src/app/selectedlecture/selectedlecture.component.ts");
+/* harmony import */ var _selectedclass_selectedclass_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./selectedclass/selectedclass.component */ "./src/app/selectedclass/selectedclass.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -240,12 +243,18 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
+
 var appRoutes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"] },
     { path: 'login', component: _login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"] },
     { path: 'register', component: _register_register_component__WEBPACK_IMPORTED_MODULE_8__["RegisterComponent"] },
     { path: 'profdash', component: _profdash_profdash_component__WEBPACK_IMPORTED_MODULE_10__["ProfdashComponent"] },
     { path: 'addclass', component: _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__["AddClassComponent"] },
+    { path: 'selectedclass', component: _selectedclass_selectedclass_component__WEBPACK_IMPORTED_MODULE_17__["SelectedclassComponent"] },
+    { path: 'selectedlecture', component: _selectedlecture_selectedlecture_component__WEBPACK_IMPORTED_MODULE_16__["SelectedlectureComponent"] },
+    { path: 'students', component: _student_list_student_list_component__WEBPACK_IMPORTED_MODULE_15__["StudentListComponent"] },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 var AppModule = /** @class */ (function () {
@@ -261,7 +270,10 @@ var AppModule = /** @class */ (function () {
                 _services_filter_pipe__WEBPACK_IMPORTED_MODULE_13__["FilterPipe"],
                 _home_home_component__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"],
                 _navbar2_navbar2_component__WEBPACK_IMPORTED_MODULE_9__["Navbar2Component"],
-                _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__["AddClassComponent"]
+                _add_class_add_class_component__WEBPACK_IMPORTED_MODULE_14__["AddClassComponent"],
+                _student_list_student_list_component__WEBPACK_IMPORTED_MODULE_15__["StudentListComponent"],
+                _selectedlecture_selectedlecture_component__WEBPACK_IMPORTED_MODULE_16__["SelectedlectureComponent"],
+                _selectedclass_selectedclass_component__WEBPACK_IMPORTED_MODULE_17__["SelectedclassComponent"]
             ],
             imports: [
                 _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot(appRoutes),
@@ -524,7 +536,7 @@ module.exports = "/* body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  wo
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"nav-link active\" href=\"#\">\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" href=\"#\">\n                  <span data-feather=\"file\"></span>\n                  Students\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink] = \"['/addclass']\" hrep=\"#\">\n                  <span data-feather=\"shopping-cart\"></span>\n                  Add a class <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Classes</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n                <input class=\"form-control form-control-dark w-100\" type=\"text\" name=\"inputString\" style=\"background-color: lightgrey;\" [(ngModel)]=\"inputString\" placeholder=\"Search Classes\" aria-label=\"Search\">\n              </div>\n\n            </div>\n          </div>\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                  <th><h6>Start Time</h6></th>\n                  <th><h6>End Time</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let Class of hack(courseList) | filter:inputString; let i = index\">\n                    <td><a (click)=\"courseClicked(Class)\">{{Class.className}}</a></td>\n                    <td>{{Class.courseID}}</td>\n                    <td>{{Class.startTime}}</td>\n                    <td><a>{{Class.endTime}}</a></td>\n                    <td>\n                        <button class=\"btn btn-danger\" (click)=\"onDeleteButton(Class)\">Delete</button>\n                    </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </main>\n        <div class=\"col-md-5  pt-3 px-4\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Lectures for Selected Class</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n\n              </div>\n\n            </div>\n          </div>\n\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Date</h6></th>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let lecture of lectureList\">\n                    <td><a>{{lecture.date}}</a></td>\n                    <td>{{selectedCourse.className}}</td>\n                    <td>{{selectedCourse.courseID}}</td>\n\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
+module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"nav-link active\" hrep=\"#\">\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" hrep=\"#\" [routerLink] = \"['/students']\">\n                  <span data-feather=\"file\"></span>\n                  Students\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink] = \"['/addclass']\" hrep=\"#\">\n                  <span data-feather=\"shopping-cart\"></span>\n                  Add a class <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Classes</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n                <input class=\"form-control form-control-dark w-100\" type=\"text\" name=\"inputString\" style=\"background-color: lightgrey;\" [(ngModel)]=\"inputString\" placeholder=\"Search Classes\" aria-label=\"Search\">\n              </div>\n\n            </div>\n          </div>\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                  <th><h6>Start Time</h6></th>\n                  <th><h6>End Time</h6></th>\n                  <th><h6>Delete Class</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let Class of hack(courseList) | filter:inputString; let i = index\">\n                    <td><a (click)=\"courseClicked(Class)\">{{Class.className}}</a></td>\n                    <td style=\"color: lightblue;\">{{Class.courseID}}</td>\n                    <td>{{Class.startTime}}</td>\n                    <td><a>{{Class.endTime}}</a></td>\n                    <td>\n                        <button class=\"btn btn-danger\" (click)=\"onDeleteButton(Class)\">Delete</button>\n                    </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </main>\n        <div class=\"col-md-5  pt-3 px-4\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Lectures for Selected Class</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n\n              </div>\n\n            </div>\n          </div>\n\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Date</h6></th>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class ID</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let lecture of lectureList\">\n                    <td><a style=\"color: lightblue;\">{{lecture.date}}</a></td>\n                    <td>{{selectedCourse.className}}</td>\n                    <td>{{selectedCourse.courseID}}</td>\n\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
 
 /***/ }),
 
@@ -731,6 +743,188 @@ var RegisterComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/selectedclass/selectedclass.component.css":
+/*!***********************************************************!*\
+  !*** ./src/app/selectedclass/selectedclass.component.css ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/selectedclass/selectedclass.component.html":
+/*!************************************************************!*\
+  !*** ./src/app/selectedclass/selectedclass.component.html ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink]='[\"/profdash\"]'>\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink]='[\"/students\"]'>\n                  <span data-feather=\"students\"></span>\n                  Students\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]='[\"/addclass\"]'>\n                  <span data-feather=\"addclass\"></span>\n                  Add a class\n                </a>\n              </li>\n\n              <li class=\"nav-item\">\n                <a class=\"nav-link active\">\n                  <span data-feather=\"addclass\"></span>\n                  Students in class <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Students in Selected class</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n                <input class=\"form-control form-control-dark w-100\" type=\"text\" name=\"inputString\" style=\"background-color: lightgrey;\" [(ngModel)]=\"inputString\" placeholder=\"Search Classes\" aria-label=\"Search\">\n              </div>\n\n            </div>\n          </div>\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Student Name</h6></th>\n                  <th><h6>NID</h6></th>\n                  <th><h6>Email</h6></th>\n                  <th><h6>Class Title</h6></th>\n                  <th><h6>Delete Student</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let Student of studentList | filter:inputString; let i = index\">\n                    <td><a (click)=\"studentClicked(Class)\">{{Student.name}}</a></td>\n                    <td style=\"color: lightblue;\">{{Student.studentNID}}</td>\n                    <td>{{Student.email}}</td>\n                    <td><a>{{selectedClass.className}}</a></td>\n                    <td>\n                        <button class=\"btn btn-danger\" (click)=\"onDeleteButton(Student)\">Delete</button>\n                    </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </main>\n\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
+
+/***/ }),
+
+/***/ "./src/app/selectedclass/selectedclass.component.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/selectedclass/selectedclass.component.ts ***!
+  \**********************************************************/
+/*! exports provided: SelectedclassComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectedclassComponent", function() { return SelectedclassComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SelectedclassComponent = /** @class */ (function () {
+    function SelectedclassComponent(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    SelectedclassComponent.prototype.ngOnInit = function () {
+        //  if (sessionStorage.length == 0){
+        //    this.router.navigate(['/home']);
+        //  }
+        this.pageLoad();
+    };
+    SelectedclassComponent.prototype.pageLoad = function () {
+        var temp = sessionStorage.getItem('user');
+        this.user = JSON.parse(temp);
+        this.authService.storeUser(this.user);
+        this.user_id = this.user['id'];
+        this.getCourseList();
+        this.getCourseList();
+    };
+    SelectedclassComponent.prototype.onLogOutButton = function () {
+        sessionStorage.clear();
+        this.router.navigate(['/home']);
+    };
+    SelectedclassComponent.prototype.getCourseList = function () {
+        var _this = this;
+        this.authService.getCourses().subscribe(function (data) {
+            _this.courseList = data;
+        });
+    };
+    SelectedclassComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-selectedclass',
+            template: __webpack_require__(/*! ./selectedclass.component.html */ "./src/app/selectedclass/selectedclass.component.html"),
+            styles: [__webpack_require__(/*! ./selectedclass.component.css */ "./src/app/selectedclass/selectedclass.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+    ], SelectedclassComponent);
+    return SelectedclassComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/selectedlecture/selectedlecture.component.css":
+/*!***************************************************************!*\
+  !*** ./src/app/selectedlecture/selectedlecture.component.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-wrap: break-word;\n}\n\n#dash .container  {\n  margin-top: 30px;\n\n  height: 500px;\n  box-shadow: 0px 0px 20px grey;\n\n}\n#dash .container #login-row #login-column #login-box #login-form {\n  padding: 20px;\n}\n#dash .container #login-row #login-column #login-box #login-form #register-link {\n  margin-top: -85px;\n}\n#dash .btn-info {\n  background-color: #0082FC;\n  border-color:#0082FC;\n}\n#dash .btn-succes {\n  background-color: #0082FC;\n  border-color: #0082FC;\n}\n#dash .text-info {\n  color: #0082FC!important;\n}\n#cont {\n  margin-top:10vh;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background-color:  #F9F8FA;\n  box-shadow: 0px 0px 20px grey;\n}\n\n#dashbody{\n  margin-top:5vh;\n}\n.alignRight{\n  text-align: right;\n}\n\n/* MODAL STYLES\n-------------------------------*/\n/* jw-modal {\n  display: none;\n}\njw-modal .jw-modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  overflow: auto;\n}\njw-modal .jw-modal .jw-modal-body {\n  padding: 20px;\n  background: #000;\n  margin: 40px;\n}\njw-modal .jw-modal-background {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #000;\n  opacity: 0.75;\n  z-index: 900;\n}\nbody.jw-modal-open {\n  overflow: hidden;\n} */\nbody {\n  font-size: .875rem;\n}\n.feather {\n  width: 16px;\n  height: 16px;\n  vertical-align: text-bottom;\n}\n/*\n * Sidebar\n */\n.sidebar {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 100; /* Behind the navbar */\n  padding: 0;\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 48px; /* Height of navbar */\n  height: calc(100vh - 48px);\n  padding-top: .5rem;\n  overflow-x: hidden;\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link {\n  font-weight: 500;\n  color: #333;\n}\n.sidebar .nav-link .feather {\n  margin-right: 4px;\n  color: #999;\n}\n.sidebar .nav-link.active {\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather,\n.sidebar .nav-link.active .feather {\n  color: inherit;\n}\n.sidebar-heading {\n  font-size: .75rem;\n  text-transform: uppercase;\n}\n/*\n * Navbar\n */\n.navbar-brand {\n  padding-top: .75rem;\n  padding-bottom: .75rem;\n  font-size: 1rem;\n  background-color: rgba(0, 0, 0, .25);\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control {\n  padding: .75rem 1rem;\n  border-width: 0;\n  border-radius: 0;\n}\n.form-control-dark {\n  color: #fff;\n  background-color: rgba(255, 255, 255, .1);\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark:focus {\n  border-color: transparent;\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\n/*\n * Utilities\n */\n.border-top { border-top: 1px solid #e5e5e5; }\n.border-bottom { border-bottom: 1px solid #e5e5e5; }\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n.underlineHover:hover:after{\n  width: 100%;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/selectedlecture/selectedlecture.component.html":
+/*!****************************************************************!*\
+  !*** ./src/app/selectedlecture/selectedlecture.component.html ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink]='[\"/profdash\"]'>\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink]='[\"/students\"]'>\n                  <span data-feather=\"students\"></span>\n                  Students\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" [routerLink]='[\"/addclass\"]'>\n                  <span data-feather=\"addclass\"></span>\n                  Add a class\n                </a>\n              </li>\n\n              <li class=\"nav-item\">\n                <a class=\"nav-link active\">\n                  <span data-feather=\"addclass\"></span>\n                  Attending Students <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Students who Attended</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n                <input class=\"form-control form-control-dark w-100\" type=\"text\" name=\"inputString\" style=\"background-color: lightgrey;\" [(ngModel)]=\"inputString\" placeholder=\"Search Classes\" aria-label=\"Search\">\n              </div>\n\n            </div>\n          </div>\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Student Name</h6></th>\n                  <th><h6>NID</h6></th>\n                  <th><h6>Email</h6></th>\n                  <th><h6>Class Title</h6></th>\n                  <th><h6>Delete Student</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let Student of studentList | filter:inputString; let i = index\">\n                    <td><a (click)=\"studentClicked(Class)\">{{Student.name}}</a></td>\n                    <td style=\"color: lightblue;\">{{Student.studentNID}}</td>\n                    <td>{{Student.email}}</td>\n                    <td><a>{{selectedClass.className}}</a></td>\n                    <td>\n                        <button class=\"btn btn-danger\" (click)=\"onDeleteButton(Student)\">Delete</button>\n                    </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </main>\n\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
+
+/***/ }),
+
+/***/ "./src/app/selectedlecture/selectedlecture.component.ts":
+/*!**************************************************************!*\
+  !*** ./src/app/selectedlecture/selectedlecture.component.ts ***!
+  \**************************************************************/
+/*! exports provided: SelectedlectureComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectedlectureComponent", function() { return SelectedlectureComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var SelectedlectureComponent = /** @class */ (function () {
+    function SelectedlectureComponent(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    SelectedlectureComponent.prototype.ngOnInit = function () {
+        //  if (sessionStorage.length == 0){
+        //    this.router.navigate(['/home']);
+        //  }
+        this.pageLoad();
+    };
+    SelectedlectureComponent.prototype.pageLoad = function () {
+        var temp = sessionStorage.getItem('user');
+        this.user = JSON.parse(temp);
+        this.authService.storeUser(this.user);
+        this.user_id = this.user['id'];
+        this.getCourseList();
+        this.getCourseList();
+    };
+    SelectedlectureComponent.prototype.onLogOutButton = function () {
+        sessionStorage.clear();
+        this.router.navigate(['/home']);
+    };
+    SelectedlectureComponent.prototype.getCourseList = function () {
+        var _this = this;
+        this.authService.getCourses().subscribe(function (data) {
+            _this.courseList = data;
+        });
+    };
+    SelectedlectureComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-selectedlecture',
+            template: __webpack_require__(/*! ./selectedlecture.component.html */ "./src/app/selectedlecture/selectedlecture.component.html"),
+            styles: [__webpack_require__(/*! ./selectedlecture.component.css */ "./src/app/selectedlecture/selectedlecture.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+    ], SelectedlectureComponent);
+    return SelectedlectureComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/auth.service.ts":
 /*!******************************************!*\
   !*** ./src/app/services/auth.service.ts ***!
@@ -784,6 +978,12 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.deleteClass = function (course) {
         return this.http.post('/api/classes/delete/' + course._id, { headers: this.headers });
+    };
+    AuthService.prototype.getStudents = function () {
+        return this.http.get('/api/students', { headers: this.headers });
+    };
+    AuthService.prototype.getClassesForStudent = function (student) {
+        return this.http.get('/api/students/viewClasses/' + student.studentNID, { headers: this.headers });
     };
     AuthService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -898,6 +1098,108 @@ var ValidateService = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], ValidateService);
     return ValidateService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/student-list/student-list.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/student-list/student-list.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* body {\n  background-color: #0082FC;\n\n}\ntable, tr{\n  word-wrap: break-word;\n}\n\n#dash .container  {\n  margin-top: 30px;\n\n  height: 500px;\n  box-shadow: 0px 0px 20px grey;\n\n}\n#dash .container #login-row #login-column #login-box #login-form {\n  padding: 20px;\n}\n#dash .container #login-row #login-column #login-box #login-form #register-link {\n  margin-top: -85px;\n}\n#dash .btn-info {\n  background-color: #0082FC;\n  border-color:#0082FC;\n}\n#dash .btn-succes {\n  background-color: #0082FC;\n  border-color: #0082FC;\n}\n#dash .text-info {\n  color: #0082FC!important;\n}\n#cont {\n  margin-top:10vh;\n  padding-top: 10px;\n  padding-bottom: 10px;\n  background-color:  #F9F8FA;\n  box-shadow: 0px 0px 20px grey;\n}\n\n#dashbody{\n  margin-top:5vh;\n}\n.alignRight{\n  text-align: right;\n}\n\n/* MODAL STYLES\n-------------------------------*/\n/* jw-modal {\n  display: none;\n}\njw-modal .jw-modal {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1000;\n  overflow: auto;\n}\njw-modal .jw-modal .jw-modal-body {\n  padding: 20px;\n  background: #000;\n  margin: 40px;\n}\njw-modal .jw-modal-background {\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  background-color: #000;\n  opacity: 0.75;\n  z-index: 900;\n}\nbody.jw-modal-open {\n  overflow: hidden;\n} */\nbody {\n  font-size: .875rem;\n}\n.feather {\n  width: 16px;\n  height: 16px;\n  vertical-align: text-bottom;\n}\n/*\n * Sidebar\n */\n.sidebar {\n  position: fixed;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 100; /* Behind the navbar */\n  padding: 0;\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);\n}\n.sidebar-sticky {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 48px; /* Height of navbar */\n  height: calc(100vh - 48px);\n  padding-top: .5rem;\n  overflow-x: hidden;\n  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n}\n.sidebar .nav-link {\n  font-weight: 500;\n  color: #333;\n}\n.sidebar .nav-link .feather {\n  margin-right: 4px;\n  color: #999;\n}\n.sidebar .nav-link.active {\n  color: #007bff;\n}\n.sidebar .nav-link:hover .feather,\n.sidebar .nav-link.active .feather {\n  color: inherit;\n}\n.sidebar-heading {\n  font-size: .75rem;\n  text-transform: uppercase;\n}\n/*\n * Navbar\n */\n.navbar-brand {\n  padding-top: .75rem;\n  padding-bottom: .75rem;\n  font-size: 1rem;\n  background-color: rgba(0, 0, 0, .25);\n  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);\n}\n.navbar .form-control {\n  padding: .75rem 1rem;\n  border-width: 0;\n  border-radius: 0;\n}\n.form-control-dark {\n  color: #fff;\n  background-color: rgba(255, 255, 255, .1);\n  border-color: rgba(255, 255, 255, .1);\n}\n.form-control-dark:focus {\n  border-color: transparent;\n  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);\n}\n/*\n * Utilities\n */\n.border-top { border-top: 1px solid #e5e5e5; }\n.border-bottom { border-bottom: 1px solid #e5e5e5; }\n.underlineHover:after {\n  display: block;\n  left: 0;\n  bottom: -10px;\n  width: 0;\n  height: 2px;\n  background-color: #56baed;\n  content: \"\";\n  transition: width 0.2s;\n}\n.underlineHover:hover {\n  color: #0d0d0d;\n}\n.underlineHover:hover:after{\n  width: 100%;\n}\n"
+
+/***/ }),
+
+/***/ "./src/app/student-list/student-list.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/student-list/student-list.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <meta name=\"description\" content=\"\">\n    <meta name=\"author\" content=\"\">\n    <link rel=\"icon\" href=\"../../../../favicon.ico\">\n\n    <!-- Bootstrap core CSS -->\n\n    <!-- Custom styles for this template -->\n  </head>\n\n  <body>\n    <nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n      <a class=\"navbar-brand col-sm-1 col-md-1 mr-0\" href=\"#\">Welcome, {{user.name}}</a>\n      <ul class=\"navbar-nav px-3\">\n        <li class=\"nav-item text-nowrap\">\n          <a class=\"nav-link\" href=\"#\" (click)=\"onLogOutButton()\" style=\"color: red; font-size: 24px\">Log out</a>\n        </li>\n      </ul>\n    </nav>\n\n    <div class=\"container-fluid\">\n      <div class=\"row\">\n        <nav class=\"col-md-1 d-none d-md-block bg-light sidebar\">\n          <div class=\"sidebar-sticky\">\n            <ul class=\"nav flex-column\">\n              <li class=\"nav-item\">\n                <a class=\"nav-link\" hrep=\"#\" [routerLink] = \"['/profdash']\">\n                  <span data-feather=\"home\"></span>\n                  Class List\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link active\" href=\"#\">\n                  <span data-feather=\"file\"></span>\n                  Students <span class=\"sr-only\">(current)</span>\n                </a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"underlineHover nav-link\" [routerLink] = \"['/addclass']\" hrep=\"#\">\n                  <span data-feather=\"shopping-cart\"></span>\n                  Add a class\n                </a>\n              </li>\n\n            </ul>\n          </div>\n        </nav>\n\n        <main role=\"main\" class=\"col-md-5 ml-sm-auto col-lg-6 pt-3 px-4\" style=\"height: 100vh; border-right: 1px solid lightgrey;\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">All Students</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n                <input class=\"form-control form-control-dark w-100\" type=\"text\" name=\"inputString\" style=\"background-color: lightgrey;\" [(ngModel)]=\"inputString\" placeholder=\"Search Classes\" aria-label=\"Search\">\n              </div>\n\n            </div>\n          </div>\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Student Name</h6></th>\n                  <th><h6>Student NID</h6></th>\n                  <th><h6>Email</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let student of studentList | filter:inputString; let i = index\">\n                    <td style=\"color: blue;\"><a (click)=\"studentClicked(student)\">{{student.name}}</a></td>\n                    <td >{{student.studentNID}}</td>\n                    <td>{{student.email}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </main>\n        <div class=\"col-md-5  pt-3 px-4\">\n          <div class=\"d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom\">\n            <h1 class=\"h2\">Selected Student Class Info</h1>\n            <div class=\"btn-toolbar mb-2 mb-md-0\">\n              <div class=\"btn-group mr-2\">\n\n              </div>\n\n            </div>\n          </div>\n\n          <div id=\"class_table\">\n            <table class=\"table table-striped\" style=\"padding-top:0px;\">\n              <thead style=\"background-color: lightgrey; color: grey\">\n                <tr>\n                  <th><h6>Class Name</h6></th>\n                  <th><h6>Class Code</h6></th>\n                  <th><h6>Start Time</h6></th>\n                  <th><h6>End Time</h6></th>\n                </tr>\n              </thead>\n              <tbody>\n                <tr id=\"contacts\">\n                   <tr *ngFor=\"let course of courseList\">\n                    <td>{{course.className}}</td>\n                    <td>{{course.courseID}}</td>\n                    <td>{{course.startTime}}</td>\n                    <td>{{course.endTime}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n      </div>\n    </div>\n\n    <!-- Bootstrap core JavaScript\n    ================================================== -->\n    <!-- Placed at the end of the document so the pages load faster -->\n    <script src=\"https://code.jquery.com/jquery-3.2.1.slim.min.js\" integrity=\"sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN\" crossorigin=\"anonymous\"></script>\n    <script>window.jQuery || document.write('<script src=\"../../assets/js/vendor/jquery-slim.min.js\"><\\/script>')</script>\n    <script src=\"../../assets/js/vendor/popper.min.js\"></script>\n    <script src=\"../../dist/js/bootstrap.min.js\"></script>\n\n    <!-- Icons -->\n    <script src=\"https://unpkg.com/feather-icons/dist/feather.min.js\"></script>\n    <script>\n      feather.replace()\n    </script>\n\n    <!-- Graphs -->\n    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js\"></script>\n    <script>\n      var ctx = document.getElementById(\"myChart\");\n      var myChart = new Chart(ctx, {\n        type: 'line',\n        data: {\n          labels: [\"Sunday\", \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"],\n          datasets: [{\n            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],\n            lineTension: 0,\n            backgroundColor: 'transparent',\n            borderColor: '#007bff',\n            borderWidth: 4,\n            pointBackgroundColor: '#007bff'\n          }]\n        },\n        options: {\n          scales: {\n            yAxes: [{\n              ticks: {\n                beginAtZero: false\n              }\n            }]\n          },\n          legend: {\n            display: false,\n          }\n        }\n      });\n    </script>\n  </body>\n</html>\n"
+
+/***/ }),
+
+/***/ "./src/app/student-list/student-list.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/student-list/student-list.component.ts ***!
+  \********************************************************/
+/*! exports provided: StudentListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StudentListComponent", function() { return StudentListComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var StudentListComponent = /** @class */ (function () {
+    function StudentListComponent(router, authService) {
+        this.router = router;
+        this.authService = authService;
+    }
+    StudentListComponent.prototype.ngOnInit = function () {
+        //  if (sessionStorage.length == 0){
+        //    this.router.navigate(['/home']);
+        //  }
+        this.pageLoad();
+    };
+    StudentListComponent.prototype.pageLoad = function () {
+        var temp = sessionStorage.getItem('user');
+        this.user = JSON.parse(temp);
+        this.authService.storeUser(this.user);
+        this.user_id = this.user['id'];
+        this.getStudentList();
+        this.getStudentList();
+    };
+    StudentListComponent.prototype.onLogOutButton = function () {
+        sessionStorage.clear();
+        this.router.navigate(['/home']);
+    };
+    StudentListComponent.prototype.studentClicked = function (student) {
+        this.selectedStudent = student;
+        this.getClassList(student);
+        this.getClassList(student);
+    };
+    StudentListComponent.prototype.getClassList = function (student) {
+        var _this = this;
+        this.authService.getClassesForStudent(student).subscribe(function (data) {
+            _this.courseList = data;
+        });
+    };
+    StudentListComponent.prototype.getStudentList = function () {
+        var _this = this;
+        this.authService.getStudents().subscribe(function (data) {
+            _this.studentList = data;
+        });
+    };
+    StudentListComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-student-list',
+            template: __webpack_require__(/*! ./student-list.component.html */ "./src/app/student-list/student-list.component.html"),
+            styles: [__webpack_require__(/*! ./student-list.component.css */ "./src/app/student-list/student-list.component.css")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]])
+    ], StudentListComponent);
+    return StudentListComponent;
 }());
 
 

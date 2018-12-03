@@ -27,13 +27,13 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="#">
+                <a class="nav-link active" hrep="#">
                   <span data-feather="home"></span>
                   Class List
                 </a>
               </li>
               <li class="nav-item">
-                <a class="underlineHover nav-link" href="#">
+                <a class="underlineHover nav-link" hrep="#" [routerLink] = "['/students']">
                   <span data-feather="file"></span>
                   Students
                 </a>
@@ -67,13 +67,14 @@
                   <th><h6>Class ID</h6></th>
                   <th><h6>Start Time</h6></th>
                   <th><h6>End Time</h6></th>
+                  <th><h6>Delete Class</h6></th>
                 </tr>
               </thead>
               <tbody>
                 <tr id="contacts">
                    <tr *ngFor="let Class of hack(courseList) | filter:inputString; let i = index">
-                    <td><a (click)="courseClicked(Class)">{{Class.className}}</a></td>
-                    <td>{{Class.courseID}}</td>
+                    <td style="color: blue;"><a (click)="courseClicked(Class)">{{Class.className}}</a></td>
+                    <td >{{Class.courseID}}</td>
                     <td>{{Class.startTime}}</td>
                     <td><a>{{Class.endTime}}</a></td>
                     <td>
@@ -107,7 +108,7 @@
               <tbody>
                 <tr id="contacts">
                    <tr *ngFor="let lecture of lectureList">
-                    <td><a>{{lecture.date}}</a></td>
+                    <td><a style="color: blue;">{{lecture.date}}</a></td>
                     <td>{{selectedCourse.className}}</td>
                     <td>{{selectedCourse.courseID}}</td>
 
