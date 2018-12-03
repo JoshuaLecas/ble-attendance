@@ -98,4 +98,10 @@ export class ProfdashComponent implements OnInit {
     this.getLectureList(course);
   }
 
+  onDeleteButton(course){
+    this.authService.deleteClass(course);
+    this.getCourseList();
+    this.getCourseList();
+  }
+
 }

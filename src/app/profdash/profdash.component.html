@@ -76,6 +76,9 @@
                     <td>{{Class.courseID}}</td>
                     <td>{{Class.startTime}}</td>
                     <td><a>{{Class.endTime}}</a></td>
+                    <td>
+                        <button class="btn btn-danger" (click)="onDeleteButton(Class)">Delete</button>
+                    </td>
                 </tr>
               </tbody>
             </table>

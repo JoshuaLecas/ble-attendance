@@ -44,6 +44,10 @@ export class AuthService {
   getLectures(course){
   return this.http.get('/api/lectures/'+course._id, {headers:this.headers});
 }
+
+  deleteClass(course){
+    return this.http.post('/api/classes/delete/'+course._id, {headers:this.headers});
+  }
 //
 //   addContact(contact: Contact){
 //     return this.http.post('/api/contacts/create/'+this.user.id, contact, {headers:this.headers});
