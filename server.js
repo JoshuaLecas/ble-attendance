@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require("path");
 const crypto = require("crypto");
-const config = require('./dbcreds');
+
 
 // *** Connection and Starting the app ***
 
@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to the database before starting the application server.
-mongoose.connect(config.dburl);
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function(){
@@ -848,7 +848,6 @@ app.get("/api/students/viewClasses/:id", function(req, res){
 			handleError(res, err.message, "Couldn't get classes for this student");
 		}
 		else {
-      console.log(classesForStud)
 			res.status(201).json(classesForStud);
 		}
 	});

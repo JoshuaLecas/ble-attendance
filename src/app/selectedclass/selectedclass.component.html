@@ -56,34 +56,35 @@
           </div>
         </nav>
 
-        <main role="main" class="col-md-5 ml-sm-auto col-lg-6 pt-3 px-4" style="height: 100vh; border-right: 1px solid lightgrey;">
+        <main role="main" class="col-md-11 ml-sm-auto col-lg-11 pt-3 px-4" style="height: 100vh; border-right: 1px solid lightgrey;">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Students in Selected class</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
-                <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="inputString" placeholder="Search Classes" aria-label="Search">
-              </div>
 
             </div>
+          </div>
+          <h2>Add a student by NID and Register Code for class</h2>
+          <div class="btn-group mr-2">
+            <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="nid" placeholder="Student NID" aria-label="Search">
+          </div>
+          <div class="btn-group mr-2">
+            <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="reg_code" placeholder="Register Code" aria-label="Search">
+          </div>
+          <div>
+            <button class="btn btn-danger" (click)="onAddToClassButton()">Add to Class</button>
           </div>
           <div id="class_table">
             <table class="table table-striped" style="padding-top:0px;">
               <thead style="background-color: lightgrey; color: grey">
                 <tr>
-                  <th><h6>Student Name</h6></th>
-                  <th><h6>NID</h6></th>
-                  <th><h6>Email</h6></th>
-                  <th><h6>Class Title</h6></th>
-                  <th><h6>Delete Student</h6></th>
+                  <th><h6>Student NID</h6></th>
+                  <th><h6>Remove Student</h6></th>
                 </tr>
               </thead>
               <tbody>
                 <tr id="contacts">
                    <tr *ngFor="let Student of studentList | filter:inputString; let i = index">
-                    <td><a (click)="studentClicked(Class)">{{Student.name}}</a></td>
-                    <td style="color: lightblue;">{{Student.studentNID}}</td>
-                    <td>{{Student.email}}</td>
-                    <td><a>{{selectedClass.className}}</a></td>
+                    <td><a (click)="studentClicked(Class)">{{Student.studentNID}}</a></td>
                     <td>
                         <button class="btn btn-danger" (click)="onDeleteButton(Student)">Delete</button>
                     </td>

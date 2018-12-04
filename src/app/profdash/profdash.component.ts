@@ -29,6 +29,8 @@ export class ProfdashComponent implements OnInit {
   lecture: Lecture;
   lectureList: any;
 
+  studentList: any;
+
   selectedCourse: Class;
 
   ngOnInit() {
@@ -99,9 +101,20 @@ export class ProfdashComponent implements OnInit {
   }
 
   onDeleteButton(course){
-    this.authService.deleteClass(course);
+    this.authService.deleteClass(course).subscribe(data=>{
+      // alert('Deleted a contact');
+    }, err =>{
+
+    });
     this.getCourseList();
     this.getCourseList();
   }
 
+  onClassSelectedButton(course){
+    this.authService.getStudentsForClass(course).subscribe(data =>{
+    this.studentList = data;
+    this.authService.setStudents(this.studentList);
+    this.router.navigate(['/selectedclass']);
+    })
+  }
 }

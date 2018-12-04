@@ -5,4 +5,5 @@ export class Class{
 	public createdByProfNID: string;
 	public startTime: string;
 	public endTime: string;
+  public regCode: string;
 }

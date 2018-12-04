@@ -20,6 +20,11 @@ export class SelectedclassComponent implements OnInit {
 
   selectedCourse: Class;
 
+  studentList: any;
+
+  nid: String;
+  reg_code: String;
+
   ngOnInit() {
   //  if (sessionStorage.length == 0){
   //    this.router.navigate(['/home']);
@@ -32,8 +37,8 @@ export class SelectedclassComponent implements OnInit {
     this.user = JSON.parse(temp);
     this.authService.storeUser(this.user);
     this.user_id = this.user['id'];
-    this.getCourseList();
-    this.getCourseList();
+    this.getStudentList();
+    this.getStudentList();
   }
 
   onLogOutButton(){
@@ -41,11 +46,29 @@ export class SelectedclassComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  getStudentList(){
+  this.studentList = this.authService.getStudentList();
 
+  }
 
   getCourseList(){
     this.authService.getCourses().subscribe(data =>{
     this.courseList = data;
     })
+  }
+
+  onAddToClassButton(){
+    const student = {
+      nid: this.nid,
+      reg_code: this.reg_code
+    };
+    this.authService.addStudentToClass(student).subscribe( data => {
+    }, err =>{
+    alert('Oh no! Something went wrong. Please try again!');
+    });
+    this.getStudentList();
+    this.nid = undefined;
+    this.reg_code = undefined;
+
   }
 }

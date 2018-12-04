@@ -65,8 +65,10 @@
                 <tr>
                   <th><h6>Class Name</h6></th>
                   <th><h6>Class ID</h6></th>
+                  <th><h6>Reg Code</h6></th>
                   <th><h6>Start Time</h6></th>
                   <th><h6>End Time</h6></th>
+                  <th><h6>View Students</h6></th>
                   <th><h6>Delete Class</h6></th>
                 </tr>
               </thead>
@@ -75,8 +77,12 @@
                    <tr *ngFor="let Class of hack(courseList) | filter:inputString; let i = index">
                     <td style="color: blue;"><a (click)="courseClicked(Class)">{{Class.className}}</a></td>
                     <td >{{Class.courseID}}</td>
+                    <td >{{Class.regCode}}</td>
                     <td>{{Class.startTime}}</td>
                     <td><a>{{Class.endTime}}</a></td>
+                    <td>
+                        <button class="btn btn-success" (click)="onClassSelectedButton(Class)">Students</button>
+                    </td>
                     <td>
                         <button class="btn btn-danger" (click)="onDeleteButton(Class)">Delete</button>
                     </td>

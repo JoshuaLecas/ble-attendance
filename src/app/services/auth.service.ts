@@ -9,6 +9,9 @@ export class AuthService {
 
   user: any;
   apiKey: any;
+  course: any;
+  studentsInClass: any;
+
  // private baseUri:string="http://localhost:8080/";
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -56,6 +59,24 @@ export class AuthService {
   getClassesForStudent(student){
     return this.http.get('/api/students/viewClasses/'+student.studentNID, {headers: this.headers});
   }
+
+  getStudentsForClass(course){
+    this.course = course;
+    return this.http.get('/api/classes/viewStudents/'+course._id, {headers:this.headers});
+  }
+
+  setStudents(studentList){
+    this.studentsInClass = studentList;
+  }
+
+  getStudentList(){
+    return this.studentsInClass;
+  }
+
+  addStudentToClass(student){
+    return this.http.post('/api/classes/addToClass', student, {headers: this.headers});
+  }
+
 //
 //   addContact(contact: Contact){
 //     return this.http.post('/api/contacts/create/'+this.user.id, contact, {headers:this.headers});
