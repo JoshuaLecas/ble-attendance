@@ -49,7 +49,7 @@
           </div>
         </nav>
 
-        <main role="main" class="col-md-5 ml-sm-auto col-lg-6 pt-3 px-4" style="height: 100vh; border-right: 1px solid lightgrey;">
+        <main role="main" class="col-md-5 ml-sm-auto col-lg-11 pt-3 px-4" style="height: 100vh; border-right: 1px solid lightgrey;">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">All Students</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
@@ -79,39 +79,7 @@
             </table>
           </div>
         </main>
-        <div class="col-md-5  pt-3 px-4">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Selected Student Class Info</h1>
-            <div class="btn-toolbar mb-2 mb-md-0">
-              <div class="btn-group mr-2">
 
-              </div>
-
-            </div>
-          </div>
-
-          <div id="class_table">
-            <table class="table table-striped" style="padding-top:0px;">
-              <thead style="background-color: lightgrey; color: grey">
-                <tr>
-                  <th><h6>Class Name</h6></th>
-                  <th><h6>Class Code</h6></th>
-                  <th><h6>Start Time</h6></th>
-                  <th><h6>End Time</h6></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="contacts">
-                   <tr *ngFor="let course of courseList">
-                    <td>{{course.className}}</td>
-                    <td>{{course.courseID}}</td>
-                    <td>{{course.startTime}}</td>
-                    <td>{{course.endTime}}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </div>
 

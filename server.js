@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const path = require("path");
 const crypto = require("crypto");
-
+const config = require('./dbcreds');
 
 // *** Connection and Starting the app ***
 
@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to the database before starting the application server.
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(config.dburl);
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function(){
@@ -435,23 +435,6 @@ app.get("/api/classes/:id", function(req, res) {
 		}
 	});
 });
-
-// View Classes (by _id)
-
-// :id - class _id
-app.get("/api/classes/viewClass/:id", function(req, res) {
-
-	Class.find({_id: req.params.id}, function(err, thisClass) {
-		if(err) {
-			handleError(res, "Database error error while searching", "Failed get classes for professor");
-		}
-		else {
-			console.log("Successfully got classes");
-			res.status(201).json(thisClass);
-		}
-	});
-});
-
 
 // Delete Class
 

@@ -12,6 +12,8 @@ export class AuthService {
   course: any;
   studentsInClass: any;
 
+  attendedStudents: any;
+
  // private baseUri:string="http://localhost:8080/";
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
 
@@ -75,6 +77,18 @@ export class AuthService {
 
   addStudentToClass(student){
     return this.http.post('/api/classes/addToClass', student, {headers: this.headers});
+  }
+
+  setAttendeds(attendedStudents){
+    this.attendedStudents = attendedStudents;
+  }
+
+  getAttendeds(){
+    return this.attendedStudents;
+  }
+
+  getAttendedStudentsFromLecture(lecture){
+    return this.http.get('/api/lectures/viewAttendance/'+lecture._id, {headers: this.headers});
   }
 
 //

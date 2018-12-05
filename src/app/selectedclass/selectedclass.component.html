@@ -61,18 +61,18 @@
             <h1 class="h2">Students in Selected class</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
 
+              <div class="btn-group mr-2">
+                <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="nid" placeholder="Student NID" aria-label="Search">
+              </div>
+              <div class="btn-group mr-2">
+                <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="reg_code" placeholder="Class Reg Code" aria-label="Search">
+              </div>
+              <div>
+                <button class="btn btn-danger" (click)="onAddToClassButton()">Add to Class</button>
+              </div>
             </div>
           </div>
-          <h2>Add a student by NID and Register Code for class</h2>
-          <div class="btn-group mr-2">
-            <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="nid" placeholder="Student NID" aria-label="Search">
-          </div>
-          <div class="btn-group mr-2">
-            <input class="form-control form-control-dark w-100" type="text" name="inputString" style="background-color: lightgrey;" [(ngModel)]="reg_code" placeholder="Register Code" aria-label="Search">
-          </div>
-          <div>
-            <button class="btn btn-danger" (click)="onAddToClassButton()">Add to Class</button>
-          </div>
+
           <div id="class_table">
             <table class="table table-striped" style="padding-top:0px;">
               <thead style="background-color: lightgrey; color: grey">

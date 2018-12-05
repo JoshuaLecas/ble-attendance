@@ -70,20 +70,14 @@
             <table class="table table-striped" style="padding-top:0px;">
               <thead style="background-color: lightgrey; color: grey">
                 <tr>
-                  <th><h6>Student Name</h6></th>
-                  <th><h6>NID</h6></th>
-                  <th><h6>Email</h6></th>
-                  <th><h6>Class Title</h6></th>
+                  <th><h6>Student NID</h6></th>
                   <th><h6>Delete Student</h6></th>
                 </tr>
               </thead>
               <tbody>
                 <tr id="contacts">
-                   <tr *ngFor="let Student of studentList | filter:inputString; let i = index">
-                    <td><a (click)="studentClicked(Class)">{{Student.name}}</a></td>
-                    <td style="color: lightblue;">{{Student.studentNID}}</td>
-                    <td>{{Student.email}}</td>
-                    <td><a>{{selectedClass.className}}</a></td>
+                   <tr *ngFor="let Student of attendedList | filter:inputString; let i = index">
+                    <td style="color:blue;">{{Student.studentNID}}</td>
                     <td>
                         <button class="btn btn-danger" (click)="onDeleteButton(Student)">Delete</button>
                     </td>

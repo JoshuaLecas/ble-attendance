@@ -30,7 +30,7 @@ export class ProfdashComponent implements OnInit {
   lectureList: any;
 
   studentList: any;
-
+  attendedList: any;
   selectedCourse: Class;
 
   ngOnInit() {
@@ -115,6 +115,13 @@ export class ProfdashComponent implements OnInit {
     this.studentList = data;
     this.authService.setStudents(this.studentList);
     this.router.navigate(['/selectedclass']);
+    })
+  }
+  onLectureSelectedButton(lecture){
+    this.authService.getAttendedStudentsFromLecture(lecture).subscribe(data =>{
+    this.attendedList = data;
+    this.authService.setAttendeds(this.attendedList);
+    this.router.navigate(['/selectedlecture']);
     })
   }
 }

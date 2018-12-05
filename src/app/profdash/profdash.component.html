@@ -114,7 +114,7 @@
               <tbody>
                 <tr id="contacts">
                    <tr *ngFor="let lecture of lectureList">
-                    <td><a style="color: blue;">{{lecture.date}}</a></td>
+                    <td><a style="color: blue;" (click)="onLectureSelectedButton(lecture)">{{lecture.date}}</a></td>
                     <td>{{selectedCourse.className}}</td>
                     <td>{{selectedCourse.courseID}}</td>
 
