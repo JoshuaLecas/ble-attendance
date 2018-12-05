@@ -23,6 +23,8 @@ a
 
 h1
 {
+  color: #fff;
+  font-weight: bold;
   text-align: center;
   font-family: "Poppins", sans-serif;
 }
@@ -46,18 +48,6 @@ h2
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px;
-}
-
-.Icons
-{
-  text-align: center;
-  position: relative;
-  font-family: "Poppins", sans-serif;
-}
-
-.Icons i + i
-{
-  padding-left: 0.5em;
 }
 
 #passwordShow
