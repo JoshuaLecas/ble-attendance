@@ -295,7 +295,7 @@ app.post("/api/professors/updateUUID/:id", function(req, res) {
 // Get UUID Professor
 
 // :id - profNID
-app.post("/api/professors/bleuuid/:id", function(req, res) {
+app.get("/api/professors/bleuuid/:id", function(req, res) {
 
 	console.log(req.body);
 	Professor.findOne({"profNID": req.params.id}, function(err, prof){
