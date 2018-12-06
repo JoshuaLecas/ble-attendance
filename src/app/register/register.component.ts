@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit
   onSubmit(){
 
     const user = {
-      profNID: this.profNID,
+      nid: this.profNID,
       name: this.name,
       password: this.password,
       email: this.email
