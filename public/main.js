@@ -735,7 +735,7 @@ var RegisterComponent = /** @class */ (function () {
     RegisterComponent.prototype.onSubmit = function () {
         var _this = this;
         var user = {
-            profNID: this.profNID,
+            nid: this.profNID,
             name: this.name,
             password: this.password,
             email: this.email

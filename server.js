@@ -303,7 +303,7 @@ app.post("/api/professors/bleuuid/:id", function(req, res) {
 			handleError(res, err.stack(), "Failed to update professor uuid");
 		}
 		else {
-			
+
 			res.status(201).json(prof);
 		}
 	});
