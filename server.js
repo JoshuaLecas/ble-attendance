@@ -292,6 +292,23 @@ app.post("/api/professors/updateUUID/:id", function(req, res) {
 	});
 });
 
+// Get UUID Professor
+
+// :id - profNID
+app.post("/api/professors/bleuuid/:id", function(req, res) {
+
+	console.log(req.body);
+	Professor.findOne({"profNID": req.params.id}, function(err, prof){
+		if(err) {
+			handleError(res, err.stack(), "Failed to update professor uuid");
+		}
+		else {
+			
+			res.status(201).json(prof);
+		}
+	});
+});
+
 // Update Professor (General)
 
 // Please DO NOT update hasPaid, bleUUID, or profNID
