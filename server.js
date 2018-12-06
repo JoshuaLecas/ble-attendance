@@ -304,7 +304,7 @@ app.get("/api/professors/bleuuid/:id", function(req, res) {
 		}
 		else {
 			
-			res.status(201).json(prof);
+			res.status(201).json(prof.profNID);
 		}
 	});
 });
