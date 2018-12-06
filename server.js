@@ -1004,7 +1004,7 @@ app.post("/api/students/markHere/:id", function(req, res) {
 														}
 														else {
 															console.log("Successfully created attended");
-															res.status(201).json("Student marked as here");
+															res.status(201).json({"Message":"Success"});
 														}
 													});
 												}
