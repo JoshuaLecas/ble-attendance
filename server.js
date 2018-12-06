@@ -1063,7 +1063,7 @@ app.post("/api/lectures/create/:id/:uuid", function(req, res){
 									if(err) return handleError(res, "Failed to save lecture", "Didn't save lecture");
 									else {
 										console.log("Lecture successfully created");
-										res.status(201).json(lecture);
+										res.status(201).json("success");
 									}
 								});
 							}
