@@ -1213,3 +1213,7 @@ app.post("/api/accessKeys/delete/:id", function(req, res) {
 		}
 	});
 });
+
+// app.use('/*',function(req, res) {
+//     res.sendfile(__dirname + '/dist/index.html');
+// });
