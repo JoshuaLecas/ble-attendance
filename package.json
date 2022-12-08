@@ -24,7 +24,7 @@
     "mongoose": "^5.3.2",
     "rxjs": "^6.0.0",
     "zone.js": "~0.8.26",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "body-parser": "^1.18.3",
     "cors": "*"
   },
